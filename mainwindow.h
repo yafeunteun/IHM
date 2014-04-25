@@ -4,20 +4,18 @@
 #include <QMainWindow>
 #include <QtGui>
 #include <QVector>
-
-#include "qwt.h"
-#include "qwt_text.h"
-#include "qwt_plot.h"
-#include "qwt_plot_curve.h"
-#include"qwt_plot_grid.h"
-#include "qwt_plot_marker.h"
-#include <qwt_plot_zoomer.h>
 #include <QSplitter>
 #include <QGroupBox>
 #include <QCheckBox>
-//#include "clienttcp.h"
-#include "ui_IHM.h"
+#include <qwt_plot_zoomer.h>
 #include <qwt_plot_magnifier.h>
+#include <qwt.h>
+#include <qwt_text.h>
+#include <qwt_plot.h>
+#include <qwt_plot_curve.h>
+#include <qwt_plot_grid.h>
+#include <qwt_plot_marker.h>
+#include "ui_IHM.h"
 #include "curveperso.h"
 
 namespace Ui {
@@ -43,14 +41,10 @@ public:
     QVector<double>lacet;
     QVector<double> vectTemps;
 
-    QString fichier;
-    QString fichierSave;
 
     QMenu *menuFichier;
     QMenu *menuOptions;
-    QAction *actionOuvrir;
     QAction *actionOffset;
-    QAction *actionSauver;
 
     QHBoxLayout *layoutGlobal;
     QVBoxLayout *layoutControl;
@@ -167,17 +161,8 @@ public:
 
 
 private slots :
-    void testip();
-    void affichage_connexion_ok();
-    void affichage_connexion_notok();
     void transformation(QString);
-    void slotbPlay();
-    void slotbPause();
-    void slotbStop();
-    void ouvrir();
-    void lireFichier();
     void offset();
-    void sauver();
 };
 
 #endif // MAINWINDOW_H

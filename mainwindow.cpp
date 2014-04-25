@@ -23,11 +23,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     addMenu();
 
-    ui->ipAdress->setInputMask("000.000.000.000");
-
-    //client = new ClientTcp();
-
     createCurve();
+
 
     addLayout();
     addOffset();
@@ -38,61 +35,12 @@ MainWindow::MainWindow(QWidget *parent) :
     addGrid();
     addMarker();
 
-    //QObject::connect(ui->bConnect, SIGNAL(clicked()), this, SLOT(testip()));
-    //QObject::connect(ui->ipAdress, SIGNAL(returnPressed()), this, SLOT(testip()));
-    //QObject::connect(client, SIGNAL(vers_IHM_connexion_OK()), this, SLOT(affichage_connexion_ok()));
-    //QObject::connect(client, SIGNAL(vers_IHM_connexion_NOTOK()), this, SLOT(affichage_connexion_notok()));
-    //** @deprecated **/ QObject::connect(client, SIGNAL(vers_IHM_texte(QString)),this, SLOT(transformation(QString)));
     /** @new **/ QObject::connect(Server::getInstance(), SIGNAL(ReceiveFromPeer(QString)), this, SLOT(transformation(QString)));
-    QObject::connect(ui->bPlay, SIGNAL(clicked()),this,SLOT(slotbPlay()));
-    QObject::connect(ui->bPause, SIGNAL(clicked()),this,SLOT(slotbPause()));
-    QObject::connect(ui->bStop, SIGNAL(clicked()),this,SLOT(slotbStop()));
-    QObject::connect(actionOuvrir,SIGNAL(triggered()),this,SLOT(ouvrir()));
-    QObject::connect(ui->lireFic,SIGNAL(clicked()),this,SLOT(lireFichier()));
     QObject::connect(actionOffset,SIGNAL(triggered()),this,SLOT(offset()));
-    QObject::connect(actionSauver,SIGNAL(triggered()),this,SLOT(sauver()));
-}
-
-void MainWindow::slotbPlay()
-{
-     //QObject::connect(client, SIGNAL(vers_IHM_texte(QString)),this, SLOT(transformation(QString)));
-     //Case After bpause and bstop
-     //client->bPlayPressed();
 }
 
 
-void MainWindow::slotbPause()
-{
-    //QObject::disconnect(client, SIGNAL(vers_IHM_texte(QString)),this, SLOT(transformation(QString)));
 
-}
-
-void MainWindow::slotbStop()
-{
-    //QObject::disconnect(client, SIGNAL(vers_IHM_texte(QString)),this, SLOT(transformation(QString)));
-    resetCurves();
-    temps = 0;
-}
-
-void MainWindow::ouvrir()
-{
-    fichier = QFileDialog::getOpenFileName(this,"Ouvrir un fichier",QString());
-    QMessageBox::information(this, "Fichier", "Vous avez sélectionné :\n" + fichier);
-}
-
-void MainWindow::lireFichier()
-{
-    QFile file(fichier);
-    file.open(QIODevice::ReadOnly | QIODevice::Text);
-    QTextStream flux(&file);
-    QString ligne;
-    while(! flux.atEnd())
-    {
-        ligne = flux.readLine();
-        ui->textBrowser->append(ligne);
-        transformation(ligne);
-    }
-}
 
 void MainWindow::offset()
 {
@@ -102,46 +50,6 @@ void MainWindow::offset()
         QWoffset->show();
 }
 
-void MainWindow::sauver()
-{
-    fichierSave = QFileDialog::getSaveFileName(this,"Sauvegarder","./curveSave.txt");
-    QMessageBox::information(this, "Fichier", "Courbes sauvegardées dans :\n" + fichierSave);
-    QFile file(fichierSave);
-    file.open(QIODevice::WriteOnly);
-    curveGyroX->saveCurve(file);
-    file.close();
-}
-
-
-
-void MainWindow::affichage_connexion_ok()
-{
-    ui->stateConn->setText(QString("Connexion OK"));
-}
-
-void MainWindow::affichage_connexion_notok()
-{
-    ui->stateConn->setText(QString("Probleme de connexion"));
-}
-
-void MainWindow::testip()
-{
-    QStringList blocs = ui->ipAdress->text().split(".");
-    foreach(QString bloc, blocs)
-        if(bloc.toInt() > 255)
-        {
-            QMessageBox::critical (this, "Validation", ui->ipAdress->text() + " n'est pas valide !");
-            ui->ipAdress->clear();
-            return;
-        }
-
-    sendDatatoClientTcp();
-}
-
-void MainWindow::sendDatatoClientTcp()
-{
-    //client->recoit_IP(ui->ipAdress->text());
-}
 
 MainWindow::~MainWindow()
 {
@@ -159,9 +67,7 @@ void MainWindow::addMenu()
     menuFichier = menuBar()->addMenu("Fichier");
     menuOptions = menuBar()->addMenu("Option");
 
-    actionOuvrir = menuFichier->addAction("Ouvrir");
     actionOffset = menuOptions->addAction("Offset");
-    actionSauver = menuFichier->addAction("Sauvegarder");
 }
 
 void MainWindow::createCurve()
@@ -480,51 +386,6 @@ void MainWindow::addMarker()
 
 void MainWindow::transformation(QString ligne)
 {
-   /* int i = 0;//iterator
-    double test;
-    bool ok;
-
-    QVector<double> vectDonnees;
-    QStringList values = ligne.split(" ");
-    QVector<double> vectAcc;
-    QVector<double> vectAng;
-    QVector<double> vectPos;
-    QVector<double> vectTraite;
-
-    foreach(QString value, values)
-    {
-        test = value.toDouble(&ok); // eventually check with ok bool
-        if(ok)
-        {
-            i++;
-            vectDonnees.push_back(test);
-        }
-    }
-
-    if (i!=6)
-    {
-        vectDonnees.clear();
-        return;
-    }
-
-    for (i=0;i<3;i++){
-        vectAcc.push_back(vectDonnees.at(i));
-        vectAng.push_back(vectDonnees.at(i+3));
-    }
-
-    for (i=0;i<3;i++){
-        vectPos.push_back(doubleintegration(vectAcc.at(i)));
-    }
-
-    for (i=0;i<3;i++){
-        vectTraite.push_back(vectPos.at(i));
-    }
-
-    for (i=0;i<3;i++){
-        vectTraite.push_back(vectAng.at(i));
-    }*/
-
-    /*Debug*/
     double test;
     bool ok;
     QStringList values = ligne.split(" ");
@@ -532,18 +393,17 @@ void MainWindow::transformation(QString ligne)
 
     foreach(QString value, values)
     {
-        test = value.toDouble(&ok); // eventually check with ok bool
+        test = value.toDouble(&ok);
         if(ok)
         {
             vectDonnees.push_back(test);
         }
     }
-    /*Debug End*/
+
 
     if(vectDonnees.size() != 12){
         return;
     }else{
-       //dessindonnees(vectTraite);
        dessindonnees(vectDonnees);
     }
 }
