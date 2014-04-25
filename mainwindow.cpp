@@ -540,8 +540,12 @@ void MainWindow::transformation(QString ligne)
     }
     /*Debug End*/
 
-    //dessindonnees(vectTraite);
-    dessindonnees(vectDonnees);
+    if(vectDonnees.size() != 12){
+        return;
+    }else{
+       //dessindonnees(vectTraite);
+       dessindonnees(vectDonnees);
+    }
 }
 
 /** @todo
