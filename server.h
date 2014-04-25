@@ -2,6 +2,7 @@
 #define SERVER_H
 
 #include <QTcpServer>
+#include "debug.h"
 
 class Server: public QTcpServer
 {
@@ -20,10 +21,10 @@ public slots:
     void onDataReadyRead(void);
     void onConnection(void);
     void onDisconnection(void);
-    void onNewAnswer(QString answer);
+    void sendToPeer(QString answer);
 
 signals:
-    void newQuery(QString);
+    void ReceiveFromPeer(QString);
     void peerConnected(void);
     void peerDisconnected(void);
 

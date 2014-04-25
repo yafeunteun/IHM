@@ -16,12 +16,10 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-        clienttcp.cpp \
     curveperso.cpp \
     server.cpp
 
 HEADERS  += mainwindow.h \
-    clienttcp.h \
     curveperso.h \
     server.h \
     debug.h

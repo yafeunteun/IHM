@@ -27,9 +27,10 @@ Server::Server()
     listen(QHostAddress::LocalHost, port);
     if(!this->isListening())
     {
-        QMessageBox::critical(0, "Error !", "Unable to listen !");
+        CRITICAL_ERROR("Unable to listen !");
     }
 
+    DEBUG("Server is listening on " + this->serverAddress().toString() + ":" + QString::number(this->serverPort()));
     QObject::connect(this, SIGNAL(newConnection()), this, SLOT(onConnection()));
 }
 
@@ -43,12 +44,14 @@ void Server::onConnection()
     m_peer = sock;
     QObject::connect(m_peer, SIGNAL(readyRead()), this, SLOT(onDataReadyRead()));
     emit peerConnected();
+    DEBUG("Peer connected : " + sock->peerAddress().toString());
 }
 
 void Server::onDataReadyRead(void)
 {
     QString query = m_peer->readAll();
-    emit newQuery(query);
+    DEBUG("Message from " + m_peer->peerAddress().toString() + " : " + query);
+    emit ReceiveFromPeer(query);
 }
 
 
@@ -57,7 +60,7 @@ void Server::onDisconnection(void)
     emit peerDisconnected();
 }
 
-void Server::onNewAnswer(QString answer)
+void Server::sendToPeer(QString answer)
 {
     if(m_peer!=nullptr && m_peer->isWritable()){
         answer = answer.trimmed();

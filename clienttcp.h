@@ -10,12 +10,12 @@ Q_OBJECT
 public :
     ClientTcp();
 public slots :
-    void recoit_IP(QString IP2);  // en provenance de l'IHM et se connecte au serveur
+    /** @remove **/ void recoit_IP(QString IP2);  // en provenance de l'IHM et se connecte au serveur
     void recoit_texte(QString t); // en provenance de l'IHM et écrit sur la socket
 private slots :
-    void connexion_OK();  // en provenance de la socket et émet un signal vers l'IHM
-    void probleme_connexion();
-    void lecture();       // en provenance de la socket, lit la socket, émet un signal vers l'IHM
+    /** @remove **/ void connexion_OK();  // en provenance de la socket et émet un signal vers l'IHM
+    /** @remove **/ void probleme_connexion();
+    /** @remove **/ void lecture();       // en provenance de la socket, lit la socket, émet un signal vers l'IHM
 
 public slots :
     void bPlayPressed();

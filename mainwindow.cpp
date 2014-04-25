@@ -1,12 +1,13 @@
 #include <QMessageBox>
-#include "mainwindow.h"
+#include <QFileDialog>
+#include <QSplitter>
 #include <sstream>
 #include <qwt_plot_zoomer.h>
-#include <QFileDialog>
 #include <qwt_plot_textlabel.h>
-#include <QSplitter>
 #include <qwt_plot_rescaler.h>
 #include <qwt_legend.h>
+#include "mainwindow.h"
+#include "server.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent), parent(parent),
@@ -24,7 +25,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->ipAdress->setInputMask("000.000.000.000");
 
-    client = new ClientTcp();
+    //client = new ClientTcp();
 
     createCurve();
 
@@ -37,11 +38,12 @@ MainWindow::MainWindow(QWidget *parent) :
     addGrid();
     addMarker();
 
-    QObject::connect(ui->bConnect, SIGNAL(clicked()), this, SLOT(testip()));
-    QObject::connect(ui->ipAdress, SIGNAL(returnPressed()), this, SLOT(testip()));
-    QObject::connect(client, SIGNAL(vers_IHM_connexion_OK()), this, SLOT(affichage_connexion_ok()));
-    QObject::connect(client, SIGNAL(vers_IHM_connexion_NOTOK()), this, SLOT(affichage_connexion_notok()));
-    QObject::connect(client, SIGNAL(vers_IHM_texte(QString)),this, SLOT(transformation(QString)));
+    //QObject::connect(ui->bConnect, SIGNAL(clicked()), this, SLOT(testip()));
+    //QObject::connect(ui->ipAdress, SIGNAL(returnPressed()), this, SLOT(testip()));
+    //QObject::connect(client, SIGNAL(vers_IHM_connexion_OK()), this, SLOT(affichage_connexion_ok()));
+    //QObject::connect(client, SIGNAL(vers_IHM_connexion_NOTOK()), this, SLOT(affichage_connexion_notok()));
+    //** @deprecated **/ QObject::connect(client, SIGNAL(vers_IHM_texte(QString)),this, SLOT(transformation(QString)));
+    /** @new **/ QObject::connect(Server::getInstance(), SIGNAL(ReceiveFromPeer(QString)), this, SLOT(transformation(QString)));
     QObject::connect(ui->bPlay, SIGNAL(clicked()),this,SLOT(slotbPlay()));
     QObject::connect(ui->bPause, SIGNAL(clicked()),this,SLOT(slotbPause()));
     QObject::connect(ui->bStop, SIGNAL(clicked()),this,SLOT(slotbStop()));
@@ -53,21 +55,21 @@ MainWindow::MainWindow(QWidget *parent) :
 
 void MainWindow::slotbPlay()
 {
-     QObject::connect(client, SIGNAL(vers_IHM_texte(QString)),this, SLOT(transformation(QString)));
+     //QObject::connect(client, SIGNAL(vers_IHM_texte(QString)),this, SLOT(transformation(QString)));
      //Case After bpause and bstop
-     client->bPlayPressed();
+     //client->bPlayPressed();
 }
 
 
 void MainWindow::slotbPause()
 {
-    QObject::disconnect(client, SIGNAL(vers_IHM_texte(QString)),this, SLOT(transformation(QString)));
+    //QObject::disconnect(client, SIGNAL(vers_IHM_texte(QString)),this, SLOT(transformation(QString)));
 
 }
 
 void MainWindow::slotbStop()
 {
-    QObject::disconnect(client, SIGNAL(vers_IHM_texte(QString)),this, SLOT(transformation(QString)));
+    //QObject::disconnect(client, SIGNAL(vers_IHM_texte(QString)),this, SLOT(transformation(QString)));
     resetCurves();
     temps = 0;
 }
@@ -138,7 +140,7 @@ void MainWindow::testip()
 
 void MainWindow::sendDatatoClientTcp()
 {
-    client->recoit_IP(ui->ipAdress->text());
+    //client->recoit_IP(ui->ipAdress->text());
 }
 
 MainWindow::~MainWindow()

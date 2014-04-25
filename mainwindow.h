@@ -15,7 +15,7 @@
 #include <QSplitter>
 #include <QGroupBox>
 #include <QCheckBox>
-#include "clienttcp.h"
+//#include "clienttcp.h"
 #include "ui_IHM.h"
 #include <qwt_plot_magnifier.h>
 #include "curveperso.h"
@@ -143,7 +143,7 @@ public:
 private:
     QWidget *parent;
     Ui::MainWindow *ui;
-    ClientTcp *client;
+    //ClientTcp *client;
 
 public:
     explicit MainWindow(QWidget *parent = 0);
