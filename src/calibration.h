@@ -1,7 +1,7 @@
 #ifndef CALIBRATION_H
 #define CALIBRATION_H
 
-#include "src/debug.h"
+#include "debug.h"
 
 class Calibration
 {
