@@ -30,6 +30,14 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
+
+    /** @todo
+    //void createActions(void);
+    //void createMenus(void);
+    //void createStatusBar(void);
+    //void createToolBar(void);
+    **/
+
     QMainWindow *QWoffset;
     QWidget *QOffset;
 
@@ -132,7 +140,6 @@ public:
 
 
     double temps=0;
-
 
 private:
     QWidget *parent;

@@ -5,11 +5,6 @@
 
 Server* Server::instance = nullptr;
 
-
-using std::endl;
-using std::cout;
-
-
 Server* Server::getInstance(void)
 {
     if(Server::instance == nullptr){

@@ -14,14 +14,18 @@ SOURCES += src/main.cpp\
     src/curveperso.cpp \
     src/server.cpp \
     src/calibration.cpp \
-    src/imu.cpp
+    src/imu.cpp \
+    dataholder.cpp \
+    dataholderproxy.cpp
 
 HEADERS  += src/mainwindow.h \
     src/curveperso.h \
     src/server.h \
     src/debug.h \
     src/calibration.h \
-    src/imu.h
+    src/imu.h \
+    dataholder.h \
+    dataholderproxy.h
 
 FORMS    += src/IHM.ui
 
