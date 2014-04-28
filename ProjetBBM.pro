@@ -13,13 +13,15 @@ SOURCES += src/main.cpp\
         src/mainwindow.cpp \
     src/curveperso.cpp \
     src/server.cpp \
-    src/calibration.cpp
+    src/calibration.cpp \
+    src/imu.cpp
 
 HEADERS  += src/mainwindow.h \
     src/curveperso.h \
     src/server.h \
     src/debug.h \
-    src/calibration.h
+    src/calibration.h \
+    src/imu.h
 
 FORMS    += src/IHM.ui
 
