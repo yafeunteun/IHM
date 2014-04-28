@@ -42,36 +42,8 @@
           <bool>false</bool>
          </property>
          <property name="currentIndex">
-          <number>2</number>
+          <number>1</number>
          </property>
-         <widget class="QWidget" name="tabPos">
-          <attribute name="title">
-           <string>Temporaire</string>
-          </attribute>
-          <widget class="QPushButton" name="lireFic">
-           <property name="geometry">
-            <rect>
-             <x>70</x>
-             <y>70</y>
-             <width>311</width>
-             <height>171</height>
-            </rect>
-           </property>
-           <property name="text">
-            <string>Lire Fichier</string>
-           </property>
-          </widget>
-          <widget class="QTextBrowser" name="textBrowser">
-           <property name="geometry">
-            <rect>
-             <x>440</x>
-             <y>50</y>
-             <width>521</width>
-             <height>401</height>
-            </rect>
-           </property>
-          </widget>
-         </widget>
          <widget class="QWidget" name="tabAccel">
           <attribute name="title">
            <string>Données traitées</string>
