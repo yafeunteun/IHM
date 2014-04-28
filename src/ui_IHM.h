@@ -10,24 +10,25 @@
 #define UI_IHM_H
 
 #include <QtCore/QVariant>
-#include <QtWidgets/QAction>
-#include <QtWidgets/QApplication>
-#include <QtWidgets/QButtonGroup>
-#include <QtWidgets/QFrame>
-#include <QtWidgets/QGridLayout>
-#include <QtWidgets/QHBoxLayout>
-#include <QtWidgets/QHeaderView>
-#include <QtWidgets/QLabel>
-#include <QtWidgets/QLineEdit>
-#include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenuBar>
-#include <QtWidgets/QPushButton>
-#include <QtWidgets/QSpacerItem>
-#include <QtWidgets/QStatusBar>
-#include <QtWidgets/QTabWidget>
-#include <QtWidgets/QTextBrowser>
-#include <QtWidgets/QToolButton>
-#include <QtWidgets/QWidget>
+#include <QAction>
+#include <QApplication>
+#include <QButtonGroup>
+#include <QFrame>
+#include <QGridLayout>
+#include <QHBoxLayout>
+#include <QHeaderView>
+#include <QLabel>
+#include <QLineEdit>
+#include <QMainWindow>
+#include <QMenuBar>
+#include <QPushButton>
+#include <QSpacerItem>
+#include <QStatusBar>
+#include <QTabWidget>
+#include <QTextBrowser>
+#include <QToolButton>
+#include <QWidget>
+
 
 QT_BEGIN_NAMESPACE
 
@@ -64,18 +65,18 @@ public:
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
-            MainWindow->setObjectName(QStringLiteral("MainWindow"));
+            MainWindow->setObjectName(QString("MainWindow"));
         MainWindow->resize(1039, 647);
         actionOuvrir_fichier = new QAction(MainWindow);
-        actionOuvrir_fichier->setObjectName(QStringLiteral("actionOuvrir_fichier"));
+        actionOuvrir_fichier->setObjectName(QString("actionOuvrir_fichier"));
         centralwidget = new QWidget(MainWindow);
-        centralwidget->setObjectName(QStringLiteral("centralwidget"));
+        centralwidget->setObjectName(QString("centralwidget"));
         gridLayout = new QGridLayout(centralwidget);
         gridLayout->setSpacing(6);
         gridLayout->setContentsMargins(11, 11, 11, 11);
-        gridLayout->setObjectName(QStringLiteral("gridLayout"));
+        gridLayout->setObjectName(QString("gridLayout"));
         FrameConnect = new QFrame(centralwidget);
-        FrameConnect->setObjectName(QStringLiteral("FrameConnect"));
+        FrameConnect->setObjectName(QString("FrameConnect"));
         FrameConnect->setMinimumSize(QSize(0, 40));
         FrameConnect->setMaximumSize(QSize(16777215, 40));
         FrameConnect->setFrameShape(QFrame::StyledPanel);
@@ -83,41 +84,41 @@ public:
         horizontalLayout_2 = new QHBoxLayout(FrameConnect);
         horizontalLayout_2->setSpacing(6);
         horizontalLayout_2->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        horizontalLayout_2->setObjectName(QString("horizontalLayout_2"));
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout_2->addItem(horizontalSpacer);
 
         iP = new QLabel(FrameConnect);
-        iP->setObjectName(QStringLiteral("iP"));
+        iP->setObjectName(QString("iP"));
         iP->setMinimumSize(QSize(20, 0));
         iP->setMaximumSize(QSize(20, 16777215));
 
         horizontalLayout_2->addWidget(iP);
 
         ipAdress = new QLineEdit(FrameConnect);
-        ipAdress->setObjectName(QStringLiteral("ipAdress"));
+        ipAdress->setObjectName(QString("ipAdress"));
         ipAdress->setMinimumSize(QSize(157, 0));
         ipAdress->setMaximumSize(QSize(157, 16777215));
 
         horizontalLayout_2->addWidget(ipAdress);
 
         bConnect = new QPushButton(FrameConnect);
-        bConnect->setObjectName(QStringLiteral("bConnect"));
+        bConnect->setObjectName(QString("bConnect"));
         bConnect->setMinimumSize(QSize(75, 0));
         bConnect->setMaximumSize(QSize(75, 16777215));
 
         horizontalLayout_2->addWidget(bConnect);
 
         conn = new QLabel(FrameConnect);
-        conn->setObjectName(QStringLiteral("conn"));
+        conn->setObjectName(QString("conn"));
         conn->setMinimumSize(QSize(120, 0));
         conn->setMaximumSize(QSize(120, 16777215));
 
         horizontalLayout_2->addWidget(conn);
 
         stateConn = new QLineEdit(FrameConnect);
-        stateConn->setObjectName(QStringLiteral("stateConn"));
+        stateConn->setObjectName(QString("stateConn"));
         stateConn->setEnabled(false);
         stateConn->setMinimumSize(QSize(125, 0));
         stateConn->setMaximumSize(QSize(125, 16777215));
@@ -130,10 +131,10 @@ public:
         horizontalLayout_2->addItem(horizontalSpacer_2);
 
         bPlay = new QToolButton(FrameConnect);
-        bPlay->setObjectName(QStringLiteral("bPlay"));
+        bPlay->setObjectName(QString("bPlay"));
         bPlay->setMaximumSize(QSize(16, 16));
         QIcon icon;
-        icon.addFile(QStringLiteral("Img/play.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon.addFile(QString("Img/play.png"), QSize(), QIcon::Normal, QIcon::Off);
         bPlay->setIcon(icon);
         bPlay->setIconSize(QSize(16, 16));
         bPlay->setAutoRaise(true);
@@ -141,18 +142,18 @@ public:
         horizontalLayout_2->addWidget(bPlay);
 
         bPause = new QToolButton(FrameConnect);
-        bPause->setObjectName(QStringLiteral("bPause"));
+        bPause->setObjectName(QString("bPause"));
         QIcon icon1;
-        icon1.addFile(QStringLiteral("Img/pause.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon1.addFile(QString("Img/pause.png"), QSize(), QIcon::Normal, QIcon::Off);
         bPause->setIcon(icon1);
         bPause->setAutoRaise(true);
 
         horizontalLayout_2->addWidget(bPause);
 
         bStop = new QToolButton(FrameConnect);
-        bStop->setObjectName(QStringLiteral("bStop"));
+        bStop->setObjectName(QString("bStop"));
         QIcon icon2;
-        icon2.addFile(QStringLiteral("Img/stop.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon2.addFile(QString("Img/stop.png"), QSize(), QIcon::Normal, QIcon::Off);
         bStop->setIcon(icon2);
         bStop->setAutoRaise(true);
 
@@ -166,32 +167,32 @@ public:
         gridLayout->addWidget(FrameConnect, 0, 0, 1, 1);
 
         FrameDisplay = new QFrame(centralwidget);
-        FrameDisplay->setObjectName(QStringLiteral("FrameDisplay"));
+        FrameDisplay->setObjectName(QString("FrameDisplay"));
         FrameDisplay->setFrameShape(QFrame::StyledPanel);
         FrameDisplay->setFrameShadow(QFrame::Raised);
         horizontalLayout = new QHBoxLayout(FrameDisplay);
         horizontalLayout->setSpacing(6);
         horizontalLayout->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        horizontalLayout->setObjectName(QString("horizontalLayout"));
         tabMaster = new QTabWidget(FrameDisplay);
-        tabMaster->setObjectName(QStringLiteral("tabMaster"));
+        tabMaster->setObjectName(QString("tabMaster"));
         tabMaster->setMinimumSize(QSize(0, 350));
         tabMaster->setMaximumSize(QSize(16777215, 16777215));
         tabMaster->setAutoFillBackground(false);
         tabPos = new QWidget();
-        tabPos->setObjectName(QStringLiteral("tabPos"));
+        tabPos->setObjectName(QString("tabPos"));
         lireFic = new QPushButton(tabPos);
-        lireFic->setObjectName(QStringLiteral("lireFic"));
+        lireFic->setObjectName(QString("lireFic"));
         lireFic->setGeometry(QRect(70, 70, 311, 171));
         textBrowser = new QTextBrowser(tabPos);
-        textBrowser->setObjectName(QStringLiteral("textBrowser"));
+        textBrowser->setObjectName(QString("textBrowser"));
         textBrowser->setGeometry(QRect(440, 50, 521, 401));
         tabMaster->addTab(tabPos, QString());
         tabAccel = new QWidget();
-        tabAccel->setObjectName(QStringLiteral("tabAccel"));
+        tabAccel->setObjectName(QString("tabAccel"));
         tabMaster->addTab(tabAccel, QString());
         tabDebug = new QWidget();
-        tabDebug->setObjectName(QStringLiteral("tabDebug"));
+        tabDebug->setObjectName(QString("tabDebug"));
         tabMaster->addTab(tabDebug, QString());
 
         horizontalLayout->addWidget(tabMaster);
@@ -201,11 +202,11 @@ public:
 
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
-        menubar->setObjectName(QStringLiteral("menubar"));
+        menubar->setObjectName(QString("menubar"));
         menubar->setGeometry(QRect(0, 0, 1039, 20));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
-        statusbar->setObjectName(QStringLiteral("statusbar"));
+        statusbar->setObjectName(QString("statusbar"));
         MainWindow->setStatusBar(statusbar);
 
         retranslateUi(MainWindow);
