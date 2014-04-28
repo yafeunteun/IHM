@@ -318,7 +318,7 @@ void MainWindow::addCurve()
 
 
 /** @todo
- * L'intérêt est discutable, à voir avec M.Kauffman
+ * L'intérêt est discutable, à voir avec M.Kauffmann
  * */
 void MainWindow::addGrid()
 {
