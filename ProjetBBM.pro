@@ -16,7 +16,8 @@ SOURCES += src/main.cpp\
     src/calibration.cpp \
     src/imu.cpp \
     dataholder.cpp \
-    dataholderproxy.cpp
+    dataholderproxy.cpp \
+    dataset.cpp
 
 HEADERS  += src/mainwindow.h \
     src/curveperso.h \
@@ -25,7 +26,8 @@ HEADERS  += src/mainwindow.h \
     src/calibration.h \
     src/imu.h \
     dataholder.h \
-    dataholderproxy.h
+    dataholderproxy.h \
+    dataset.h
 
 FORMS    += src/IHM.ui
 

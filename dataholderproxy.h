@@ -1,6 +1,8 @@
 #ifndef DATAHOLDERPROXY_H
 #define DATAHOLDERPROXY_H
 
+#include "dataholder.h"
+
 class DataHolderProxy
 {
 public:

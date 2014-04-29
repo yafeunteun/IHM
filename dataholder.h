@@ -1,6 +1,8 @@
 #ifndef DATAHOLDER_H
 #define DATAHOLDER_H
 
+#include "dataset.h"
+
 class DataHolder
 {
 public:
