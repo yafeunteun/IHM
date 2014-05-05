@@ -17,6 +17,7 @@
 #include <qwt_plot_marker.h>
 #include "ui_IHM.h"
 #include "curveperso.h"
+#include "graph.h"
 
 namespace Ui {
 class MainWindow;
@@ -41,105 +42,111 @@ public:
     QMainWindow *QWoffset;
     QWidget *QOffset;
 
-    QVector<double>posx;
-    QVector<double>posy;
-    QVector<double>posz;
-    QVector<double>roulis;
-    QVector<double>tangage;
-    QVector<double>lacet;
-    QVector<double> vectTemps;
+    //QVector<double>posx;
+    //QVector<double>posy;
+    //QVector<double>posz;
+    //QVector<double>roulis;
+    //QVector<double>tangage;
+    //QVector<double>lacet;
+    //QVector<double> vectTemps;
 
 
     QMenu *menuFichier;
     QMenu *menuOptions;
     QAction *actionOffset;
 
-    QHBoxLayout *layoutGlobal;
-    QVBoxLayout *layoutControl;
-    QVBoxLayout *layoutCurve;
-    QVBoxLayout *layoutOffset;
+    //QHBoxLayout *layoutGlobal;
+    //QVBoxLayout *layoutControl;
+    //QVBoxLayout *layoutCurve;
+    //QVBoxLayout *layoutOffset;
 
-    QGroupBox *groupAxes;
-    QGroupBox *groupOther;
+    //QGroupBox *groupAxes;
+    //QGroupBox *groupOther;
 
-    QVBoxLayout *vBoxAxes;
-    QVBoxLayout *vBoxOther;
+    //QVBoxLayout *vBoxAxes;
+    //QVBoxLayout *vBoxOther;
 
-    QCheckBox *axeX;
-    QCheckBox *axeY;
-    QCheckBox *axeZ;
-    QCheckBox *accel;
-    QCheckBox *vitAng;
-    QCheckBox *vitesse;
-    QCheckBox *ang;
+    //QCheckBox *axeX;
+    //QCheckBox *axeY;
+    //QCheckBox *axeZ;
+    //QCheckBox *accel;
+    //QCheckBox *vitAng;
+    //QCheckBox *vitesse;
+    //QCheckBox *ang;
 
-    QwtPlot *plotAccel;
-    QwtPlot *plotAng;
-    QwtPlot *plotPos;
+    //QwtPlot *plotAccel;
+    //QwtPlot *plotAng;
+    //QwtPlot *plotPos;
 
-    QwtPlotZoomer *zoomAccel;
-    QwtPlotZoomer *zoomAng;
-    QwtPlotZoomer *zoomPos;
+    Graph *m_accelerations;
+    Graph *m_angles;
+    Graph *m_positions;
 
-    QwtPlotCurve *curvePosX;
-    QwtPlotCurve *curvePosY;
-    QwtPlotCurve *curvePosZ;
-    QwtPlotCurve *curveRoulis;
-    QwtPlotCurve *curveTangage;
-    QwtPlotCurve *curveLacet;
+    //QwtPlotZoomer *zoomAccel;
+    //QwtPlotZoomer *zoomAng;
+    //QwtPlotZoomer *zoomPos;
 
-    QwtPlotGrid *gridAccel;
-    QwtPlotGrid *gridAng;
-    QwtPlotGrid *gridPos;
+    //QwtPlotCurve *curvePosX;
+    //QwtPlotCurve *curvePosY;
+    //QwtPlotCurve *curvePosZ;
+    //QwtPlotCurve *curveRoulis;
+    //QwtPlotCurve *curveTangage;
+    //QwtPlotCurve *curveLacet;
 
-    QwtPlotMarker *originAccel;
-    QwtPlotMarker *originAng;
-    QwtPlotMarker *originPos;
+    //QwtPlotGrid *gridAccel;
+    //QwtPlotGrid *gridAng;
+    //QwtPlotGrid *gridPos;
+
+    //QwtPlotMarker *originAccel;
+    //QwtPlotMarker *originAng;
+    //QwtPlotMarker *originPos;
 
     /*Debug atributes*/
 
-    QHBoxLayout *layoutTotal;
-    QVBoxLayout *layoutCurveTotal;
-    QVBoxLayout *layoutControlTotal;
+    //QHBoxLayout *layoutTotal;
+    //QVBoxLayout *layoutCurveTotal;
+    //QVBoxLayout *layoutControlTotal;
 
-    QGroupBox *groupGyro;
-    QGroupBox *groupAccel;
-    QGroupBox *groupMagnet;
-    QGroupBox *groupTemp;
-    QGroupBox *groupPress;
+    //QGroupBox *groupGyro;
+    //QGroupBox *groupAccel;
+    //QGroupBox *groupMagnet;
+    //QGroupBox *groupTemp;
+    //QGroupBox *groupPress;
 
-    QVBoxLayout *vBoxGyro;
-    QVBoxLayout *vBoxAccel;
-    QVBoxLayout *vBoxMagnet;
-    QVBoxLayout *vBoxTemp;
-    QVBoxLayout *vBoxPress;
+    //QVBoxLayout *vBoxGyro;
+    //QVBoxLayout *vBoxAccel;
+    //QVBoxLayout *vBoxMagnet;
+    //QVBoxLayout *vBoxTemp;
+    //QVBoxLayout *vBoxPress;
 
-    QwtPlot *plotTotal;
-    QwtPlotZoomer *zoomTotal;
-    QwtPlotMagnifier *magnifierTotal;
+    //QwtPlot *plotTotal;
+    //QwtPlotZoomer *zoomTotal;
+    //QwtPlotMagnifier *magnifierTotal;
 
-    QwtPlotGrid *gridTotal;
-    QwtPlotMarker *originTotal;
+    //QwtPlotGrid *gridTotal;
+    //QwtPlotMarker *originTotal;
 
-    CurvePerso *curveGyroX;
-    CurvePerso *curveGyroY;
-    CurvePerso *curveGyroZ;
-    CurvePerso *curveAccelX;
-    CurvePerso *curveAccelY;
-    CurvePerso *curveAccelZ;
-    CurvePerso *curveMagnetX;
-    CurvePerso *curveMagnetY;
-    CurvePerso *curveMagnetZ;
-    CurvePerso *curveTempMPU;
-    CurvePerso *curvePressure;
-    CurvePerso *curveTempBMP;
+    //CurvePerso *curveGyroX;
+    //CurvePerso *curveGyroY;
+    //CurvePerso *curveGyroZ;
+    //CurvePerso *curveAccelX;
+    //CurvePerso *curveAccelY;
+    //CurvePerso *curveAccelZ;
+    //CurvePerso *curveMagnetX;
+   // CurvePerso *curveMagnetY;
+    //CurvePerso *curveMagnetZ;
+    //CurvePerso *curveTempMPU;
+    //CurvePerso *curvePressure;
+    //CurvePerso *curveTempBMP;
 
-    std::list<CurvePerso*> curveList;
+    //std::list<CurvePerso*> curveList;
 
     /*Debug End*/
 
 
     double temps=0;
+
+
 
 private:
     QWidget *parent;
@@ -168,7 +175,6 @@ public:
 
 
 private slots :
-    void transformation(QString);
     void offset();
 };
 

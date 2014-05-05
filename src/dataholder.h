@@ -7,15 +7,16 @@ class DataHolder
 {
 public:
     static DataHolder* getInstance(void);
-    void addDataSet(std::initializer_list<QString&>);
-    void addData(QVector<QPointF>& points);
-    DataSet& getDataSet(const QString& label);
+    void addDataSet(QString &label);
+    void addData(QVector<float> points);
+    DataSet* getDataSet(const QString& label);
+    int getSize(){return m_datasets.size();}
 private:
     static DataHolder *instance;
     DataHolder();
     ~DataHolder();
 
-    QVector<DataSet> m_datasets;
+    QVector<DataSet*> m_datasets;
 };
 
 #endif // DATAHOLDER_H
