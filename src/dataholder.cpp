@@ -1,32 +1,40 @@
 #include "dataholder.h"
 
 
-DataHolder* DataHolder::instance = nullptr;
 
-DataHolder* DataHolder::getInstance(void)
+DataHolder::DataHolder(std::initializer_list<QString> list, ProxyStrategy::Proxy_t type)
 {
-    if(DataHolder::instance == nullptr){
-        instance = new DataHolder();
-        return instance;
-    }
-    else{
-        return DataHolder::instance;
+
+    m_strategy = new NoFilter();
+
+    for(QString label : list)
+    {
+        if(this->getDataSet(label) == nullptr)
+        {
+            this->addDataSet(label);
+        }
     }
 }
 
-DataHolder::DataHolder()
+DataHolder::~DataHolder()
 {
+    delete m_strategy;
 }
+
 void DataHolder::addDataSet(QString &label)
 {
     m_datasets.push_back(new DataSet(label));
 }
 
-void DataHolder::addData(QVector<float> points)
+void DataHolder::addData(QString& incommingRawData)
 {
-    for(int index = 0; index < points.size(); ++index)
-    {
-        m_datasets[index]->addPoint(points[index]);
+    QVector<float> data = m_strategy->doAlgorithm(incommingRawData);
+
+    if(getSize() == data.size()){
+        for(int index = 0; index < data.size(); ++index)
+        {
+            m_datasets[index]->addPoint(data[index]);
+        }
     }
 }
 

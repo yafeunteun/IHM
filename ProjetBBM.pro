@@ -10,6 +10,7 @@ TEMPLATE = app
 CONFIG += qwt
 CONFIG += console debug
 
+
 # QWT Headers
 QWT_LOCATION = C:\Qwt-6.1.0
 INCLUDEPATH += $${QWT_LOCATION}/include
@@ -27,27 +28,25 @@ $$member(LIBS, 1)d
 
 SOURCES += src/main.cpp\
         src/mainwindow.cpp \
-    src/curveperso.cpp \
     src/server.cpp \
     src/calibration.cpp \
     src/imu.cpp \
     src/dataholder.cpp \
-    src/dataholderproxy.cpp \
     src/dataset.cpp \
     src/graph.cpp \
-    src/curve.cpp
+    src/curve.cpp \
+    src/proxystrategy.cpp
 
 HEADERS  += src/mainwindow.h \
-    src/curveperso.h \
     src/server.h \
     src/debug.h \
     src/calibration.h \
     src/imu.h \
     src/dataholder.h \
-    src/dataholderproxy.h \
     src/dataset.h \
     src/graph.h \
-    src/curve.h
+    src/curve.h \
+    src/proxystrategy.h
 
 FORMS    += src/IHM.ui
 

@@ -2,20 +2,20 @@
 #define DATAHOLDER_H
 
 #include "dataset.h"
+#include "proxystrategy.h"
 
 class DataHolder
 {
 public:
-    static DataHolder* getInstance(void);
+    DataHolder(std::initializer_list<QString> list, ProxyStrategy::Proxy_t type = ProxyStrategy::NOFILTER);
+    ~DataHolder();
+    inline void setProxy(ProxyStrategy::Proxy_t type){m_strategy = ProxyStrategy::getProxy(type);}
     void addDataSet(QString &label);
-    void addData(QVector<float> points);
+    void addData(QString &incommingRawData);
     DataSet* getDataSet(const QString& label);
     int getSize(){return m_datasets.size();}
 private:
-    static DataHolder *instance;
-    DataHolder();
-    ~DataHolder();
-
+    ProxyStrategy* m_strategy;
     QVector<DataSet*> m_datasets;
 };
 

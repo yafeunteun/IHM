@@ -2,9 +2,6 @@
 #include <QFileDialog>
 #include <QSplitter>
 #include <sstream>
-#include <qwt_plot_zoomer.h>
-#include <qwt_plot_textlabel.h>
-#include <qwt_plot_rescaler.h>
 #include <qwt_legend.h>
 #include "mainwindow.h"
 #include "server.h"
@@ -41,6 +38,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     QObject::connect(actionOffset,SIGNAL(triggered()),this,SLOT(offset()));
+    QObject::connect(Server::getInstance(), SIGNAL(ReceiveFromPeer(QString&)), this, SLOT(onNewData(QString&)));
 }
 
 
@@ -72,8 +70,8 @@ void MainWindow::addMenu()
 
 
 /** @todo
- * Ajouter cette méthode dans une classe Maths
- * méthode statique*/
+ * Méthode qui sera à ajouter au proxy
+ * */
 double MainWindow::doubleintegration(double acc){
     double vitesse;
     double position;
@@ -83,4 +81,12 @@ double MainWindow::doubleintegration(double acc){
     position=vitesse*1.01;
     //v=d/t
     return position;
+}
+
+void MainWindow::onNewData(QString& data)
+{
+    /* save raw Data in a file here */
+    m_accelerations->addData(data.section(" ", 0, 2));
+    m_angles->addData(data.section(" ", 3, 5));
+    m_positions->addData(data.section(" ", 6, 8));
 }

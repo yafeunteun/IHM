@@ -39,7 +39,7 @@ void Server::onConnection()
     m_peer = sock;
     QObject::connect(m_peer, SIGNAL(readyRead()), this, SLOT(onDataReadyRead()));
     emit peerConnected();
-    DEBUG("Peer connected : " + sock->peerAddress().toString());
+    DEBUG("Peer connected : " + sock->peerAddress().toString());    
 }
 
 void Server::onDataReadyRead(void)

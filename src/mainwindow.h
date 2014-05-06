@@ -3,20 +3,7 @@
 
 #include <QMainWindow>
 #include <QtGui>
-#include <QVector>
-#include <QSplitter>
-#include <QGroupBox>
-#include <QCheckBox>
-#include <qwt_plot_zoomer.h>
-#include <qwt_plot_magnifier.h>
-#include <qwt.h>
-#include <qwt_text.h>
-#include <qwt_plot.h>
-#include <qwt_plot_curve.h>
-#include <qwt_plot_grid.h>
-#include <qwt_plot_marker.h>
 #include "ui_IHM.h"
-#include "curveperso.h"
 #include "graph.h"
 
 namespace Ui {
@@ -41,15 +28,6 @@ public:
 
     QMainWindow *QWoffset;
     QWidget *QOffset;
-
-    //QVector<double>posx;
-    //QVector<double>posy;
-    //QVector<double>posz;
-    //QVector<double>roulis;
-    //QVector<double>tangage;
-    //QVector<double>lacet;
-    //QVector<double> vectTemps;
-
 
     QMenu *menuFichier;
     QMenu *menuOptions;
@@ -176,6 +154,7 @@ public:
 
 private slots :
     void offset();
+    void onNewData(QString&);
 };
 
 #endif // MAINWINDOW_H

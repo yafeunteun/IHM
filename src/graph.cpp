@@ -1,10 +1,12 @@
-#include "graph.h"
-#include "dataholderproxy.h"
 #include <QGroupBox>
 #include <QHBoxLayout>
 #include <QFormLayout>
 #include <QColorDialog>
 #include <qwt_plot_textlabel.h>
+
+#include "graph.h"
+
+
 
 Graph::Graph(std::initializer_list<QString> labels, QWidget *parent) :
     QWidget(parent)
@@ -18,11 +20,13 @@ Graph::Graph(std::initializer_list<QString> labels, QWidget *parent) :
     m_plot = new QwtPlot();
     m_plot->setAutoReplot(true);
 
+    m_dataHolder = new DataHolder(labels);
+
     for(QString label : labels)
     {
         QPushButton *b = new QPushButton();
         QCheckBox *ch = new QCheckBox();
-        Curve *cu = new Curve(DataHolderProxy::getInstance()->getDataSet(label), QColor::colorNames()[m_colorIndex++]);
+        Curve *cu = new Curve(m_dataHolder->getDataSet(label), QColor::colorNames()[m_colorIndex++]);
         b->setFixedSize(20,20);
         ch->setFixedSize(20,20);
         m_buttons.append(b);

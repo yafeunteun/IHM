@@ -24,7 +24,7 @@ public slots:
     void sendToPeer(QString answer);
 
 signals:
-    void ReceiveFromPeer(QString);
+    void ReceiveFromPeer(QString&);
     void peerConnected(void);
     void peerDisconnected(void);
 
