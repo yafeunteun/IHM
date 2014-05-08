@@ -42,18 +42,8 @@
           <bool>false</bool>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>-1</number>
          </property>
-         <widget class="QWidget" name="tabAccel">
-          <attribute name="title">
-           <string>Données traitées</string>
-          </attribute>
-         </widget>
-         <widget class="QWidget" name="tabDebug">
-          <attribute name="title">
-           <string>Données brutes</string>
-          </attribute>
-         </widget>
         </widget>
        </item>
       </layout>

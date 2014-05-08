@@ -29,12 +29,21 @@ MainWindow::MainWindow(QWidget *parent) :
     m_positions = new Graph({QString("position_x"), QString("position_y"), QString("position_z")});
     m_positions->setTitle("Positions");
 
-    QVBoxLayout *layout = new QVBoxLayout();
+    m_pressure = new Graph({QString("pressure")});
+    m_pressure->setTitle("Pressure");
+
+   /* QVBoxLayout *layout = new QVBoxLayout();
     layout->addWidget(m_accelerations);
     layout->addWidget(m_angles);
     layout->addWidget(m_positions);
+    layout->addWidget(m_pressure);*/
 
-    ui->tabAccel->setLayout(layout);
+    //ui->tabAccel->setLayout(layout);
+
+    ui->tabMaster->addTab(m_accelerations, "Accelerometers");
+    ui->tabMaster->addTab(m_angles, "Gyrometers");
+    ui->tabMaster->addTab(m_positions, "Magnetometers");
+    ui->tabMaster->addTab(m_pressure, "Pressure");
 
 
     QObject::connect(actionOffset,SIGNAL(triggered()),this,SLOT(offset()));

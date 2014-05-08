@@ -33,94 +33,11 @@ public:
     QMenu *menuOptions;
     QAction *actionOffset;
 
-    //QHBoxLayout *layoutGlobal;
-    //QVBoxLayout *layoutControl;
-    //QVBoxLayout *layoutCurve;
-    //QVBoxLayout *layoutOffset;
-
-    //QGroupBox *groupAxes;
-    //QGroupBox *groupOther;
-
-    //QVBoxLayout *vBoxAxes;
-    //QVBoxLayout *vBoxOther;
-
-    //QCheckBox *axeX;
-    //QCheckBox *axeY;
-    //QCheckBox *axeZ;
-    //QCheckBox *accel;
-    //QCheckBox *vitAng;
-    //QCheckBox *vitesse;
-    //QCheckBox *ang;
-
-    //QwtPlot *plotAccel;
-    //QwtPlot *plotAng;
-    //QwtPlot *plotPos;
 
     Graph *m_accelerations;
     Graph *m_angles;
     Graph *m_positions;
-
-    //QwtPlotZoomer *zoomAccel;
-    //QwtPlotZoomer *zoomAng;
-    //QwtPlotZoomer *zoomPos;
-
-    //QwtPlotCurve *curvePosX;
-    //QwtPlotCurve *curvePosY;
-    //QwtPlotCurve *curvePosZ;
-    //QwtPlotCurve *curveRoulis;
-    //QwtPlotCurve *curveTangage;
-    //QwtPlotCurve *curveLacet;
-
-    //QwtPlotGrid *gridAccel;
-    //QwtPlotGrid *gridAng;
-    //QwtPlotGrid *gridPos;
-
-    //QwtPlotMarker *originAccel;
-    //QwtPlotMarker *originAng;
-    //QwtPlotMarker *originPos;
-
-    /*Debug atributes*/
-
-    //QHBoxLayout *layoutTotal;
-    //QVBoxLayout *layoutCurveTotal;
-    //QVBoxLayout *layoutControlTotal;
-
-    //QGroupBox *groupGyro;
-    //QGroupBox *groupAccel;
-    //QGroupBox *groupMagnet;
-    //QGroupBox *groupTemp;
-    //QGroupBox *groupPress;
-
-    //QVBoxLayout *vBoxGyro;
-    //QVBoxLayout *vBoxAccel;
-    //QVBoxLayout *vBoxMagnet;
-    //QVBoxLayout *vBoxTemp;
-    //QVBoxLayout *vBoxPress;
-
-    //QwtPlot *plotTotal;
-    //QwtPlotZoomer *zoomTotal;
-    //QwtPlotMagnifier *magnifierTotal;
-
-    //QwtPlotGrid *gridTotal;
-    //QwtPlotMarker *originTotal;
-
-    //CurvePerso *curveGyroX;
-    //CurvePerso *curveGyroY;
-    //CurvePerso *curveGyroZ;
-    //CurvePerso *curveAccelX;
-    //CurvePerso *curveAccelY;
-    //CurvePerso *curveAccelZ;
-    //CurvePerso *curveMagnetX;
-   // CurvePerso *curveMagnetY;
-    //CurvePerso *curveMagnetZ;
-    //CurvePerso *curveTempMPU;
-    //CurvePerso *curvePressure;
-    //CurvePerso *curveTempBMP;
-
-    //std::list<CurvePerso*> curveList;
-
-    /*Debug End*/
-
+    Graph *m_pressure;
 
     double temps=0;
 

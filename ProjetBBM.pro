@@ -26,6 +26,11 @@ win32:LIBS = $$member(LIBS, 0) \
 $$member(LIBS, 1)d
 }
 
+# QExtSerialPort Library
+CONFIG += extserialport
+include(3rdparty/qextserialport/src/qextserialport.pri)
+
+
 SOURCES += src/main.cpp\
         src/mainwindow.cpp \
     src/server.cpp \
@@ -35,7 +40,9 @@ SOURCES += src/main.cpp\
     src/dataset.cpp \
     src/graph.cpp \
     src/curve.cpp \
-    src/proxystrategy.cpp
+    src/proxystrategy.cpp \
+    src/serialport.cpp \
+    src/portselection.cpp
 
 HEADERS  += src/mainwindow.h \
     src/server.h \
@@ -46,7 +53,9 @@ HEADERS  += src/mainwindow.h \
     src/dataset.h \
     src/graph.h \
     src/curve.h \
-    src/proxystrategy.h
+    src/proxystrategy.h \
+    src/serialport.h \
+    src/portselection.h
 
 FORMS    += src/IHM.ui
 
