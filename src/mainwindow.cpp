@@ -4,6 +4,8 @@
 #include <sstream>
 #include <qwt_legend.h>
 #include "mainwindow.h"
+#include "serialport.h"
+#include "portselection.h"
 #include "server.h"
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -18,7 +20,9 @@ MainWindow::MainWindow(QWidget *parent) :
     QWoffset->setWindowTitle("Offsets");
     QWoffset->setCentralWidget(QOffset);
 
-    addMenu();
+    createActions();
+    createMenu();
+
 
     m_accelerations = new Graph({QString("acceleration_x"), QString("acceleration_y"), QString("acceleration_z")});
     m_accelerations->setTitle("Accelerations and angular velocity");
@@ -32,21 +36,12 @@ MainWindow::MainWindow(QWidget *parent) :
     m_pressure = new Graph({QString("pressure")});
     m_pressure->setTitle("Pressure");
 
-   /* QVBoxLayout *layout = new QVBoxLayout();
-    layout->addWidget(m_accelerations);
-    layout->addWidget(m_angles);
-    layout->addWidget(m_positions);
-    layout->addWidget(m_pressure);*/
-
-    //ui->tabAccel->setLayout(layout);
-
     ui->tabMaster->addTab(m_accelerations, "Accelerometers");
     ui->tabMaster->addTab(m_angles, "Gyrometers");
     ui->tabMaster->addTab(m_positions, "Magnetometers");
     ui->tabMaster->addTab(m_pressure, "Pressure");
 
 
-    QObject::connect(actionOffset,SIGNAL(triggered()),this,SLOT(offset()));
     QObject::connect(Server::getInstance(), SIGNAL(ReceiveFromPeer(QString&)), this, SLOT(onNewData(QString&)));
 }
 
@@ -67,14 +62,34 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::addMenu()
+void MainWindow::createMenu()
 {
-    menuFichier = menuBar()->addMenu("Fichier");
-    menuOptions = menuBar()->addMenu("Option");
+    QMenu* menuFiles = new QMenu("Files");
+    this->menuBar()->addMenu(menuFiles);
 
-    actionOffset = menuOptions->addAction("Offset");
+    menuFiles->addSeparator();
+    menuFiles->addAction(m_selectPort);
+    menuFiles->addAction(m_startSerial);
+    menuFiles->addAction(m_stopSerial);
+    menuFiles->addSeparator();
+
 }
 
+ void MainWindow::createActions(void)
+ {
+     m_selectPort = new QAction("Select serial port", this);
+     connect(m_selectPort, SIGNAL(triggered()), this, SLOT(selectSerialPort()));
+
+     m_startSerial = new QAction("Start serial", this);
+     connect(m_startSerial, SIGNAL(triggered()), SerialPort::getInstance(), SLOT(startReading()));
+     //connect(m_startSerial, SIGNAL(triggered()), this, SLOT(onStartReading()));
+
+     m_stopSerial = new QAction("Stop serial", this);
+     connect(m_stopSerial, SIGNAL(triggered()), SerialPort::getInstance(), SLOT(stopReading()));
+     //connect(m_stopSerial, SIGNAL(triggered()), this, SLOT(onStopReading()));
+
+
+ }
 
 
 
@@ -98,4 +113,11 @@ void MainWindow::onNewData(QString& data)
     m_accelerations->addData(data.section(" ", 0, 2));
     m_angles->addData(data.section(" ", 3, 5));
     m_positions->addData(data.section(" ", 6, 8));
+    m_pressure->addData(data.section(" ", 9));
+}
+
+void MainWindow::selectSerialPort()
+{
+    PortSelection *select = new PortSelection(SerialPort::getInstance(), this);
+    select->exec();
 }

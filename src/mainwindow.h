@@ -48,20 +48,16 @@ private:
     Ui::MainWindow *ui;
     //ClientTcp *client;
 
+    /* Actions */
+    QAction* m_selectPort;
+    QAction* m_startSerial;
+    QAction* m_stopSerial;
+
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    void addMenu();
-    void createCurve();
-    void addLayout();
-    void addOffset();
-    void addGroupBox();
-    void addCheckBox();
-    void addPlot();
-    void addCurve();
-    void addGrid();
-    void addMarker();
-    void sendDatatoClientTcp();
+    void createMenu();
+    void createActions(void);
     double doubleintegration(double acc);
     double filtrerecursif(double);
     void dessindonnees(QVector<double> entree);
@@ -72,6 +68,7 @@ public:
 private slots :
     void offset();
     void onNewData(QString&);
+    void selectSerialPort(void);
 };
 
 #endif // MAINWINDOW_H

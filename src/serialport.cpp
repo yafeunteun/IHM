@@ -125,15 +125,15 @@ void SerialPort::readFromFile(void)
 
     static void *pointer = nullptr;
     char data[30];
-    std::memset(data, '\0', 30);
+    std::memset(data, '\0', 50);
 
-    pointer = memchr(buffer+offsetR, '\n', offsetW);
+    pointer = memchr(buffer+offsetR, '\r', offsetW);
 
     if(pointer != NULL){
         std::memcpy((void*)data, (void*)(buffer+offsetR), ((char*)pointer-(buffer+offsetR)));
-        offsetR += (char*)pointer-(buffer+offsetR) + 1;
+        offsetR += (char*)pointer-(buffer+offsetR) + 2;
 
-        QString tmp = QString::fromUtf8(data).section(' ', 0, 0);
+        QString tmp = QString::fromUtf8(data);
         DEBUG(tmp);
         //DataHolderProxy::getInstance()->addData(test);
     }
