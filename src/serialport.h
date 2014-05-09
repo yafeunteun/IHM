@@ -6,7 +6,6 @@
 #include <string>
 #include <QMutex>
 #include <QTimer>
-#include <QThread>
 #include "debug.h"
 
 
@@ -19,10 +18,9 @@ class SerialPort : public QextSerialPort
     Q_OBJECT
 public:
     static SerialPort* getInstance(void);
-    void readFromFile(void);
-
 private:
-    QTimer * m_timer;
+    QTimer * m_timer1;
+    QTimer * m_timer2;
     static quint64 offsetW;
     static quint64 offsetR;
     static char* buffer;
@@ -33,39 +31,19 @@ public slots:
     void stop();
     void resume();
     void writeToFile(void);
+    void readFromFile(void);
 
 signals:
     void error(QString&);
+    void newData(QString&);
 
 private:
     SerialPort();
     ~SerialPort();
-    QThread* Rthread;
     static SerialPort *instance;
 
-
-
-
 };
 
-class Reader : public QObject {
-    Q_OBJECT
-
-public:
-    Reader(){}
-    ~Reader(){}
-
-public slots:
-    inline void process(){
-        while(1){
-            SerialPort::getInstance()->readFromFile();
-        }
-        emit finished();
-    }
-
-signals:
-    void finished();
-};
 
 
 #endif // SERIALPORT_H

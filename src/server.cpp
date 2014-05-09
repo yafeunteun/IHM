@@ -61,16 +61,16 @@ void Server::onConnection()
 {
     QTcpSocket *sock = this->nextPendingConnection();
     m_peer = sock;
-    QObject::connect(m_peer, SIGNAL(readyRead()), this, SLOT(onDataReadyRead()));
+    QObject::connect(m_peer, SIGNAL(readyRead()), this, SLOT(dataAvailable()));
     emit peerConnected();
     DEBUG("Peer connected : " + sock->peerAddress().toString());
 }
 
-void Server::onDataReadyRead(void)
+void Server::dataAvailable()
 {
     QString query = m_peer->readAll();
     DEBUG("Message from " + m_peer->peerAddress().toString() + " : " + query);
-    emit ReceiveFromPeer(query);
+    emit newData(query);
 }
 
 

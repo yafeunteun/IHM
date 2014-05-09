@@ -30,26 +30,20 @@ SerialPort* SerialPort::getInstance(void)
 
 SerialPort::SerialPort()
 {
+    m_timer1 = new QTimer();
+    m_timer1->setInterval(20);
 
-    /* Reader Thread */
-    Rthread = new QThread;
-    Reader* reader = new Reader();
-    reader->moveToThread(Rthread);
-    connect(Rthread, SIGNAL(started()), reader, SLOT(process()));
-    connect(reader, SIGNAL(finished()), Rthread, SLOT(quit()));
-    connect(reader, SIGNAL(finished()), reader, SLOT(deleteLater()));
-    connect(Rthread, SIGNAL(finished()), Rthread, SLOT(deleteLater()));
+    m_timer2 = new QTimer();
+    m_timer2->setInterval(5);
 
-    m_timer = new QTimer();
-    m_timer->setInterval(0);
-
-    connect(m_timer, SIGNAL(timeout()), this, SLOT(writeToFile()));
-
+    connect(m_timer1, SIGNAL(timeout()), this, SLOT(writeToFile()));
+    connect(m_timer2, SIGNAL(timeout()), this, SLOT(readFromFile()));
 }
 
 SerialPort::~SerialPort()
 {
 }
+
 
 void SerialPort::start()
 {
@@ -62,15 +56,16 @@ void SerialPort::start()
 
     else
     {
-        m_timer->start();
-        Rthread->start();
+        m_timer1->start();
+        m_timer2->start();
     }
 }
 
 
 void SerialPort::stop()
 {
-    m_timer->stop();
+    m_timer1->stop();
+    m_timer2->stop();
     this->close();
 }
 
@@ -107,8 +102,7 @@ void SerialPort::readFromFile(void)
         offsetR += (char*)pointer-(buffer+offsetR) + 2;
 
         QString tmp = QString::fromUtf8(data);
-        DEBUG(tmp);
-        //DataHolderProxy::getInstance()->addData(test);
+        emit newData(tmp);
     }
 
     mutex.unlock();

@@ -26,13 +26,13 @@ public slots:
     void start();
     void stop();
     void resume();
-    void onDataReadyRead(void);
+    void dataAvailable(void);
     void onConnection(void);
     void onDisconnection(void);
     void sendToPeer(QString answer);
 
 signals:
-    void ReceiveFromPeer(QString&);
+    void newData(QString&);
     void peerConnected(void);
     void peerDisconnected(void);
     void error(QString&);

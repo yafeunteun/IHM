@@ -43,8 +43,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tabMaster->addTab(m_positions, "Magnetometers");
     ui->tabMaster->addTab(m_pressure, "Pressure");
 
-
-    QObject::connect(Server::getInstance(), SIGNAL(ReceiveFromPeer(QString&)), this, SLOT(onNewData(QString&)));
+    QObject::connect(Server::getInstance(), SIGNAL(newData(QString&)), this, SLOT(onNewData(QString&)));
+    QObject::connect(SerialPort::getInstance(), SIGNAL(newData(QString&)), this, SLOT(onNewData(QString&)));
+    QObject::connect(Server::getInstance(), SIGNAL(error(QString&)), this, SLOT(onError(QString&)));
+    QObject::connect(SerialPort::getInstance(), SIGNAL(error(QString&)), this, SLOT(onError(QString&)));
 }
 
 
@@ -118,4 +120,9 @@ void MainWindow::onNewData(QString& data)
     m_angles->addData(data.section(" ", 3, 5));
     m_positions->addData(data.section(" ", 6, 8));
     m_pressure->addData(data.section(" ", 9));
+}
+
+void MainWindow::onError(QString& err)
+{
+    QMessageBox::warning(this, "Error", err);
 }

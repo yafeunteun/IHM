@@ -75,6 +75,7 @@ private slots :
     void offset();
     void onNewData(QString&);
     void selectSource(void);
+    void onError(QString &err);
 };
 
 #endif // MAINWINDOW_H
