@@ -51,12 +51,13 @@ SerialPort::~SerialPort()
 {
 }
 
-void SerialPort::startReading()
+void SerialPort::start()
 {
 
     if(!this->open(QIODevice::ReadWrite))
     {
-        QMessageBox::warning(0, "Error !", tr("Can't open port with specified settings !"));
+        QString err("Can't open port with specified settings !");
+        emit error(err);
     }
 
     else
@@ -67,45 +68,18 @@ void SerialPort::startReading()
 }
 
 
-
-void SerialPort::onDataReceived()
+void SerialPort::stop()
 {
-}
-
-void SerialPort::stopReading()
-{
-    this->close();
     m_timer->stop();
+    this->close();
 }
 
-
-SerialPort* SerialPort::initPort(const QString &filepath)
+void SerialPort::resume()
 {
-    std::ifstream fstream(filepath.toStdString(), std::ios::in);
-    std::string data;
-    SerialPort* port = new SerialPort();
-    PortSelection *select = new PortSelection(nullptr);
-
-    std::cout << filepath.toStdString() << std::endl;
-
-    if (fstream){
-        std::getline(fstream, data);
-        QStringList tmp = QString(data.c_str()).split(";");
-
-        port->setPortName(tmp[0]);
-        DEBUG(tmp[1]);
-        DEBUG(tmp[2]);
-        DEBUG(tmp[3]);
-        DEBUG(tmp[4]);
-        DEBUG(tmp[5]);
-        port->setBaudRate(select->map_baud.find(tmp[1])->second);
-        port->setDataBits(select->map_dataBits.find(tmp[2])->second);
-        port->setFlowControl(select->map_flowControl.find(tmp[3])->second);
-        port->setParity(select->map_parity.find(tmp[4])->second);
-        port->setStopBits(select->map_stopBits.find(tmp[5])->second);
-    }
-    return port;
+    this->start();
 }
+
+
 
 void SerialPort::writeToFile(void)
 {

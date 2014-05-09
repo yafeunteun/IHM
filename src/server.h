@@ -18,6 +18,9 @@ protected:
     QTcpSocket* m_peer = nullptr;
 
 public slots:
+    void start();
+    void stop();
+    void resume();
     void onDataReadyRead(void);
     void onConnection(void);
     void onDisconnection(void);
@@ -27,6 +30,7 @@ signals:
     void ReceiveFromPeer(QString&);
     void peerConnected(void);
     void peerDisconnected(void);
+    void error(QString&);
 
 };
 

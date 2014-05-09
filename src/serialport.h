@@ -19,7 +19,6 @@ class SerialPort : public QextSerialPort
     Q_OBJECT
 public:
     static SerialPort* getInstance(void);
-    static SerialPort* initPort(const QString &filepath);
     void readFromFile(void);
 
 private:
@@ -30,12 +29,13 @@ private:
     QMutex mutex;
 
 public slots:
-    void startReading();
-    void stopReading();
-    void onDataReceived();
+    void start();
+    void stop();
+    void resume();
     void writeToFile(void);
 
 signals:
+    void error(QString&);
 
 private:
     SerialPort();

@@ -2,7 +2,6 @@
 #include <QVBoxLayout>
 #include <QFormLayout>
 #include <QHBoxLayout>
-#include "debug.h"
 
 AcquisitionSettings::AcquisitionSettings(QWidget *parent) :
     QDialog(parent)
@@ -127,15 +126,12 @@ void AcquisitionSettings::makeConnexions()
 
 void AcquisitionSettings::onNewConfiguration()
 {
-    DEBUG("New Configuration !");
-    fillVector();
+    this->fillVector();
+
     if(m_server->isChecked())
     {
-        DEBUG("Port : " + QString::number(m_settings[0].toInt()));
-        DEBUG("Address : " + m_settings[1].toString());
         emit newConfiguration(AcquisitionSettings::SERVER, m_settings);
     }else{
-        DEBUG(QString::number(m_settings.size()));
         emit newConfiguration(AcquisitionSettings::SERIAL_PORT, m_settings);
     }
     this->close();
@@ -143,7 +139,6 @@ void AcquisitionSettings::onNewConfiguration()
 
 void AcquisitionSettings::onCancel()
 {
-    DEBUG("Cancel");
     this->close();
 }
 
@@ -173,10 +168,7 @@ void AcquisitionSettings::fillVector()
         m_settings.append(flow);
         m_settings.append(parity);
         m_settings.append(stopBits);
-
     }
-
-
 }
 
 void AcquisitionSettings::onNewSelection(bool status)

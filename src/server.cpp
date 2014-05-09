@@ -18,20 +18,44 @@ Server* Server::getInstance(void)
 
 Server::Server()
 {
-    quint16 port = 5000;
-    listen(QHostAddress::LocalHost, port);
-    if(!this->isListening())
-    {
-        CRITICAL_ERROR("Unable to listen !");
-    }
-
-    DEBUG("Server is listening on " + this->serverAddress().toString() + ":" + QString::number(this->serverPort()));
-    QObject::connect(this, SIGNAL(newConnection()), this, SLOT(onConnection()));
 }
 
 Server::~Server()
 {
 }
+
+void Server::start()
+{
+    if(!this->listen(this->serverAddress(), this->serverPort()))
+    {
+        QString err = this->errorString();
+        emit error(err);
+    }else{
+        DEBUG("Server is listening on " + this->serverAddress().toString() + ":" + QString::number(this->serverPort()));
+        QObject::connect(this, SIGNAL(newConnection()), this, SLOT(onConnection()));
+    }
+}
+
+void Server::stop()
+{
+    if(m_peer != nullptr){
+        this->disconnect(m_peer, SIGNAL(readyRead()), this, SLOT(onDataReadyRead()));
+    }else{
+        QString err("No peer connected");
+        emit error(err);
+    }
+}
+
+void Server::resume()
+{
+    if(m_peer != nullptr){
+        this->connect(m_peer, SIGNAL(readyRead()), this, SLOT(onDataReadyRead()));
+    }else{
+        QString err("No peer connected");
+        emit error(err);
+    }
+}
+
 
 void Server::onConnection()
 {
@@ -39,7 +63,7 @@ void Server::onConnection()
     m_peer = sock;
     QObject::connect(m_peer, SIGNAL(readyRead()), this, SLOT(onDataReadyRead()));
     emit peerConnected();
-    DEBUG("Peer connected : " + sock->peerAddress().toString());    
+    DEBUG("Peer connected : " + sock->peerAddress().toString());
 }
 
 void Server::onDataReadyRead(void)
@@ -63,6 +87,7 @@ void Server::sendToPeer(QString answer)
         m_peer->write(answer.toUtf8());
     }
 }
+
 
 
 
