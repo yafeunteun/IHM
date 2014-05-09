@@ -42,7 +42,8 @@ SOURCES += src/main.cpp\
     src/curve.cpp \
     src/proxystrategy.cpp \
     src/serialport.cpp \
-    src/portselection.cpp
+    src/portselection.cpp \
+    src/acquisitionsettings.cpp
 
 HEADERS  += src/mainwindow.h \
     src/server.h \
@@ -55,7 +56,8 @@ HEADERS  += src/mainwindow.h \
     src/curve.h \
     src/proxystrategy.h \
     src/serialport.h \
-    src/portselection.h
+    src/portselection.h \
+    src/acquisitionsettings.h
 
 FORMS    += src/IHM.ui
 

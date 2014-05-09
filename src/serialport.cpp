@@ -93,12 +93,11 @@ SerialPort* SerialPort::initPort(const QString &filepath)
         QStringList tmp = QString(data.c_str()).split(";");
 
         port->setPortName(tmp[0]);
-        std::cout << tmp[0].toStdString();
-        std::cout << tmp[1].toStdString();
-        std::cout << tmp[2].toStdString();
-        std::cout << tmp[3].toStdString();
-        std::cout << tmp[4].toStdString();
-        std::cout << tmp[5].toStdString();
+        DEBUG(tmp[1]);
+        DEBUG(tmp[2]);
+        DEBUG(tmp[3]);
+        DEBUG(tmp[4]);
+        DEBUG(tmp[5]);
         port->setBaudRate(select->map_baud.find(tmp[1])->second);
         port->setDataBits(select->map_dataBits.find(tmp[2])->second);
         port->setFlowControl(select->map_flowControl.find(tmp[3])->second);

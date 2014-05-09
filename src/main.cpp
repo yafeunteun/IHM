@@ -1,6 +1,8 @@
 #include <QApplication>
 #include "mainwindow.h"
 #include "server.h"
+#include "serialport.h"
+#include "acquisitionsettings.h"
 
 
 int main(int argc, char *argv[])
@@ -8,21 +10,13 @@ int main(int argc, char *argv[])
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
     QApplication a(argc, argv);
 
-//m_port = SerialPort::initPort("./.serial.conf");
-    /*
-    m_startSerial = new QAction("Start serial", this);
-    connect(m_startSerial, SIGNAL(triggered()), m_port, SLOT(startReading()));
-    connect(m_startSerial, SIGNAL(triggered()), this, SLOT(onStartReading()));
-    Server* s = Server::getInstance();
-
-void MainWindow::selectSerialPort()
-{
-    PortSelection *select = new PortSelection(m_port, this);
-    select->exec();
-}*/
+    SerialPort::getInstance()->initPort("./.serial.conf");
 
     MainWindow w;
-    w.show();
+    AcquisitionSettings test(NULL);
+    test.show();
+
+   // w.show();
 
     return a.exec();
 }

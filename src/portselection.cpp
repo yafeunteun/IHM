@@ -107,8 +107,7 @@ void PortSelection::initPort(void)
     m_port->setFlowControl(map_flowControl.find(box_flowControl->currentText())->second);
     m_port->setParity(map_parity.find(box_parity->currentText())->second);
     m_port->setStopBits(map_stopBits.find(box_stopBit->currentText())->second);
-    // Fonctionne comme ça sans le find normalement :
-    //m_port->setStopBits(map_stopBits[box_stopBit->currentText()]);
+
 
     std::ofstream fstream("./.serial.conf", std::ios::out | std::ios::trunc);
     if (fstream){
