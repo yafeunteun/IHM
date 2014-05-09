@@ -5,7 +5,6 @@
 #include <qwt_legend.h>
 #include "mainwindow.h"
 #include "serialport.h"
-#include "portselection.h"
 #include "acquisitionsettings.h"
 #include "acquisitionsettingsproxy.h"
 #include "server.h"

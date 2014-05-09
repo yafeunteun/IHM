@@ -1,5 +1,4 @@
 #include "serialport.h"
-#include "portselection.h"
 #include <QMessageBox>
 #include <iostream>
 #include <fstream>
@@ -31,7 +30,7 @@ SerialPort* SerialPort::getInstance(void)
 SerialPort::SerialPort()
 {
     m_timer1 = new QTimer();
-    m_timer1->setInterval(20);
+    m_timer1->setInterval(5);
 
     m_timer2 = new QTimer();
     m_timer2->setInterval(5);
@@ -47,6 +46,7 @@ SerialPort::~SerialPort()
 
 void SerialPort::start()
 {
+    DEBUG("start serial port");
 
     if(!this->open(QIODevice::ReadWrite))
     {
@@ -78,21 +78,16 @@ void SerialPort::resume()
 
 void SerialPort::writeToFile(void)
 {
-    mutex.lock();
 
     QString read  = this->readAll();
     std::memcpy((void*)(buffer+offsetW), (void*)read.toUtf8().constData(), strlen(read.toUtf8().constData()));
     offsetW += strlen(read.toUtf8().constData());
-
-    mutex.unlock();
 }
 
 void SerialPort::readFromFile(void)
 {
-    mutex.lock();
-
     static void *pointer = nullptr;
-    char data[30];
+    char data[50];
     std::memset(data, '\0', 50);
 
     pointer = memchr(buffer+offsetR, '\r', offsetW);
@@ -104,8 +99,6 @@ void SerialPort::readFromFile(void)
         QString tmp = QString::fromUtf8(data);
         emit newData(tmp);
     }
-
-    mutex.unlock();
 
 }
 
