@@ -16,10 +16,9 @@ using std::map;
 
 class AcquisitionSettings : public QDialog
 {
-    typedef enum{SERVER, SERIAL_PORT}Type_t;
-
     Q_OBJECT
 public:
+    typedef enum{SERVER, SERIAL_PORT}Type_t;
     explicit AcquisitionSettings(QWidget *parent = 0);
 private:
     void fillVector();
@@ -51,7 +50,7 @@ private:
 
 
 signals:
-    void newConfiguration(Type_t type, const QVector<QVariant>& parameters);/*emitted in onNewConfiguration()*/
+    void newConfiguration(AcquisitionSettings::Type_t type, const QVector<QVariant>& parameters);/*emitted in onNewConfiguration()*/
 
 public slots:
     void onNewConfiguration(); /* Connected to Ok button */

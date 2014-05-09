@@ -49,9 +49,15 @@ private:
     //ClientTcp *client;
 
     /* Actions */
+    /*
     QAction* m_selectPort;
     QAction* m_startSerial;
     QAction* m_stopSerial;
+    */
+
+    QAction* m_configureSource;
+    QAction* m_startAcquisition;
+    QAction* m_stopAcquisition;
 
 public:
     explicit MainWindow(QWidget *parent = 0);
@@ -68,7 +74,7 @@ public:
 private slots :
     void offset();
     void onNewData(QString&);
-    void selectSerialPort(void);
+    void selectSource(void);
 };
 
 #endif // MAINWINDOW_H

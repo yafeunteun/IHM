@@ -10,12 +10,17 @@ class Server: public QTcpServer
 public:
     static Server* getInstance(void);
     QTcpSocket* getPeer(void){return m_peer;}
+    void setPort(quint16 port){this->m_port = port;}
+    void setAddress(QHostAddress addr){this->m_addr = addr;}
 
 protected:
     static Server *instance;
     Server();
     ~Server();
     QTcpSocket* m_peer = nullptr;
+    quint16 m_port = 0;
+    QHostAddress m_addr;
+
 
 public slots:
     void start();

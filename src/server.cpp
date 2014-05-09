@@ -26,12 +26,12 @@ Server::~Server()
 
 void Server::start()
 {
-    if(!this->listen(this->serverAddress(), this->serverPort()))
+    if(!this->listen(m_addr, m_port))
     {
         QString err = this->errorString();
         emit error(err);
     }else{
-        DEBUG("Server is listening on " + this->serverAddress().toString() + ":" + QString::number(this->serverPort()));
+        DEBUG("Server is listening on " + m_addr.toString() + ":" + QString::number(m_port));
         QObject::connect(this, SIGNAL(newConnection()), this, SLOT(onConnection()));
     }
 }

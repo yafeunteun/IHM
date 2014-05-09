@@ -1,4 +1,5 @@
 #include "acquisitionsettings.h"
+#include "acquisitionsettingsproxy.h"
 #include <QVBoxLayout>
 #include <QFormLayout>
 #include <QHBoxLayout>
@@ -122,6 +123,8 @@ void AcquisitionSettings::makeConnexions()
 
     QObject::connect(m_serial, SIGNAL(toggled(bool)), this, SLOT(onNewSelection(bool)));
     QObject::connect(m_server, SIGNAL(toggled(bool)), this, SLOT(onNewSelection(bool)));
+
+    QObject::connect(this, SIGNAL(newConfiguration(AcquisitionSettings::Type_t,QVector<QVariant>)), AcquisitionSettingsProxy::getInstance(), SLOT(configure(AcquisitionSettings::Type_t,QVector<QVariant>)));
 }
 
 void AcquisitionSettings::onNewConfiguration()

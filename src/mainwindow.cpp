@@ -6,6 +6,8 @@
 #include "mainwindow.h"
 #include "serialport.h"
 #include "portselection.h"
+#include "acquisitionsettings.h"
+#include "acquisitionsettingsproxy.h"
 #include "server.h"
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -68,27 +70,29 @@ void MainWindow::createMenu()
     this->menuBar()->addMenu(menuFiles);
 
     menuFiles->addSeparator();
-    menuFiles->addAction(m_selectPort);
-    menuFiles->addAction(m_startSerial);
-    menuFiles->addAction(m_stopSerial);
+    menuFiles->addAction(m_configureSource);
+    menuFiles->addAction(m_startAcquisition);
+    menuFiles->addAction(m_stopAcquisition);
     menuFiles->addSeparator();
 
 }
 
  void MainWindow::createActions(void)
  {
-     m_selectPort = new QAction("Select serial port", this);
-     connect(m_selectPort, SIGNAL(triggered()), this, SLOT(selectSerialPort()));
+     m_configureSource = new QAction("Select source", this);
+     connect(m_configureSource, SIGNAL(triggered()), this, SLOT(selectSource()));
 
-     m_startSerial = new QAction("Start serial", this);
-     connect(m_startSerial, SIGNAL(triggered()), SerialPort::getInstance(), SLOT(startReading()));
-     //connect(m_startSerial, SIGNAL(triggered()), this, SLOT(onStartReading()));
+     m_startAcquisition = new QAction("Start acquisition", this);
+     connect(m_startAcquisition, SIGNAL(triggered()), AcquisitionSettingsProxy::getInstance(), SLOT(start()));
 
-     m_stopSerial = new QAction("Stop serial", this);
-     connect(m_stopSerial, SIGNAL(triggered()), SerialPort::getInstance(), SLOT(stopReading()));
-     //connect(m_stopSerial, SIGNAL(triggered()), this, SLOT(onStopReading()));
+     m_stopAcquisition = new QAction("Stop acquisition", this);
+     connect(m_stopAcquisition, SIGNAL(triggered()), AcquisitionSettingsProxy::getInstance(), SLOT(stop()));
+ }
 
-
+ void MainWindow::selectSource()
+ {
+     AcquisitionSettings* settings = new AcquisitionSettings();
+     settings->show();
  }
 
 
@@ -114,10 +118,4 @@ void MainWindow::onNewData(QString& data)
     m_angles->addData(data.section(" ", 3, 5));
     m_positions->addData(data.section(" ", 6, 8));
     m_pressure->addData(data.section(" ", 9));
-}
-
-void MainWindow::selectSerialPort()
-{
-    PortSelection *select = new PortSelection(SerialPort::getInstance(), this);
-    select->exec();
 }
