@@ -29,10 +29,6 @@ public:
     QMainWindow *QWoffset;
     QWidget *QOffset;
 
-    QMenu *menuFichier;
-    QMenu *menuOptions;
-    QAction *actionOffset;
-
 
     Graph *m_accelerations;
     Graph *m_angles;
@@ -48,16 +44,11 @@ private:
     Ui::MainWindow *ui;
     //ClientTcp *client;
 
-    /* Actions */
-    /*
-    QAction* m_selectPort;
-    QAction* m_startSerial;
-    QAction* m_stopSerial;
-    */
-
     QAction* m_configureSource;
     QAction* m_startAcquisition;
     QAction* m_stopAcquisition;
+
+    QAction* m_about;
 
 public:
     explicit MainWindow(QWidget *parent = 0);
@@ -76,6 +67,7 @@ private slots :
     void onNewData(QString&);
     void selectSource(void);
     void onError(QString &err);
+    void about(void);
 };
 
 #endif // MAINWINDOW_H

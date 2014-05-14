@@ -76,6 +76,12 @@ void MainWindow::createMenu()
     menuFiles->addAction(m_stopAcquisition);
     menuFiles->addSeparator();
 
+    QMenu* menuHelp = new QMenu("Help");
+    this->menuBar()->addMenu(menuHelp);
+
+    menuHelp->addAction(m_about);
+
+
 }
 
  void MainWindow::createActions(void)
@@ -88,6 +94,9 @@ void MainWindow::createMenu()
 
      m_stopAcquisition = new QAction("Stop acquisition", this);
      connect(m_stopAcquisition, SIGNAL(triggered()), AcquisitionSettingsProxy::getInstance(), SLOT(stop()));
+
+     m_about = new QAction("&About", this);
+     connect(m_about, SIGNAL(triggered()), this, SLOT(about()));
  }
 
  void MainWindow::selectSource()
@@ -124,4 +133,9 @@ void MainWindow::onNewData(QString& data)
 void MainWindow::onError(QString& err)
 {
     QMessageBox::warning(this, "Error", err);
+}
+
+void MainWindow::about()
+{
+    QMessageBox::information(this, "About", "Version 0.1\nStill in Developpement\nIn case of problem please contact the author at yannfeunteun@gmail.com\n");
 }
