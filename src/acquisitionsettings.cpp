@@ -25,6 +25,7 @@ AcquisitionSettings::AcquisitionSettings(QWidget *parent) :
     m_port->setValue(20000);
     m_address->setText("192.168.1.2");
     m_address->setReadOnly(true);
+    m_address->setEnabled(false);
     m_server->setTitle("&Server");
     m_server->setCheckable(true);
     m_server->setChecked(true);
@@ -37,10 +38,22 @@ AcquisitionSettings::AcquisitionSettings(QWidget *parent) :
     QFormLayout* serialLayout = new QFormLayout();
     initMap();
 
+    box_port = new QComboBox;
+    box_port->addItem("COM1");
+    box_port->addItem("COM2");
+    box_port->addItem("COM3");
+    box_port->addItem("COM4");
+    box_port->addItem("COM5");
+    box_port->addItem("COM6");
+    box_port->addItem("COM7");
+    box_port->addItem("COM8");
+    box_port->addItem("COM9");
+
     box_baud = new QComboBox;
     box_baud->addItem("BAUD9600");
     box_baud->addItem("BAUD19200");
     box_baud->addItem("BAUD115200");
+    box_baud->setCurrentText("BAUD115200");
 
     box_dataBits = new QComboBox;
     box_dataBits->addItem("DATA_8");
@@ -63,9 +76,8 @@ AcquisitionSettings::AcquisitionSettings(QWidget *parent) :
     box_stopBit->addItem("STOP_1");
     box_stopBit->addItem("STOP_2");
 
-    m_name = new QLineEdit();
 
-    serialLayout->addRow("Port name : ", m_name);
+    serialLayout->addRow("Port name : ", box_port);
     serialLayout->addRow("Baud rate", box_baud);
     serialLayout->addRow("Number of data bits", box_dataBits);
     serialLayout->addRow("Flow control", box_flowControl);
@@ -94,6 +106,16 @@ AcquisitionSettings::AcquisitionSettings(QWidget *parent) :
 
 void AcquisitionSettings::initMap()
 {
+    map_port["COM1"] = "COM1";
+    map_port["COM2"] = "COM2";
+    map_port["COM3"] = "COM3";
+    map_port["COM4"] = "COM4";
+    map_port["COM5"] = "COM5";
+    map_port["COM6"] = "COM6";
+    map_port["COM7"] = "COM7";
+    map_port["COM8"] = "COM8";
+    map_port["COM9"] = "COM9";
+
     map_baud["BAUD9600"] = BAUD9600;
     map_baud["BAUD19200"] = BAUD19200;
     map_baud["BAUD115200"] = BAUD115200;
@@ -159,7 +181,7 @@ void AcquisitionSettings::fillVector()
         m_settings.append(port);
         m_settings.append(addr);
     }else{
-        QString name = m_name->text();
+        QString name = map_port.find(box_port->currentText())->second;
         BaudRateType baudRate = map_baud.find(box_baud->currentText())->second;
         DataBitsType dataBits = map_dataBits.find(box_dataBits->currentText())->second;
         FlowType flow = map_flowControl.find(box_flowControl->currentText())->second;

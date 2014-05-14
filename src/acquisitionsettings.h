@@ -35,18 +35,19 @@ private:
 
     /* Serial port */
     void initMap(void);
+    map<QString, QString> map_port;
     map<QString, BaudRateType> map_baud;
     map<QString, DataBitsType> map_dataBits;
     map<QString, FlowType> map_flowControl;
     map<QString, ParityType> map_parity;
     map<QString, StopBitsType> map_stopBits;
 
+    QComboBox *box_port;
     QComboBox *box_baud;
     QComboBox *box_dataBits;
     QComboBox *box_flowControl;
     QComboBox *box_parity;
     QComboBox *box_stopBit;
-    QLineEdit *m_name;
 
 
 signals:

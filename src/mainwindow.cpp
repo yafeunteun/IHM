@@ -137,5 +137,5 @@ void MainWindow::onError(QString& err)
 
 void MainWindow::about()
 {
-    QMessageBox::information(this, "About", "Version 0.1\nStill in Developpement\nIn case of problem please contact the author at yannfeunteun@gmail.com\n");
+    QMessageBox::information(this, "About", "Version 0.2\nStill in Developpement\nIn case of problem please contact the author at yannfeunteun@gmail.com\n");
 }
