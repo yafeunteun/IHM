@@ -22,8 +22,9 @@ AcquisitionSettings::AcquisitionSettings(QWidget *parent) :
     serverLayout->addRow("Port", m_port);
     m_port->setMinimum(1025);
     m_port->setMaximum(65535);
-    m_port->setValue(5000);
-    m_address->setText("127.0.0.1");
+    m_port->setValue(20000);
+    m_address->setText("192.168.1.2");
+    m_address->setReadOnly(true);
     m_server->setTitle("&Server");
     m_server->setCheckable(true);
     m_server->setChecked(true);

@@ -16,7 +16,12 @@ Curve::Curve(DataSet * set, QColor color, QObject *parent) :
 
 void Curve::updateCurve()
 {
-    this->setSamples(m_dataSet->getPoints());
+    static int i = 0;
+    if(i >= 10){             /* Displays one point out of 10 */
+        this->setSamples(m_dataSet->getPoints());
+        i = 0;
+    }
+    ++i;
 }
 
 

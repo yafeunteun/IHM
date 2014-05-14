@@ -23,7 +23,7 @@ private:
     QVector<QPushButton*> m_buttons;
     QVector<QCheckBox*> m_checkboxes;
     QVector<Curve*> m_curves;
-    int m_colorIndex = 1;
+    int m_colorIndex = 13;
     DataHolder* m_dataHolder;
 signals:
 

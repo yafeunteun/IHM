@@ -37,6 +37,8 @@ Graph::Graph(std::initializer_list<QString> labels, QWidget *parent) :
         l2->addRow(label, ch);
     }
 
+    m_colorIndex = 13;
+
     for(Curve* curve : m_curves)
     {
         curve->attach(m_plot);
@@ -50,7 +52,7 @@ Graph::Graph(std::initializer_list<QString> labels, QWidget *parent) :
 
     for(QPushButton* button : m_buttons)
     {
-        QString colName = QColor::colorNames()[m_buttons.indexOf(button)];
+        QString colName = QColor::colorNames()[m_colorIndex++];
         QString qss = QString("background-color: " + colName);
         button->setStyleSheet(qss);
         QObject::connect(button, SIGNAL(clicked()), this, SLOT(changeColor()));
