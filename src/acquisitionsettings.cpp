@@ -4,6 +4,13 @@
 #include <QFormLayout>
 #include <QHBoxLayout>
 
+/*!
+    *  \brief Constructor
+    *
+    *  Constructor of AcquisitionSettings class
+    *
+    *  \param parent : Constructs a widget which is a child of parent.
+    */
 AcquisitionSettings::AcquisitionSettings(QWidget *parent) :
     QDialog(parent)
 {
@@ -104,6 +111,9 @@ AcquisitionSettings::AcquisitionSettings(QWidget *parent) :
 
 }
 
+/*!
+    *  \brief Initialize drop down menus with parameters.
+    */
 void AcquisitionSettings::initMap()
 {
     map_port["COM1"] = "COM1";
@@ -138,7 +148,9 @@ void AcquisitionSettings::initMap()
     map_stopBits["STOP_2"] = STOP_2;
 }
 
-
+/*!
+    *  \brief Make connexions between the buttons of the widget and the actions associated.
+    */
 void AcquisitionSettings::makeConnexions()
 {
     QObject::connect(m_ok, SIGNAL(clicked()), this, SLOT(onNewConfiguration()));
@@ -150,6 +162,12 @@ void AcquisitionSettings::makeConnexions()
     QObject::connect(this, SIGNAL(newConfiguration(AcquisitionSettings::Type_t,QVector<QVariant>)), AcquisitionSettingsProxy::getInstance(), SLOT(configure(AcquisitionSettings::Type_t,QVector<QVariant>)));
 }
 
+/*!
+    *  \brief Performed each new configuration.
+    *
+    *  Send information about the new configuration by emitting a signal.
+    *
+    */
 void AcquisitionSettings::onNewConfiguration()
 {
     this->fillVector();
@@ -163,12 +181,18 @@ void AcquisitionSettings::onNewConfiguration()
     this->close();
 }
 
+/*!
+    *  \brief Performed when button cancel is clicked.
+    *
+    */
 void AcquisitionSettings::onCancel()
 {
     this->close();
 }
 
-/* Fill the vector with current configuration */
+/*!
+    *  \brief Fills an array with the current configuration.
+    */
 void AcquisitionSettings::fillVector()
 {
     /* reset m_setings content */
@@ -197,6 +221,12 @@ void AcquisitionSettings::fillVector()
     }
 }
 
+/*!
+    *  \brief Performed each time a source is selected on the widget.
+    *
+    *   This slot guarantees there is only one source selected. It prevents from multiple source selecting.
+    *   For instance, you cannot receive data from a remote peer and from a serial port at the same time.
+    */
 void AcquisitionSettings::onNewSelection(bool status)
 {
     if(this->sender() == m_serial)
