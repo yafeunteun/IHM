@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>pictures/quit.png</file>
+        <file>pictures/selectSource.png</file>
+        <file>pictures/startRecord.png</file>
+        <file>pictures/stopRecord.png</file>
+    </qresource>
+</RCC>

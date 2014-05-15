@@ -30,8 +30,6 @@ signals:
 public slots:
     void curveDisplay(void);
     void changeColor(void);
-
-
 };
 
 #endif // GRAPH_H

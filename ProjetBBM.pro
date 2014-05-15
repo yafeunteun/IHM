@@ -61,6 +61,9 @@ HEADERS  += src/mainwindow.h \
 
 FORMS    += src/IHM.ui
 
+RESOURCES += \
+    pictures.qrc
+
 
 
 

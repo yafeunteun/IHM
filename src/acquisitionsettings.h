@@ -23,6 +23,11 @@
 
 using std::map;
 
+
+/*! \class AcquisitionSettings
+   * \brief This class represents the graphical widget allowing to configure the data source.
+   * The source can be : a remote peer, a remote server, a device connected to the serial port.
+   */
 class AcquisitionSettings : public QDialog
 {
     Q_OBJECT

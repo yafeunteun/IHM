@@ -39,7 +39,7 @@ void Server::start()
 void Server::stop()
 {
     if(m_peer != nullptr){
-        this->disconnect(m_peer, SIGNAL(readyRead()), this, SLOT(onDataReadyRead()));
+        QObject::disconnect(m_peer, SIGNAL(readyRead()), this, SLOT(dataAvailable()));
     }else{
         QString err("No peer connected");
         emit error(err);
@@ -49,7 +49,7 @@ void Server::stop()
 void Server::resume()
 {
     if(m_peer != nullptr){
-        this->connect(m_peer, SIGNAL(readyRead()), this, SLOT(onDataReadyRead()));
+        this->connect(m_peer, SIGNAL(readyRead()), this, SLOT(dataAvailable()));
     }else{
         QString err("No peer connected");
         emit error(err);

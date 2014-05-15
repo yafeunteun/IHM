@@ -1,6 +1,8 @@
 #include <QMessageBox>
 #include <QFileDialog>
 #include <QSplitter>
+#include <QToolBar>
+#include <QLabel>
 #include <sstream>
 #include <qwt_legend.h>
 #include "mainwindow.h"
@@ -15,14 +17,10 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    QWoffset = new QMainWindow;
-    QOffset = new QWidget();
-
-    QWoffset->setWindowTitle("Offsets");
-    QWoffset->setCentralWidget(QOffset);
-
     createActions();
     createMenu();
+    createStatusBar();
+    createToolBar();
 
 
     m_accelerations = new Graph({QString("acceleration_x"), QString("acceleration_y"), QString("acceleration_z")});
@@ -48,18 +46,6 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(SerialPort::getInstance(), SIGNAL(error(QString&)), this, SLOT(onError(QString&)));
 }
 
-
-
-
-void MainWindow::offset()
-{
-    if (QWoffset->isVisible())
-        QWoffset->hide();
-    else
-        QWoffset->show();
-}
-
-
 MainWindow::~MainWindow()
 {
     delete ui;
@@ -67,36 +53,115 @@ MainWindow::~MainWindow()
 
 void MainWindow::createMenu()
 {
-    QMenu* menuFiles = new QMenu("Files");
-    this->menuBar()->addMenu(menuFiles);
+    QMenu* fileMenu = new QMenu("Files");
+    this->menuBar()->addMenu(fileMenu);
 
-    menuFiles->addSeparator();
-    menuFiles->addAction(m_configureSource);
-    menuFiles->addAction(m_startAcquisition);
-    menuFiles->addAction(m_stopAcquisition);
-    menuFiles->addSeparator();
+    fileMenu->addAction(m_saveRecordedData);
+    fileMenu->addAction(m_loadRecordedData);
+    fileMenu->addSeparator();
+    fileMenu->addAction(m_saveConfiguration);
+    fileMenu->addSeparator();
+    fileMenu->addAction(m_loadSensorData);
+    fileMenu->addSeparator();
+    fileMenu->addAction(m_quit);
 
-    QMenu* menuHelp = new QMenu("Help");
-    this->menuBar()->addMenu(menuHelp);
+    QMenu* viewMenu = new QMenu("&View");
+    this->menuBar()->addMenu(viewMenu);
 
-    menuHelp->addAction(m_about);
+    viewMenu->addAction(m_eraseCurve);
+
+    QMenu* studyMenu = new QMenu("&Study");
+    this->menuBar()->addMenu(studyMenu);
+
+    studyMenu->addAction(m_startRecord);
+    studyMenu->addAction(m_stopRecord);
+    studyMenu->addSeparator();
+    studyMenu->addAction(m_drawSpeed);
+    studyMenu->addAction(m_drawPosition);
+
+    QMenu* configurationMenu = new QMenu("&Configuration");
+    this->menuBar()->addMenu(configurationMenu);
+
+    configurationMenu->addAction(m_selectSource);
+    configurationMenu->addSeparator();
+    configurationMenu->addAction(m_calibrateAccelerometer);
+    configurationMenu->addAction(m_calibrateGyrometer);
+    configurationMenu->addAction(m_calibrateCurve);
+
+    QMenu* helpMenu = new QMenu("Help");
+    this->menuBar()->addMenu(helpMenu);
+
+    helpMenu->addAction(m_manual);
+    helpMenu->addSeparator();
+    helpMenu->addAction(m_about);
 
 
 }
 
  void MainWindow::createActions(void)
  {
-     m_configureSource = new QAction("Select source", this);
-     connect(m_configureSource, SIGNAL(triggered()), this, SLOT(selectSource()));
 
-     m_startAcquisition = new QAction("Start acquisition", this);
-     connect(m_startAcquisition, SIGNAL(triggered()), AcquisitionSettingsProxy::getInstance(), SLOT(start()));
+     /* File */
+     m_saveRecordedData = new QAction("Save recorded data", this);
+     m_loadRecordedData = new QAction("Load recorded data", this);
+     m_saveConfiguration = new QAction("Save configuration", this);
+     m_loadSensorData = new QAction("Load sensor data", this);
 
-     m_stopAcquisition = new QAction("Stop acquisition", this);
-     connect(m_stopAcquisition, SIGNAL(triggered()), AcquisitionSettingsProxy::getInstance(), SLOT(stop()));
+     m_quit = new QAction("&Quit", this);
+     m_quit->setShortcut(QKeySequence("Ctrl+Q"));
+     m_quit->setIcon(QIcon(":/pictures/quit.png"));
+     connect(m_quit, SIGNAL(triggered()), this, SLOT(close()));
+
+
+     /* View */
+     m_eraseCurve = new QAction("Erase Curve", this);
+
+     /* Study */
+     m_startRecord = new QAction("Start record", this);
+     connect(m_startRecord, SIGNAL(triggered()), AcquisitionSettingsProxy::getInstance(), SLOT(start()));
+     m_startRecord->setIcon(QIcon(":/pictures/startRecord.png"));
+     //connect(m_startRecord, SIGNAL(triggered(bool)), m_startRecord, SLOT(setEnabled(bool)));
+
+     m_stopRecord = new QAction("Stop record", this);
+     m_stopRecord->setIcon(QIcon(":/pictures/stopRecord.png"));
+     connect(m_stopRecord, SIGNAL(triggered()), AcquisitionSettingsProxy::getInstance(), SLOT(stop()));
+
+     m_drawSpeed = new QAction("Draw speed", this);
+     m_drawPosition = new QAction("Draw position", this);
+
+     /* Configuration */
+     m_selectSource = new QAction("Select source", this);
+     m_selectSource->setIcon(QIcon(":/pictures/selectSource"));
+     connect(m_selectSource, SIGNAL(triggered()), this, SLOT(selectSource()));
+
+     m_calibrateAccelerometer = new QAction("Calibrate accelerometer", this);
+     m_calibrateGyrometer = new QAction("Calibrate gyrometer", this);
+     m_calibrateCurve = new QAction("Calibrate curve", this);
+
+     /* Help */
+     m_manual = new QAction("&Manual", this);
 
      m_about = new QAction("&About", this);
      connect(m_about, SIGNAL(triggered()), this, SLOT(about()));
+
+ }
+
+ void MainWindow::createStatusBar()
+ {
+     this->statusBar()->showMessage("test status bar");
+ }
+
+ void MainWindow::createToolBar()
+ {
+    QToolBar* fileToolbar = addToolBar("File");
+    fileToolbar->addAction(m_quit);
+
+    QToolBar* configToolbar = addToolBar("Configuration");
+    configToolbar->addAction(m_selectSource);
+
+    QToolBar* studyToolbar = addToolBar("Study");
+    studyToolbar->addAction(m_startRecord);
+    studyToolbar->addAction(m_stopRecord);
  }
 
  void MainWindow::selectSource()
@@ -137,5 +202,5 @@ void MainWindow::onError(QString& err)
 
 void MainWindow::about()
 {
-    QMessageBox::information(this, "About", "Version 0.2\nStill in Developpement\nIn case of problem please contact the author at yannfeunteun@gmail.com\n");
+    QMessageBox::information(this, "About", "Version 0.3\nStill in Developpement\nIn case of problem please contact the author at yannfeunteun@gmail.com\n");
 }

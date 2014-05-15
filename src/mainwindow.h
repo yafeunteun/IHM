@@ -19,42 +19,51 @@ class MainWindow : public QMainWindow
 
 public:
 
-    /** @todo
-    //void createActions(void);
-    //void createMenus(void);
-    //void createStatusBar(void);
-    //void createToolBar(void);
-    **/
-
-    QMainWindow *QWoffset;
-    QWidget *QOffset;
-
-
     Graph *m_accelerations;
     Graph *m_angles;
     Graph *m_positions;
     Graph *m_pressure;
 
-    double temps=0;
-
-
-
 private:
     QWidget *parent;
     Ui::MainWindow *ui;
-    //ClientTcp *client;
 
-    QAction* m_configureSource;
-    QAction* m_startAcquisition;
-    QAction* m_stopAcquisition;
+    /* File */
+    QAction* m_saveRecordedData;
+    QAction* m_loadRecordedData;
+    QAction* m_saveConfiguration;
+    QAction* m_loadSensorData;
+    QAction* m_quit;
 
+    /* View */
+    QAction* m_eraseCurve;
+
+    /* Study */
+    QAction* m_startRecord;
+    QAction* m_stopRecord;
+    QAction* m_drawSpeed;
+    QAction* m_drawPosition;
+
+    /* Configuration */
+    QAction* m_selectSource;
+    QAction* m_calibrateAccelerometer;
+    QAction* m_calibrateGyrometer;
+    QAction* m_calibrateCurve;
+
+    /* Help */
+    QAction* m_manual;
     QAction* m_about;
+
+
+
 
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     void createMenu();
-    void createActions(void);
+    void createActions();
+    void createStatusBar();
+    void createToolBar();
     double doubleintegration(double acc);
     double filtrerecursif(double);
     void dessindonnees(QVector<double> entree);
@@ -63,7 +72,6 @@ public:
 
 
 private slots :
-    void offset();
     void onNewData(QString&);
     void selectSource(void);
     void onError(QString &err);
