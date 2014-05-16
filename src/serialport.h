@@ -4,7 +4,6 @@
 #include <map>
 #include <iostream>
 #include <string>
-#include <QMutex>
 #include <QTimer>
 #include "debug.h"
 
@@ -24,7 +23,6 @@ private:
     static quint64 offsetW;
     static quint64 offsetR;
     static char* buffer;
-    QMutex mutex;
 
 public slots:
     void start();
@@ -35,6 +33,7 @@ public slots:
 
 signals:
     void error(QString&);
+    void status(QString&, int);
     void newData(QString&);
 
 private:

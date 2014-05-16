@@ -26,7 +26,7 @@ public slots:
     void configure(AcquisitionSettings::Type_t type, QVector<QVariant> parameters);
     void onError(QString& err);
 signals:
-    void error(QString& error);
+    void error(QString&);
 
 
 };

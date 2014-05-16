@@ -17,12 +17,12 @@ Curve::Curve(DataSet * set, QColor color, QObject *parent) :
 /* All the data are stored but only one out of ten is displayed */
 void Curve::updateCurve()
 {
-    static int i = 0;
-    if(i >= 10){             /* Displays one point out of 10 */
+    //static int i = 0;
+    //if(i >= 10){             /* Displays one point out of 10 */
         this->setSamples(m_dataSet->getPoints());
-        i = 0;
-    }
-    ++i;
+       // i = 0;
+  //  }
+   // ++i;
 }
 
 

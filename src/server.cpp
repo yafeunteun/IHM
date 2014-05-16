@@ -1,9 +1,14 @@
 #include <QTcpSocket>
 #include <QMessageBox>
 #include <iostream>
+#include <cstring>
 #include "server.h"
 
 Server* Server::instance = nullptr;
+quint64 Server::offsetR = 0;
+quint64 Server::offsetW = 0;
+char* Server::buffer = new char[10000000]; /* 10^7 bytes */
+
 
 Server* Server::getInstance(void)
 {
@@ -18,6 +23,14 @@ Server* Server::getInstance(void)
 
 Server::Server()
 {
+    m_timer1 = new QTimer();
+    m_timer1->setInterval(5);
+
+    m_timer2 = new QTimer();
+    m_timer2->setInterval(5);
+
+    connect(m_timer1, SIGNAL(timeout()), this, SLOT(writeToFile()));
+    connect(m_timer2, SIGNAL(timeout()), this, SLOT(readFromFile()));
 }
 
 Server::~Server()
@@ -25,7 +38,7 @@ Server::~Server()
 }
 
 void Server::start()
-{
+{    
     if(!this->listen(m_addr, m_port))
     {
         QString err = this->errorString();
@@ -33,23 +46,21 @@ void Server::start()
     }else{
         DEBUG("Server is listening on " + m_addr.toString() + ":" + QString::number(m_port));
         QObject::connect(this, SIGNAL(newConnection()), this, SLOT(onConnection()));
+        m_timer1->start();
+        m_timer2->start();
     }
 }
 
 void Server::stop()
 {
-    if(m_peer != nullptr){
-        QObject::disconnect(m_peer, SIGNAL(readyRead()), this, SLOT(dataAvailable()));
-    }else{
-        QString err("No peer connected");
-        emit error(err);
-    }
+    m_timer1->stop();
+    m_timer2->stop();
 }
 
 void Server::resume()
 {
     if(m_peer != nullptr){
-        this->connect(m_peer, SIGNAL(readyRead()), this, SLOT(dataAvailable()));
+        this->start();
     }else{
         QString err("No peer connected");
         emit error(err);
@@ -57,27 +68,42 @@ void Server::resume()
 }
 
 
+void Server::writeToFile(void)
+{
+    if(m_peer != nullptr){
+        QString read  = m_peer->readAll();
+        std::memcpy((void*)(buffer+offsetW), (void*)read.toUtf8().constData(), strlen(read.toUtf8().constData()));
+        offsetW += strlen(read.toUtf8().constData());
+    }
+}
+
+void Server::readFromFile(void)
+{
+    static void *pointer = nullptr;
+    char data[100];
+    std::memset(data, '\0', 100);
+
+    pointer = memchr(buffer+offsetR, '\r', offsetW);
+
+    if(pointer != NULL){
+        std::memcpy((void*)data, (void*)(buffer+offsetR), ((char*)pointer-(buffer+offsetR)));
+        offsetR += (char*)pointer-(buffer+offsetR) + 2;
+
+        QString tmp = QString::fromUtf8(data);
+        emit newData(tmp);
+    }
+
+}
+
 void Server::onConnection()
 {
     QTcpSocket *sock = this->nextPendingConnection();
     m_peer = sock;
-    QObject::connect(m_peer, SIGNAL(readyRead()), this, SLOT(dataAvailable()));
-    emit peerConnected();
     DEBUG("Peer connected : " + sock->peerAddress().toString());
+    QString stat = "Peer connected : " + sock->peerAddress().toString();
+    emit status(stat, 10000);
 }
 
-void Server::dataAvailable()
-{
-    QString query = m_peer->readAll();
-    DEBUG("Message from " + m_peer->peerAddress().toString() + " : " + query);
-    emit newData(query);
-}
-
-
-void Server::onDisconnection(void)
-{
-    emit peerDisconnected();
-}
 
 void Server::sendToPeer(QString answer)
 {

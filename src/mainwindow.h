@@ -75,6 +75,7 @@ private slots :
     void onNewData(QString&);
     void selectSource(void);
     void onError(QString &err);
+    void onStatusChanged(QString& stat, int timeout);
     void about(void);
 };
 

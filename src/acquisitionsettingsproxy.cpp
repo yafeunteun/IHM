@@ -74,3 +74,4 @@ void AcquisitionSettingsProxy::onError(QString& err)
 {
     emit error(err);
 }
+
