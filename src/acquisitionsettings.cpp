@@ -1,5 +1,5 @@
 #include "acquisitionsettings.h"
-#include "acquisitionsettingsproxy.h"
+#include "datasource.h"
 #include <QVBoxLayout>
 #include <QFormLayout>
 #include <QHBoxLayout>
@@ -19,20 +19,15 @@ AcquisitionSettings::AcquisitionSettings(QWidget *parent) :
 
     m_ok = new QPushButton("Ok");
     m_cancel = new QPushButton("Cancel");
-    m_address = new QLineEdit();
     m_port = new QSpinBox();
 
 
     m_server = new QGroupBox();
     QFormLayout* serverLayout = new QFormLayout();
-    serverLayout->addRow("Address", m_address);
     serverLayout->addRow("Port", m_port);
     m_port->setMinimum(1025);
     m_port->setMaximum(65535);
     m_port->setValue(20000);
-    m_address->setText("192.168.1.2");
-    m_address->setReadOnly(true);
-    m_address->setEnabled(false);
     m_server->setTitle("&Server");
     m_server->setCheckable(true);
     m_server->setChecked(true);
@@ -159,7 +154,7 @@ void AcquisitionSettings::makeConnexions()
     QObject::connect(m_serial, SIGNAL(toggled(bool)), this, SLOT(onNewSelection(bool)));
     QObject::connect(m_server, SIGNAL(toggled(bool)), this, SLOT(onNewSelection(bool)));
 
-    QObject::connect(this, SIGNAL(newConfiguration(AcquisitionSettings::Type_t,QVector<QVariant>)), AcquisitionSettingsProxy::getInstance(), SLOT(configure(AcquisitionSettings::Type_t,QVector<QVariant>)));
+    QObject::connect(this, SIGNAL(newConfiguration(AcquisitionSettings::Type_t,QVector<QVariant>)), DataSource::getInstance(), SLOT(configure(AcquisitionSettings::Type_t,QVector<QVariant>)));
 }
 
 /*!
@@ -201,9 +196,7 @@ void AcquisitionSettings::fillVector()
     if(m_server->isChecked())
     {
         quint16 port = m_port->value();
-        QString addr = m_address->text();
         m_settings.append(port);
-        m_settings.append(addr);
     }else{
         QString name = map_port.find(box_port->currentText())->second;
         BaudRateType baudRate = map_baud.find(box_baud->currentText())->second;
@@ -222,7 +215,7 @@ void AcquisitionSettings::fillVector()
 }
 
 /*!
-    *  \brief Performed each time a source is selected on the widget.
+    *  \brief [SLOT]Performed each time a source is selected on the widget.
     *
     *   This slot guarantees there is only one source selected. It prevents from multiple source selecting.
     *   For instance, you cannot receive data from a remote peer and from a serial port at the same time.

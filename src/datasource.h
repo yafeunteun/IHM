@@ -1,5 +1,5 @@
-#ifndef ACQUISITIONSETTINGSPROXY_H
-#define ACQUISITIONSETTINGSPROXY_H
+#ifndef DATASOURCE_H
+#define DATASOURCE_H
 
 #include <QObject>
 #include "serialport.h"
@@ -7,16 +7,16 @@
 #include "acquisitionsettings.h"
 
 
-class AcquisitionSettingsProxy : public QObject
+class DataSource : public QObject
 {
     Q_OBJECT
 
 public:
-    static AcquisitionSettingsProxy* getInstance(void);
+    static DataSource* getInstance(void);
 private:
-    AcquisitionSettingsProxy(){}
-    ~AcquisitionSettingsProxy(){}
-    static AcquisitionSettingsProxy *instance;
+    DataSource(){}
+    ~DataSource(){}
+    static DataSource *instance;
     bool m_configured = false;
     AcquisitionSettings::Type_t m_source;
 public slots:
@@ -31,4 +31,4 @@ signals:
 
 };
 
-#endif // ACQUISITIONSETTINGSPROXY_H
+#endif // DATASOURCE_H

@@ -1,21 +1,21 @@
-#include "acquisitionsettingsproxy.h"
+#include "datasource.h"
 #include "debug.h"
 
 
-AcquisitionSettingsProxy* AcquisitionSettingsProxy::instance = nullptr;
+DataSource* DataSource::instance = nullptr;
 
-AcquisitionSettingsProxy* AcquisitionSettingsProxy::getInstance(void)
+DataSource* DataSource::getInstance(void)
 {
-    if(AcquisitionSettingsProxy::instance == nullptr){
-        instance = new AcquisitionSettingsProxy();
+    if(DataSource::instance == nullptr){
+        instance = new DataSource();
         return instance;
     }
     else{
-        return AcquisitionSettingsProxy::instance;
+        return DataSource::instance;
     }
 }
 
-void AcquisitionSettingsProxy::start()
+void DataSource::start()
 {
     if(!m_configured)
     {
@@ -31,7 +31,7 @@ void AcquisitionSettingsProxy::start()
     }
 }
 
-void AcquisitionSettingsProxy::stop()
+void DataSource::stop()
 {
     if(m_source == AcquisitionSettings::SERIAL_PORT){
         SerialPort::getInstance()->stop();
@@ -40,12 +40,12 @@ void AcquisitionSettingsProxy::stop()
     }
 }
 
-void AcquisitionSettingsProxy::resume()
+void DataSource::resume()
 {
 
 }
 
-void AcquisitionSettingsProxy::configure(AcquisitionSettings::Type_t type, QVector<QVariant> parameters)
+void DataSource::configure(AcquisitionSettings::Type_t type, QVector<QVariant> parameters)
 {
     m_source = type;
     m_configured = true;
@@ -65,12 +65,11 @@ void AcquisitionSettingsProxy::configure(AcquisitionSettings::Type_t type, QVect
     }else if(m_source == AcquisitionSettings::SERVER){
         DEBUG("Configuring server");
         Server::getInstance()->setPort(parameters[0].toInt());
-        Server::getInstance()->setAddress(QHostAddress(parameters[1].toString()));
     }
 
 }
 
-void AcquisitionSettingsProxy::onError(QString& err)
+void DataSource::onError(QString& err)
 {
     emit error(err);
 }

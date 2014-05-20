@@ -44,7 +44,6 @@ private:
     QVector<QVariant> m_settings;
 
     /* Server */
-    QLineEdit *m_address;
     QSpinBox *m_port;
 
     /* Serial port */

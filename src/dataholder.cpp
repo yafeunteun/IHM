@@ -26,7 +26,7 @@ void DataHolder::addDataSet(QString &label)
     m_datasets.push_back(new DataSet(label));
 }
 
-void DataHolder::addData(QString& incommingRawData)
+void DataHolder::addData(QString&& incommingRawData)
 {
     QVector<float> data = m_strategy->doAlgorithm(incommingRawData);
 

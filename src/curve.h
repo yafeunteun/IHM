@@ -11,7 +11,8 @@ class Curve : public QObject, public QwtPlotCurve
 {
     Q_OBJECT
 public:
-    explicit Curve(DataSet* set, QColor color,  QObject*parent=0);
+    explicit
+    Curve(DataSet* set, QColor color);
     void setColor(QColor &color);
 private:
     DataSet* m_dataSet;

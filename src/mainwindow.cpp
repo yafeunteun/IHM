@@ -8,8 +8,8 @@
 #include "mainwindow.h"
 #include "serialport.h"
 #include "acquisitionsettings.h"
-#include "acquisitionsettingsproxy.h"
 #include "server.h"
+#include "imu.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent), parent(parent),
@@ -23,16 +23,20 @@ MainWindow::MainWindow(QWidget *parent) :
     createToolBar();
 
 
-    m_accelerations = new Graph({QString("acceleration_x"), QString("acceleration_y"), QString("acceleration_z")});
+    m_accelerations = new Graph({QString("x_axis"), QString("y_axis"), QString("z_axis")},
+                                IMU::getInstance()->getAccelerometersData());
     m_accelerations->setTitle("Accelerations and angular velocity");
 
-    m_angles = new Graph({QString("rolling"), QString("pitch"), QString("yaw")});
+    m_angles = new Graph({QString("x_axis"), QString("y_axis"), QString("z_axis")},
+                         IMU::getInstance()->getGyrometersData());
     m_angles->setTitle("Speed and angles");
 
-    m_positions = new Graph({QString("position_x"), QString("position_y"), QString("position_z")});
+    m_positions = new Graph({QString("x_axis"), QString("y_axis"), QString("z_axis")},
+                            IMU::getInstance()->getMagnetometersData());
     m_positions->setTitle("Positions");
 
-    m_pressure = new Graph({QString("pressure")});
+    m_pressure = new Graph({QString("pressure")},
+                           IMU::getInstance()->getBarometerData());
     m_pressure->setTitle("Pressure");
 
     ui->tabMaster->addTab(m_accelerations, "Accelerometers");
@@ -40,12 +44,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tabMaster->addTab(m_positions, "Magnetometers");
     ui->tabMaster->addTab(m_pressure, "Pressure");
 
-    QObject::connect(Server::getInstance(), SIGNAL(newData(QString&)), this, SLOT(onNewData(QString&)));
-    QObject::connect(SerialPort::getInstance(), SIGNAL(newData(QString&)), this, SLOT(onNewData(QString&)));
     QObject::connect(Server::getInstance(), SIGNAL(error(QString&)), this, SLOT(onError(QString&)));
     QObject::connect(SerialPort::getInstance(), SIGNAL(error(QString&)), this, SLOT(onError(QString&)));
     QObject::connect(SerialPort::getInstance(), SIGNAL(status(QString&, int)), this, SLOT(onStatusChanged(QString&,int)));
     QObject::connect(Server::getInstance(), SIGNAL(status(QString&, int)), this, SLOT(onStatusChanged(QString&,int)));
+    QObject::connect(IMU::getInstance(), SIGNAL(dataUpdated()), this, SLOT(updateView()));
+    /* the view is updated each time the tab changed */
+    QObject::connect(ui->tabMaster, SIGNAL(currentChanged(int)), this, SLOT(updateView()));
 }
 
 MainWindow::~MainWindow()
@@ -100,61 +105,61 @@ void MainWindow::createMenu()
 
 }
 
- void MainWindow::createActions(void)
- {
+void MainWindow::createActions(void)
+{
 
-     /* File */
-     m_saveRecordedData = new QAction("Save recorded data", this);
-     m_loadRecordedData = new QAction("Load recorded data", this);
-     m_saveConfiguration = new QAction("Save configuration", this);
-     m_loadSensorData = new QAction("Load sensor data", this);
+    /* File */
+    m_saveRecordedData = new QAction("Save recorded data", this);
+    m_loadRecordedData = new QAction("Load recorded data", this);
+    m_saveConfiguration = new QAction("Save configuration", this);
+    m_loadSensorData = new QAction("Load sensor data", this);
 
-     m_quit = new QAction("&Quit", this);
-     m_quit->setShortcut(QKeySequence("Ctrl+Q"));
-     m_quit->setIcon(QIcon(":/pictures/quit.png"));
-     connect(m_quit, SIGNAL(triggered()), this, SLOT(close()));
+    m_quit = new QAction("&Quit", this);
+    m_quit->setShortcut(QKeySequence("Ctrl+Q"));
+    m_quit->setIcon(QIcon(":/pictures/quit.png"));
+    connect(m_quit, SIGNAL(triggered()), this, SLOT(close()));
 
 
-     /* View */
-     m_eraseCurve = new QAction("Erase Curve", this);
+    /* View */
+    m_eraseCurve = new QAction("Erase Curve", this);
 
-     /* Study */
-     m_startRecord = new QAction("Start record", this);
-     connect(m_startRecord, SIGNAL(triggered()), AcquisitionSettingsProxy::getInstance(), SLOT(start()));
-     m_startRecord->setIcon(QIcon(":/pictures/startRecord.png"));
-     //connect(m_startRecord, SIGNAL(triggered(bool)), m_startRecord, SLOT(setEnabled(bool)));
+    /* Study */
+    m_startRecord = new QAction("Start record", this);
+    connect(m_startRecord, SIGNAL(triggered()), IMU::getInstance(), SLOT(onStartRecordData()));
+    m_startRecord->setIcon(QIcon(":/pictures/startRecord.png"));
+    //connect(m_startRecord, SIGNAL(triggered(bool)), m_startRecord, SLOT(setEnabled(bool)));
 
-     m_stopRecord = new QAction("Stop record", this);
-     m_stopRecord->setIcon(QIcon(":/pictures/stopRecord.png"));
-     connect(m_stopRecord, SIGNAL(triggered()), AcquisitionSettingsProxy::getInstance(), SLOT(stop()));
+    m_stopRecord = new QAction("Stop record", this);
+    m_stopRecord->setIcon(QIcon(":/pictures/stopRecord.png"));
+    connect(m_stopRecord, SIGNAL(triggered()), IMU::getInstance(), SLOT(onStopRecordData()));
 
-     m_drawSpeed = new QAction("Draw speed", this);
-     m_drawPosition = new QAction("Draw position", this);
+    m_drawSpeed = new QAction("Draw speed", this);
+    m_drawPosition = new QAction("Draw position", this);
 
-     /* Configuration */
-     m_selectSource = new QAction("Select source", this);
-     m_selectSource->setIcon(QIcon(":/pictures/selectSource"));
-     connect(m_selectSource, SIGNAL(triggered()), this, SLOT(selectSource()));
+    /* Configuration */
+    m_selectSource = new QAction("Select source", this);
+    m_selectSource->setIcon(QIcon(":/pictures/selectSource"));
+    connect(m_selectSource, SIGNAL(triggered()), this, SLOT(selectSource()));
 
-     m_calibrateAccelerometer = new QAction("Calibrate accelerometer", this);
-     m_calibrateGyrometer = new QAction("Calibrate gyrometer", this);
-     m_calibrateCurve = new QAction("Calibrate curve", this);
+    m_calibrateAccelerometer = new QAction("Calibrate accelerometer", this);
+    m_calibrateGyrometer = new QAction("Calibrate gyrometer", this);
+    m_calibrateCurve = new QAction("Calibrate curve", this);
 
-     /* Help */
-     m_manual = new QAction("&Manual", this);
+    /* Help */
+    m_manual = new QAction("&Manual", this);
 
-     m_about = new QAction("&About", this);
-     connect(m_about, SIGNAL(triggered()), this, SLOT(about()));
+    m_about = new QAction("&About", this);
+    connect(m_about, SIGNAL(triggered()), this, SLOT(about()));
 
- }
+}
 
- void MainWindow::createStatusBar()
- {
-     this->statusBar()->showMessage("test status bar");
- }
+void MainWindow::createStatusBar()
+{
+    this->statusBar()->showMessage("test status bar");
+}
 
- void MainWindow::createToolBar()
- {
+void MainWindow::createToolBar()
+{
     QToolBar* fileToolbar = addToolBar("File");
     fileToolbar->addAction(m_quit);
 
@@ -164,13 +169,13 @@ void MainWindow::createMenu()
     QToolBar* studyToolbar = addToolBar("Study");
     studyToolbar->addAction(m_startRecord);
     studyToolbar->addAction(m_stopRecord);
- }
+}
 
- void MainWindow::selectSource()
- {
-     AcquisitionSettings* settings = new AcquisitionSettings();
-     settings->show();
- }
+void MainWindow::selectSource()
+{
+    AcquisitionSettings* settings = new AcquisitionSettings();
+    settings->show();
+}
 
 
 
@@ -188,14 +193,6 @@ double MainWindow::doubleintegration(double acc){
     return position;
 }
 
-void MainWindow::onNewData(QString& data)
-{
-    /* save raw Data in a file here */
-    m_accelerations->addData(data.section(" ", 0, 2));
-    m_angles->addData(data.section(" ", 3, 5));
-    m_positions->addData(data.section(" ", 6, 8));
-    m_pressure->addData(data.section(" ", 9));
-}
 
 void MainWindow::onError(QString& err)
 {
@@ -211,5 +208,33 @@ void MainWindow::onStatusChanged(QString& stat, int timeout)
 
 void MainWindow::about()
 {
-    QMessageBox::information(this, "About", "Version 0.4\nStill in Developpement\nIn case of problem please contact the author at yannfeunteun@gmail.com\n");
+    QMessageBox::information(this, "About", "Version 0.3\nStill in Developpement\nIn case of problem please contact the author at yannfeunteun@gmail.com\n");
+}
+
+
+void MainWindow::updateView()
+{
+    DEBUG("Update View");
+    int current = ui->tabMaster->currentIndex();
+
+    switch(current){
+    case 0:
+        DEBUG("Update Accelerometers");
+        m_accelerations->update();
+        break;
+    case 1:
+        DEBUG("Update Gyrometers");
+        m_angles->update();
+        break;
+    case 2:
+        DEBUG("Update Magnetometers");
+        m_positions->update();
+        break;
+    case 3:
+        DEBUG("Update pressure");
+        m_pressure->update();
+        break;
+    default:
+        DEBUG("THIS MESSAGE MAY NOT BE DISPLAYED CHECK 'void MainWindow::updateView()'");
+    }
 }

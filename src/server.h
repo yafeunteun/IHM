@@ -13,7 +13,6 @@ public:
     static Server* getInstance(void);
     QTcpSocket* getPeer(void){return m_peer;}
     void setPort(quint16 port){this->m_port = port;}
-    void setAddress(QHostAddress addr){this->m_addr = addr;}
 
 protected:
     static Server *instance;

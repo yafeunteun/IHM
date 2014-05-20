@@ -42,3 +42,24 @@ void NoFilter::setConfiguration(QVector<QVariant>* configuration)
     /* Configure members with argument here if needed */
     /* nota : there is no member to configure yet, you need to add it if needed */
 }
+
+
+/* calibrate(QString data)
+ * {
+ *      static int i = 0;
+ *      static int sum = 0;
+ *      bool ok = false;
+ *
+ *      float m = data.toFloat(&ok);
+ *      if(ok){
+ *          sum += m;
+ *          ++i;
+ *      }
+ *      if(i == 10)
+ *      {
+ *          i=0;
+ *          m_offset = sum / 10.;
+ *          emit calibrationFinished();  Tells the Graph object to send the next data to the DataHolder.
+ *      }
+ * }
+ * */

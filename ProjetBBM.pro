@@ -34,7 +34,6 @@ include(3rdparty/qextserialport/src/qextserialport.pri)
 SOURCES += src/main.cpp\
         src/mainwindow.cpp \
     src/server.cpp \
-    src/calibration.cpp \
     src/imu.cpp \
     src/dataholder.cpp \
     src/dataset.cpp \
@@ -43,12 +42,11 @@ SOURCES += src/main.cpp\
     src/proxystrategy.cpp \
     src/serialport.cpp \
     src/acquisitionsettings.cpp \
-    src/acquisitionsettingsproxy.cpp
+    src/datasource.cpp
 
 HEADERS  += src/mainwindow.h \
     src/server.h \
     src/debug.h \
-    src/calibration.h \
     src/imu.h \
     src/dataholder.h \
     src/dataset.h \
@@ -57,7 +55,7 @@ HEADERS  += src/mainwindow.h \
     src/proxystrategy.h \
     src/serialport.h \
     src/acquisitionsettings.h \
-    src/acquisitionsettingsproxy.h
+    src/datasource.h
 
 FORMS    += src/IHM.ui
 

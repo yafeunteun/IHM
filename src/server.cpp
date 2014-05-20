@@ -31,6 +31,8 @@ Server::Server()
 
     connect(m_timer1, SIGNAL(timeout()), this, SLOT(writeToFile()));
     connect(m_timer2, SIGNAL(timeout()), this, SLOT(readFromFile()));
+
+    m_addr = QHostAddress::Any;
 }
 
 Server::~Server()
@@ -39,12 +41,19 @@ Server::~Server()
 
 void Server::start()
 {    
+    QString stat = "Trying to start the server...";
+    status(stat, 10000);
+
     if(!this->listen(m_addr, m_port))
     {
         QString err = this->errorString();
+        stat = "Starting server failed !";
+        status(stat, 10000);
         emit error(err);
     }else{
-        DEBUG("Server is listening on " + m_addr.toString() + ":" + QString::number(m_port));
+        stat = "Server is listening on " + m_addr.toString() + ":" + QString::number(m_port);
+        DEBUG(stat);
+        status(stat, 10000);
         QObject::connect(this, SIGNAL(newConnection()), this, SLOT(onConnection()));
         m_timer1->start();
         m_timer2->start();

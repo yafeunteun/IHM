@@ -11,7 +11,7 @@ public:
     ~DataHolder();
     inline void setProxy(ProxyStrategy::Proxy_t type){m_strategy = ProxyStrategy::getProxy(type);}
     void addDataSet(QString &label);
-    void addData(QString &incommingRawData);
+    void addData(QString &&incommingRawData);
     DataSet* getDataSet(const QString& label);
     int getSize(){return m_datasets.size();}
 private:

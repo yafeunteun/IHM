@@ -46,11 +46,15 @@ SerialPort::~SerialPort()
 
 void SerialPort::start()
 {
-    DEBUG("start serial port");
+    QString stat = "Trying to open serial port " + this->portName();
+    DEBUG(stat);
+    emit status(stat, 10000);
+
 
     if(!this->open(QIODevice::ReadWrite))
     {
         QString err("Can't open port with specified settings !");
+        emit status(err, 10000);
         emit error(err);
     }
 
@@ -64,6 +68,8 @@ void SerialPort::start()
 
 void SerialPort::stop()
 {
+    QString stat = "Record has been stopped.";
+    emit status(stat, 10000);
     m_timer1->stop();
     m_timer2->stop();
     this->close();
