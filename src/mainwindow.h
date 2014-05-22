@@ -23,6 +23,7 @@ public:
     Graph *m_angles;
     Graph *m_positions;
     Graph *m_pressure;
+    Graph *m_temperature;
 
 private:
     QWidget *parent;

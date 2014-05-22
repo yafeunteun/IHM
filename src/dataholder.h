@@ -7,7 +7,7 @@
 class DataHolder
 {
 public:
-    DataHolder(std::initializer_list<QString> list, ProxyStrategy::Proxy_t type = ProxyStrategy::NOFILTER);
+    DataHolder(std::initializer_list<QString> list, ProxyStrategy::Proxy_t type = ProxyStrategy::NOPROXY);
     ~DataHolder();
     inline void setProxy(ProxyStrategy::Proxy_t type){m_strategy = ProxyStrategy::getProxy(type);}
     void addDataSet(QString &label);

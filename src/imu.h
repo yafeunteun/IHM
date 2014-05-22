@@ -14,6 +14,7 @@ public:
     inline DataHolder* getGyrometersData(){return m_gyrometers;}
     inline DataHolder* getMagnetometersData(){return m_magnetometers;}
     inline DataHolder* getBarometerData(){return m_barometer;}
+    inline DataHolder* getTermometerData(){return m_termometer;}
 private:
     IMU();
     static IMU *instance;
@@ -22,6 +23,7 @@ private:
     DataHolder* m_gyrometers;
     DataHolder* m_magnetometers;
     DataHolder* m_barometer;
+    DataHolder* m_termometer;
 
     std::vector<QString> m_rawData; /* It will allow to save raw data in a file with a call to save() method */
 

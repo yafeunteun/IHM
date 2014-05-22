@@ -8,7 +8,7 @@
 class ProxyStrategy
 {
 public:
-    typedef enum{NOFILTER}Proxy_t;
+    typedef enum{NOPROXY, ACC, MGN, GYR, BRM, TMP}Proxy_t;
 
     ProxyStrategy(){}
     ~ProxyStrategy(){}
@@ -20,14 +20,61 @@ protected:
 };
 
 
-class NoFilter : public ProxyStrategy
+class NoProxy : public ProxyStrategy
 {
 public:
-    NoFilter(){}
-    ~NoFilter(){}
+    NoProxy(){}
+    ~NoProxy(){}
     QVector<float> doAlgorithm(QString& incommingRawData);
     void setConfiguration(QVector<QVariant>* configuration);
 };
+
+class AccelerometerProxy : public ProxyStrategy
+{
+public:
+    AccelerometerProxy(){}
+    ~AccelerometerProxy(){}
+    QVector<float> doAlgorithm(QString& incommingRawData);
+    void setConfiguration(QVector<QVariant>* configuration);
+};
+
+class GyrometerProxy : public ProxyStrategy
+{
+public:
+    GyrometerProxy(){}
+    ~GyrometerProxy(){}
+    QVector<float> doAlgorithm(QString& incommingRawData);
+    void setConfiguration(QVector<QVariant>* configuration);
+};
+
+class MagnetometerProxy : public ProxyStrategy
+{
+public:
+    MagnetometerProxy(){}
+    ~MagnetometerProxy(){}
+    QVector<float> doAlgorithm(QString& incommingRawData);
+    void setConfiguration(QVector<QVariant>* configuration);
+};
+
+class BarometerProxy : public ProxyStrategy
+{
+public:
+    BarometerProxy(){}
+    ~BarometerProxy(){}
+    QVector<float> doAlgorithm(QString& incommingRawData);
+    void setConfiguration(QVector<QVariant>* configuration);
+};
+
+class TermometerProxy : public ProxyStrategy
+{
+public:
+    TermometerProxy(){}
+    ~TermometerProxy(){}
+    QVector<float> doAlgorithm(QString& incommingRawData);
+    void setConfiguration(QVector<QVariant>* configuration);
+};
+
+
 
 
 #endif // PROXYSTRATEGY_H

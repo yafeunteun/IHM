@@ -39,10 +39,15 @@ MainWindow::MainWindow(QWidget *parent) :
                            IMU::getInstance()->getBarometerData());
     m_pressure->setTitle("Pressure");
 
+    m_temperature = new Graph({QString("temperature")},
+                           IMU::getInstance()->getTermometerData());
+    m_temperature->setTitle("Temperature");
+
     ui->tabMaster->addTab(m_accelerations, "Accelerometers");
     ui->tabMaster->addTab(m_angles, "Gyrometers");
     ui->tabMaster->addTab(m_positions, "Magnetometers");
     ui->tabMaster->addTab(m_pressure, "Pressure");
+    ui->tabMaster->addTab(m_temperature, "Temperature");
 
     QObject::connect(Server::getInstance(), SIGNAL(error(QString&)), this, SLOT(onError(QString&)));
     QObject::connect(SerialPort::getInstance(), SIGNAL(error(QString&)), this, SLOT(onError(QString&)));
@@ -233,6 +238,10 @@ void MainWindow::updateView()
     case 3:
         DEBUG("Update pressure");
         m_pressure->update();
+        break;
+    case 4:
+        DEBUG("Update temperature");
+        m_temperature->update();
         break;
     default:
         DEBUG("THIS MESSAGE MAY NOT BE DISPLAYED CHECK 'void MainWindow::updateView()'");

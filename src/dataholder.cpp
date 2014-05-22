@@ -5,7 +5,7 @@
 DataHolder::DataHolder(std::initializer_list<QString> list, ProxyStrategy::Proxy_t type)
 {
 
-    m_strategy = new NoFilter();
+    m_strategy = ProxyStrategy::getProxy(type);
 
     for(QString label : list)
     {
