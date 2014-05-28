@@ -115,6 +115,8 @@ void MainWindow::createActions(void)
 
     /* File */
     m_saveRecordedData = new QAction("Save recorded data", this);
+    connect(m_saveRecordedData, SIGNAL(triggered()), this, SLOT(onSaveRecordedData()));
+
     m_loadRecordedData = new QAction("Load recorded data", this);
     m_saveConfiguration = new QAction("Save configuration", this);
     m_loadSensorData = new QAction("Load sensor data", this);
@@ -245,5 +247,13 @@ void MainWindow::updateView()
         break;
     default:
         DEBUG("THIS MESSAGE MAY NOT BE DISPLAYED CHECK 'void MainWindow::updateView()'");
+    }
+}
+
+void MainWindow::onSaveRecordedData()
+{
+    QString folder = QFileDialog::getExistingDirectory(this, "Choose a folder");
+    if(!folder.isEmpty()){
+        IMU::getInstance()->save(folder);
     }
 }

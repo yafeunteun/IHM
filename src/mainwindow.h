@@ -78,6 +78,7 @@ private slots :
     void onError(QString &err);
     void onStatusChanged(QString& stat, int timeout);
     void about(void);
+    void onSaveRecordedData(void);
 };
 
 #endif // MAINWINDOW_H

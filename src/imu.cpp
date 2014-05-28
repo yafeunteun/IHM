@@ -1,5 +1,9 @@
 #include "imu.h"
 #include "datasource.h"
+#include <QDateTime>
+#include <iostream>
+#include <fstream>
+#include <QDir>
 
 IMU* IMU::instance = nullptr;
 
@@ -80,4 +84,99 @@ void IMU::calibratePressure(QString &data)
     DEBUG("Pressure sensor has been calibrated");
 
     DataSource::getInstance()->stop();
+}
+
+void IMU::save(QString &folder)
+{
+    DEBUG("Trying to save data");
+    QString f = c_prefixFolderName + QString::number(QDateTime::currentMSecsSinceEpoch());
+
+    /* Create destination path */
+    QDir dir(folder);
+    if(!dir.mkpath(folder+"/"+f))
+    {
+        DEBUG("Unable to create destination folder please check 'void IMU::save(QString &folder)'");
+    }
+
+    std::ofstream fraw;
+    std::ofstream facc;
+    std::ofstream fgyr;
+    std::ofstream fmag;
+    std::ofstream fbar;
+    std::ofstream ftmp;
+
+    fraw.open((folder+"/"+f+"/"+c_rawDataFileName).toStdString());
+    facc.open((folder+"/"+f+"/"+c_accDataFileName).toStdString());
+    fgyr.open((folder+"/"+f+"/"+c_gyrDataFileName).toStdString());
+    fmag.open((folder+"/"+f+"/"+c_magDataFileName).toStdString());
+    fbar.open((folder+"/"+f+"/"+c_barDataFileName).toStdString());
+    ftmp.open((folder+"/"+f+"/"+c_tmpDataFileName).toStdString());
+
+    /* writing data into files */
+
+    /* raw data */
+    for(QString d:m_rawData){
+        QStringList values = d.split(' ');
+        for(QString& v:values){
+            fraw << v.toStdString() + ";";
+        }
+
+        fraw << std::endl;
+    }
+
+    /* accelerometers data */
+    auto acc_x = m_accelerometers->getDataSet("x_axis")->getPoints();
+    auto acc_y = m_accelerometers->getDataSet("y_axis")->getPoints();
+    auto acc_z = m_accelerometers->getDataSet("z_axis")->getPoints();
+    facc << "x_axis;" << "y_axis;" << "z_axis" << std::endl;
+    for(quint64 index = 0; index < acc_x.size(); ++index){
+        facc << QString::number(acc_x[index].y()).toStdString() << ";"
+             << QString::number(acc_y[index].y()).toStdString() << ";"
+             << QString::number(acc_z[index].y()).toStdString() << std::endl;
+    }
+
+    /* gyrometers data */
+    auto gyr_x = m_gyrometers->getDataSet("x_axis")->getPoints();
+    auto gyr_y = m_gyrometers->getDataSet("y_axis")->getPoints();
+    auto gyr_z = m_gyrometers->getDataSet("z_axis")->getPoints();
+    fgyr << "x_axis;" << "y_axis;" << "z_axis" << std::endl;
+    for(quint64 index = 0; index < gyr_x.size(); ++index){
+        fgyr << QString::number(gyr_x[index].y()).toStdString() << ";"
+             << QString::number(gyr_y[index].y()).toStdString() << ";"
+             << QString::number(gyr_z[index].y()).toStdString() << std::endl;
+    }
+
+    /* magnetometers data */
+    auto mag_x = m_magnetometers->getDataSet("x_axis")->getPoints();
+    auto mag_y = m_magnetometers->getDataSet("y_axis")->getPoints();
+    auto mag_z = m_magnetometers->getDataSet("z_axis")->getPoints();
+    fmag << "x_axis;" << "y_axis;" << "z_axis" << std::endl;
+    for(quint64 index = 0; index < mag_x.size(); ++index){
+        fmag << QString::number(mag_x[index].y()).toStdString() << ";"
+             << QString::number(mag_y[index].y()).toStdString() << ";"
+             << QString::number(mag_z[index].y()).toStdString() << std::endl;
+    }
+
+    /* barometer data */
+    auto bar = m_barometer->getDataSet("pressure")->getPoints();
+    fbar << "pressure" << std::endl;
+    for(quint64 index = 0; index < bar.size(); ++index){
+        fbar << QString::number(bar[index].y()).toStdString() << std::endl;
+    }
+
+    /* termometer data */
+    auto tmp = m_termometer->getDataSet("temperature")->getPoints();
+    ftmp << "temperature" << std::endl;
+    for(quint64 index = 0; index < tmp.size(); ++index){
+        ftmp << QString::number(tmp[index].y()).toStdString() << std::endl;
+    }
+
+    /* closing file streams */
+
+    fraw.close();
+    facc.close();
+    fgyr.close();
+    fmag.close();
+    fbar.close();
+    ftmp.close();
 }

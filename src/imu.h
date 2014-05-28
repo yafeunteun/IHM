@@ -27,12 +27,21 @@ private:
 
     std::vector<QString> m_rawData; /* It will allow to save raw data in a file with a call to save() method */
 
+    const QString c_prefixFolderName = "imu_data_";
+    const QString c_rawDataFileName = "raw.csv";
+    const QString c_accDataFileName = "acc.csv";
+    const QString c_gyrDataFileName = "gyr.csv";
+    const QString c_magDataFileName = "mag.csv";
+    const QString c_barDataFileName = "bar.csv";
+    const QString c_tmpDataFileName = "tmp.csv";
+
 public slots:
     void onStartRecordData();
     void onStopRecordData();
     void recordData(QString& data);
     void onStartCalibratePressure();
     void calibratePressure(QString& data);
+    void save(QString& folder);
 signals:
     void dataUpdated();
     void calibrationFinished();
