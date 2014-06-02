@@ -28,7 +28,7 @@ void DataHolder::addDataSet(QString &label)
 
 void DataHolder::addData(QString&& incommingRawData)
 {
-    QVector<float> data = m_strategy->doAlgorithm(incommingRawData);
+    std::vector<float> data = m_strategy->doAlgorithm(incommingRawData);
 
     if(getSize() == data.size()){
         for(int index = 0; index < data.size(); ++index)

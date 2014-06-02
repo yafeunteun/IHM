@@ -10,6 +10,7 @@
 #include "acquisitionsettings.h"
 #include "server.h"
 #include "imu.h"
+#include "calibrationwindow.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent), parent(parent),
@@ -98,6 +99,7 @@ void MainWindow::createMenu()
     configurationMenu->addSeparator();
     configurationMenu->addAction(m_calibrateAccelerometer);
     configurationMenu->addAction(m_calibrateGyrometer);
+    configurationMenu->addAction(m_calibrateBarometer);
     configurationMenu->addAction(m_calibrateCurve);
 
     QMenu* helpMenu = new QMenu("Help");
@@ -150,6 +152,10 @@ void MainWindow::createActions(void)
 
     m_calibrateAccelerometer = new QAction("Calibrate accelerometer", this);
     m_calibrateGyrometer = new QAction("Calibrate gyrometer", this);
+
+    m_calibrateBarometer = new QAction("Calibrate barometer", this);
+    connect(m_calibrateBarometer, SIGNAL(triggered()), this, SLOT(onCalibrateBarometer()));
+
     m_calibrateCurve = new QAction("Calibrate curve", this);
 
     /* Help */
@@ -215,7 +221,7 @@ void MainWindow::onStatusChanged(QString& stat, int timeout)
 
 void MainWindow::about()
 {
-    QMessageBox::information(this, "About", "Version 0.5\nStill in Developpement\nIn case of problem please contact the author at yannfeunteun@gmail.com\n");
+    QMessageBox::information(this, "About", "Version 0.6\nStill in Developpement\nIn case of problem please contact the author at yannfeunteun@gmail.com\n");
 }
 
 
@@ -256,4 +262,11 @@ void MainWindow::onSaveRecordedData()
     if(!folder.isEmpty()){
         IMU::getInstance()->save(folder);
     }
+}
+
+void MainWindow::onCalibrateBarometer()
+{
+    IMU::getInstance()->onStartCalibratePressure();
+    CalibrationWindow *win = new CalibrationWindow();
+    win->show();
 }

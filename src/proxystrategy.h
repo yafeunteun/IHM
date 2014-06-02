@@ -5,14 +5,16 @@
 #include <QVariant>
 #include <QString>
 
+#include "filtrage.h"
+
 class ProxyStrategy
 {
 public:
     typedef enum{NOPROXY, ACC, MGN, GYR, BRM, TMP}Proxy_t;
 
     ProxyStrategy(){}
-    ~ProxyStrategy(){}
-    virtual QVector<float> doAlgorithm(QString& incommingRawData) = 0;
+    virtual ~ProxyStrategy(){}
+    virtual std::vector<float>  doAlgorithm(QString& incommingRawData) = 0;
     virtual void setConfiguration(QVector<QVariant>* configuration) = 0;
     static ProxyStrategy* getProxy(Proxy_t type);
 
@@ -25,53 +27,63 @@ class NoProxy : public ProxyStrategy
 public:
     NoProxy(){}
     ~NoProxy(){}
-    QVector<float> doAlgorithm(QString& incommingRawData);
+    std::vector<float> doAlgorithm(QString& incommingRawData);
     void setConfiguration(QVector<QVariant>* configuration);
 };
 
 class AccelerometerProxy : public ProxyStrategy
 {
 public:
-    AccelerometerProxy(){}
+    AccelerometerProxy(){m_filtrage = new Filtrage(3); m_filtrage->setK(0.02);}
     ~AccelerometerProxy(){}
-    QVector<float> doAlgorithm(QString& incommingRawData);
+    std::vector<float> doAlgorithm(QString& incommingRawData);
     void setConfiguration(QVector<QVariant>* configuration);
+private:
+    Filtrage *m_filtrage;
 };
 
 class GyrometerProxy : public ProxyStrategy
 {
 public:
-    GyrometerProxy(){}
+    GyrometerProxy(){m_filtrage = new Filtrage(3); m_filtrage->setK(0.02);}
     ~GyrometerProxy(){}
-    QVector<float> doAlgorithm(QString& incommingRawData);
+   std::vector<float> doAlgorithm(QString& incommingRawData);
     void setConfiguration(QVector<QVariant>* configuration);
+private:
+    Filtrage *m_filtrage;
 };
 
 class MagnetometerProxy : public ProxyStrategy
 {
 public:
-    MagnetometerProxy(){}
+    MagnetometerProxy(){m_filtrage = new Filtrage(3); m_filtrage->setK(0.02);}
     ~MagnetometerProxy(){}
-    QVector<float> doAlgorithm(QString& incommingRawData);
+    std::vector<float> doAlgorithm(QString& incommingRawData);
     void setConfiguration(QVector<QVariant>* configuration);
+private:
+    Filtrage *m_filtrage;
 };
 
 class BarometerProxy : public ProxyStrategy
 {
 public:
-    BarometerProxy(){}
+    BarometerProxy(){m_filtrage = new Filtrage(1); m_filtrage->setK(0.02);}
     ~BarometerProxy(){}
-    QVector<float> doAlgorithm(QString& incommingRawData);
+    std::vector<float>  doAlgorithm(QString& incommingRawData);
     void setConfiguration(QVector<QVariant>* configuration);
+private:
+    Filtrage *m_filtrage;
 };
 
 class TermometerProxy : public ProxyStrategy
 {
 public:
-    TermometerProxy(){}
+    TermometerProxy(){m_filtrage = new Filtrage(1); m_filtrage->setK(0.02);}
     ~TermometerProxy(){}
-    QVector<float> doAlgorithm(QString& incommingRawData);
+    std::vector<float>  doAlgorithm(QString& incommingRawData);
     void setConfiguration(QVector<QVariant>* configuration);
+private:
+    Filtrage *m_filtrage;
 };
 
 

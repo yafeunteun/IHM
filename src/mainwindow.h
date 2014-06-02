@@ -49,6 +49,7 @@ private:
     QAction* m_selectSource;
     QAction* m_calibrateAccelerometer;
     QAction* m_calibrateGyrometer;
+    QAction* m_calibrateBarometer;
     QAction* m_calibrateCurve;
 
     /* Help */
@@ -79,6 +80,7 @@ private slots :
     void onStatusChanged(QString& stat, int timeout);
     void about(void);
     void onSaveRecordedData(void);
+    void onCalibrateBarometer(void);
 };
 
 #endif // MAINWINDOW_H

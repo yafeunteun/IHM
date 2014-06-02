@@ -1,5 +1,5 @@
 #include "proxystrategy.h"
-
+#include "debug.h"
 
 ProxyStrategy* ProxyStrategy::getProxy(Proxy_t type)
 {
@@ -28,9 +28,9 @@ ProxyStrategy* ProxyStrategy::getProxy(Proxy_t type)
 }
 
 
-QVector<float> NoProxy::doAlgorithm(QString& incommingRawData)
+std::vector<float> NoProxy::doAlgorithm(QString& incommingRawData)
 {
-    QVector<float> data;
+    std::vector<float>  data;
     float n;
     QRegExp regex(" ", Qt::CaseInsensitive);
     QStringList tmp;
@@ -42,7 +42,7 @@ QVector<float> NoProxy::doAlgorithm(QString& incommingRawData)
     {
         n = number.toFloat(&ok);
         if(ok){
-            data.append(n);
+            data.push_back(n);
         }
     }
 
@@ -55,16 +55,13 @@ void NoProxy::setConfiguration(QVector<QVariant>* configuration)
     /* nota : there is no member to configure yet, you need to add it if needed */
 }
 
-QVector<float> AccelerometerProxy::doAlgorithm(QString& incommingRawData)
+std::vector<float> AccelerometerProxy::doAlgorithm(QString& incommingRawData)
 {
-    QVector<float> data;
+    std::vector<float>  data;
     float n;
     QRegExp regex(" ", Qt::CaseInsensitive);
     QStringList tmp;
     bool ok = false;
-    static float last_val[3] = {0.};
-    static ushort pos = 0;
-    const float ponder = 1./50.;
 
     tmp = incommingRawData.split(regex, QString::SkipEmptyParts);
 
@@ -72,15 +69,11 @@ QVector<float> AccelerometerProxy::doAlgorithm(QString& incommingRawData)
     {
         n = number.toFloat(&ok);
         if(ok){
-            float estimated = last_val[pos] + ponder * (n - last_val[pos]);
-            last_val[pos++] = estimated;
-            data.append(estimated);
-            if(pos > 2){
-                pos = 0;
-            }
+            data.push_back(n);
         }
     }
 
+    m_filtrage->passeBasRecur(data);
     return data;
 }
 
@@ -91,16 +84,13 @@ void AccelerometerProxy::setConfiguration(QVector<QVariant>* configuration)
 }
 
 
-QVector<float> GyrometerProxy::doAlgorithm(QString& incommingRawData)
+std::vector<float> GyrometerProxy::doAlgorithm(QString& incommingRawData)
 {
-    QVector<float> data;
+    std::vector<float>  data;
     float n;
     QRegExp regex(" ", Qt::CaseInsensitive);
     QStringList tmp;
     bool ok = false;
-    static float last_val[3] = {0.};
-    static ushort pos = 0;
-    const float ponder = 1./50.;
 
     tmp = incommingRawData.split(regex, QString::SkipEmptyParts);
 
@@ -108,15 +98,11 @@ QVector<float> GyrometerProxy::doAlgorithm(QString& incommingRawData)
     {
         n = number.toFloat(&ok);
         if(ok){
-            float estimated = last_val[pos] + ponder * (n - last_val[pos]);
-            last_val[pos++] = estimated;
-            data.append(estimated);
-            if(pos > 2){
-                pos = 0;
-            }
+            data.push_back(n);
         }
     }
 
+    m_filtrage->passeBasRecur(data);
     return data;
 }
 
@@ -127,16 +113,13 @@ void GyrometerProxy::setConfiguration(QVector<QVariant>* configuration)
 }
 
 
-QVector<float> MagnetometerProxy::doAlgorithm(QString& incommingRawData)
+std::vector<float> MagnetometerProxy::doAlgorithm(QString& incommingRawData)
 {
-    QVector<float> data;
+    std::vector<float> data;
     float n;
     QRegExp regex(" ", Qt::CaseInsensitive);
     QStringList tmp;
     bool ok = false;
-    static float last_val[3] = {0.};
-    static ushort pos = 0;
-    const float ponder = 1./50.;
 
     tmp = incommingRawData.split(regex, QString::SkipEmptyParts);
 
@@ -144,15 +127,11 @@ QVector<float> MagnetometerProxy::doAlgorithm(QString& incommingRawData)
     {
         n = number.toFloat(&ok);
         if(ok){
-            float estimated = last_val[pos] + ponder * (n - last_val[pos]);
-            last_val[pos++] = estimated;
-            data.append(estimated);
-            if(pos > 2){
-                pos = 0;
-            }
+            data.push_back(n);
         }
     }
 
+    m_filtrage->passeBasRecur(data);
     return data;
 }
 
@@ -163,15 +142,13 @@ void MagnetometerProxy::setConfiguration(QVector<QVariant>* configuration)
 }
 
 
-QVector<float> BarometerProxy::doAlgorithm(QString& incommingRawData)
+std::vector<float> BarometerProxy::doAlgorithm(QString& incommingRawData)
 {
-    QVector<float> data;
+    std::vector<float> data;
     float n;
     QRegExp regex(" ", Qt::CaseInsensitive);
     QStringList tmp;
     bool ok = false;
-    static float last_val = 0.;
-    const float ponder = 1./50.;
 
     tmp = incommingRawData.split(regex, QString::SkipEmptyParts);
 
@@ -179,12 +156,11 @@ QVector<float> BarometerProxy::doAlgorithm(QString& incommingRawData)
     {
         n = number.toFloat(&ok);
         if(ok){
-            float estimated = last_val + ponder * (n - last_val);
-            last_val = estimated;
-            data.append(estimated);
+            data.push_back(n);
         }
     }
 
+    m_filtrage->passeBasRecur(data);
     return data;
 }
 
@@ -195,15 +171,14 @@ void BarometerProxy::setConfiguration(QVector<QVariant>* configuration)
 }
 
 
-QVector<float> TermometerProxy::doAlgorithm(QString& incommingRawData)
+std::vector<float> TermometerProxy::doAlgorithm(QString& incommingRawData)
 {
-    QVector<float> data;
+    std::vector<float> data;
     float n;
     QRegExp regex(" ", Qt::CaseInsensitive);
     QStringList tmp;
     bool ok = false;
-    static float last_val = 0.;
-    const float ponder = 1./50.;
+
 
     tmp = incommingRawData.split(regex, QString::SkipEmptyParts);
 
@@ -211,11 +186,11 @@ QVector<float> TermometerProxy::doAlgorithm(QString& incommingRawData)
     {
         n = number.toFloat(&ok);
         if(ok){
-            float estimated = last_val + ponder * (n - last_val);
-            last_val = estimated;
-            data.append(estimated);
+            data.push_back(n);
         }
     }
+
+    m_filtrage->passeBasRecur(data);
 
     return data;
 }

@@ -79,11 +79,27 @@ void IMU::onStartCalibratePressure()
 void IMU::calibratePressure(QString &data)
 {
     DEBUG("Data received in IMU (pressure calibration) : " + data);
-    /* Doing something with the data received */
-    emit calibrationFinished();
-    DEBUG("Pressure sensor has been calibrated");
 
-    DataSource::getInstance()->stop();
+    int coeff = 300;
+    static Filtrage filter(11);
+    filter.setN(coeff);
+    QStringList values = data.split(' ');
+    std::vector<float> valuesN;
+    static int cpt = 0;
+
+    for(QString& v : values){
+        valuesN.push_back(v.toFloat());
+    }
+
+    filter.passeBasDirect(valuesN);
+
+    if(cpt >= coeff){
+        emit newCalibratedData(valuesN);
+        cpt = 0;
+    }
+
+    cpt++;
+    valuesN.clear();
 }
 
 void IMU::save(QString &folder)
@@ -129,7 +145,7 @@ void IMU::save(QString &folder)
     auto acc_y = m_accelerometers->getDataSet("y_axis")->getPoints();
     auto acc_z = m_accelerometers->getDataSet("z_axis")->getPoints();
     facc << "x_axis;" << "y_axis;" << "z_axis" << std::endl;
-    for(quint64 index = 0; index < acc_x.size(); ++index){
+    for(qint64 index = 0; index < acc_x.size(); ++index){
         facc << QString::number(acc_x[index].y()).toStdString() << ";"
              << QString::number(acc_y[index].y()).toStdString() << ";"
              << QString::number(acc_z[index].y()).toStdString() << std::endl;
@@ -140,7 +156,7 @@ void IMU::save(QString &folder)
     auto gyr_y = m_gyrometers->getDataSet("y_axis")->getPoints();
     auto gyr_z = m_gyrometers->getDataSet("z_axis")->getPoints();
     fgyr << "x_axis;" << "y_axis;" << "z_axis" << std::endl;
-    for(quint64 index = 0; index < gyr_x.size(); ++index){
+    for(qint64 index = 0; index < gyr_x.size(); ++index){
         fgyr << QString::number(gyr_x[index].y()).toStdString() << ";"
              << QString::number(gyr_y[index].y()).toStdString() << ";"
              << QString::number(gyr_z[index].y()).toStdString() << std::endl;
@@ -151,7 +167,7 @@ void IMU::save(QString &folder)
     auto mag_y = m_magnetometers->getDataSet("y_axis")->getPoints();
     auto mag_z = m_magnetometers->getDataSet("z_axis")->getPoints();
     fmag << "x_axis;" << "y_axis;" << "z_axis" << std::endl;
-    for(quint64 index = 0; index < mag_x.size(); ++index){
+    for(qint64 index = 0; index < mag_x.size(); ++index){
         fmag << QString::number(mag_x[index].y()).toStdString() << ";"
              << QString::number(mag_y[index].y()).toStdString() << ";"
              << QString::number(mag_z[index].y()).toStdString() << std::endl;
@@ -160,14 +176,14 @@ void IMU::save(QString &folder)
     /* barometer data */
     auto bar = m_barometer->getDataSet("pressure")->getPoints();
     fbar << "pressure" << std::endl;
-    for(quint64 index = 0; index < bar.size(); ++index){
+    for(qint64 index = 0; index < bar.size(); ++index){
         fbar << QString::number(bar[index].y()).toStdString() << std::endl;
     }
 
     /* termometer data */
     auto tmp = m_termometer->getDataSet("temperature")->getPoints();
     ftmp << "temperature" << std::endl;
-    for(quint64 index = 0; index < tmp.size(); ++index){
+    for(qint64 index = 0; index < tmp.size(); ++index){
         ftmp << QString::number(tmp[index].y()).toStdString() << std::endl;
     }
 

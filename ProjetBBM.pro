@@ -42,7 +42,9 @@ SOURCES += src/main.cpp\
     src/proxystrategy.cpp \
     src/serialport.cpp \
     src/acquisitionsettings.cpp \
-    src/datasource.cpp
+    src/datasource.cpp \
+    src/filtrage.cpp \
+    src/calibrationwindow.cpp
 
 HEADERS  += src/mainwindow.h \
     src/server.h \
@@ -55,7 +57,9 @@ HEADERS  += src/mainwindow.h \
     src/proxystrategy.h \
     src/serialport.h \
     src/acquisitionsettings.h \
-    src/datasource.h
+    src/datasource.h \
+    src/filtrage.h \
+    src/calibrationwindow.h
 
 FORMS    += src/IHM.ui
 

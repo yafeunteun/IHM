@@ -44,6 +44,7 @@ public slots:
     void save(QString& folder);
 signals:
     void dataUpdated();
+    void newCalibratedData(std::vector<float>&); /* emitted each time a new set of data has been filtered */
     void calibrationFinished();
 
 };
