@@ -4,6 +4,13 @@
 #include <QVBoxLayout>
 #include <QGroupBox>
 
+/*!
+    *  \brief Constructor
+    *
+    *  Constructor of AcquisitionSettings class
+    *
+    *  \param parent : Constructs a widget which is a child of parent.
+    */
 CalibrationWindow::CalibrationWindow(QWidget *parent):
     QWidget(parent)
 {
@@ -57,6 +64,13 @@ CalibrationWindow::CalibrationWindow(QWidget *parent):
 }
 
 
+/*!
+    *  \brief Performed each time new data has been calibrated.
+    *
+    *  Update every label with the new value received. There is a label for each sensor.
+    *
+    *  \param data : A vector containing the new calibrated data.
+    */
 void CalibrationWindow::onNewCalibratedData(std::vector<float>& data)
 {
     if(data.size() == 11){

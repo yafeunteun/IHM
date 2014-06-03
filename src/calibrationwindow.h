@@ -1,9 +1,21 @@
 #ifndef CALIBRATIONWINDOW_H
 #define CALIBRATIONWINDOW_H
 
+/*!
+ * \file calibrationwindow.h
+ * \brief Graphical interface for inertial unit and barometer calibration.
+ * \author yann feunteun
+ * \version 0.1
+ * \date 06/03/2014
+ */
+
 #include <QWidget>
 #include <QLabel>
 
+
+/*! \class CalibrationWindow
+   * \brief This class represents the graphical widget allowing to calibrate the sensors of the inertial unit and the barometer.
+   */
 class CalibrationWindow : public QWidget
 {
     Q_OBJECT
