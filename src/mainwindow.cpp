@@ -97,10 +97,8 @@ void MainWindow::createMenu()
 
     configurationMenu->addAction(m_selectSource);
     configurationMenu->addSeparator();
-    configurationMenu->addAction(m_calibrateAccelerometer);
-    configurationMenu->addAction(m_calibrateGyrometer);
-    configurationMenu->addAction(m_calibrateBarometer);
-    configurationMenu->addAction(m_calibrateCurve);
+    configurationMenu->addAction(m_calibrate);
+
 
     QMenu* helpMenu = new QMenu("Help");
     this->menuBar()->addMenu(helpMenu);
@@ -150,13 +148,8 @@ void MainWindow::createActions(void)
     m_selectSource->setIcon(QIcon(":/pictures/selectSource"));
     connect(m_selectSource, SIGNAL(triggered()), this, SLOT(selectSource()));
 
-    m_calibrateAccelerometer = new QAction("Calibrate accelerometer", this);
-    m_calibrateGyrometer = new QAction("Calibrate gyrometer", this);
-
-    m_calibrateBarometer = new QAction("Calibrate barometer", this);
-    connect(m_calibrateBarometer, SIGNAL(triggered()), this, SLOT(onCalibrateBarometer()));
-
-    m_calibrateCurve = new QAction("Calibrate curve", this);
+    m_calibrate = new QAction("Calibrate", this);
+    connect(m_calibrate, SIGNAL(triggered()), this, SLOT(onCalibrate()));
 
     /* Help */
     m_manual = new QAction("&Manual", this);
@@ -221,7 +214,7 @@ void MainWindow::onStatusChanged(QString& stat, int timeout)
 
 void MainWindow::about()
 {
-    QMessageBox::information(this, "About", "Version 0.6\nStill in Developpement\nIn case of problem please contact the author at yannfeunteun@gmail.com\n");
+    QMessageBox::information(this, "About", "Version 0.7\nStill in Developpement\nIn case of problem please contact the author at yannfeunteun@gmail.com\n");
 }
 
 
@@ -264,9 +257,9 @@ void MainWindow::onSaveRecordedData()
     }
 }
 
-void MainWindow::onCalibrateBarometer()
+void MainWindow::onCalibrate()
 {
-    IMU::getInstance()->onStartCalibratePressure();
+    IMU::getInstance()->onStartCalibrate();
     CalibrationWindow *win = new CalibrationWindow();
     win->show();
 }

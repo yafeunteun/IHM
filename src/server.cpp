@@ -44,12 +44,26 @@ void Server::start()
     QString stat = "Trying to start the server...";
     status(stat, 10000);
 
+    if(m_port != this->serverPort()) /* if port has been changed */
+    {
+        this->close();
+    }
+
+
     if(!this->listen(m_addr, m_port))
     {
-        QString err = this->errorString();
-        stat = "Starting server failed !";
-        status(stat, 10000);
-        emit error(err);
+        if(this->isListening())
+        {
+            stat = "Server is still listening";
+            status(stat, 10000);
+
+        }else{
+
+            QString err = this->errorString();
+            stat = "Starting server failed !";
+            status(stat, 10000);
+            emit error(err);
+        }
     }else{
         stat = "Server is listening on " + m_addr.toString() + ":" + QString::number(m_port);
         DEBUG(stat);

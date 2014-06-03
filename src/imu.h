@@ -39,8 +39,8 @@ public slots:
     void onStartRecordData();
     void onStopRecordData();
     void recordData(QString& data);
-    void onStartCalibratePressure();
-    void calibratePressure(QString& data);
+    void onStartCalibrate();
+    void calibrate(QString& data);
     void save(QString& folder);
 signals:
     void dataUpdated();

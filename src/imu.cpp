@@ -65,7 +65,7 @@ void IMU::recordData(QString& data)
 
 }
 
-void IMU::onStartCalibratePressure()
+void IMU::onStartCalibrate()
 {
     QObject::disconnect(SerialPort::getInstance(), SIGNAL(newData(QString&)), this, SLOT(recordData(QString&)));
     QObject::disconnect(Server::getInstance(), SIGNAL(newData(QString&)), this, SLOT(recordData(QString&)));
@@ -76,7 +76,7 @@ void IMU::onStartCalibratePressure()
     DataSource::getInstance()->start();
 }
 
-void IMU::calibratePressure(QString &data)
+void IMU::calibrate(QString &data)
 {
     DEBUG("Data received in IMU (pressure calibration) : " + data);
 
