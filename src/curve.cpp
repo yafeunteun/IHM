@@ -33,10 +33,10 @@ void Curve::updateCurve()
 }
 
 /*!
-    *  \brief Change the color of the curve.
-    *
-    *  \param color : The new color of the curve.
-    */
+*  \brief Change the color of the curve.
+*
+*  \param color : The new color of the curve.
+*/
 void Curve::setColor(QColor &color)
 {
     QPen pen = this->pen();

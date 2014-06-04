@@ -1,12 +1,21 @@
 #ifndef PROXYSTRATEGY_H
 #define PROXYSTRATEGY_H
 
+/*!
+ * \file proxystrategy.h
+ * \author yann feunteun
+ * \version 0.1
+ * \date 06/03/2014
+ */
+
 #include <QVector>
 #include <QVariant>
 #include <QString>
-
 #include "filtrage.h"
 
+/*! \class ProxyStrategy
+* \brief This class and subclasses represents the differents strategies of processing the data comming from the differents parts of the inertial unit.
+*/
 class ProxyStrategy
 {
 public:

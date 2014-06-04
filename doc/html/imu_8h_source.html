@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.7"/>
-<title>IHM: imu.h Source File</title>
+<title>IMU Project: imu.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,8 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">IHM
-   &#160;<span id="projectnumber">0.7</span>
+   <div id="projectname">IMU Project
    </div>
   </td>
  </tr>
@@ -38,7 +37,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -70,7 +68,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -87,61 +85,77 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef IMU_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define IMU_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;QObject&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;dataholder.h&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
-<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="class_i_m_u.html">    7</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_i_m_u.html">IMU</a> : <span class="keyword">public</span> QObject</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;{</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    Q_OBJECT</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">static</span> <a class="code" href="class_i_m_u.html">IMU</a>* getInstance(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keyword">inline</span> <a class="code" href="class_data_holder.html">DataHolder</a>* getAccelerometersData(){<span class="keywordflow">return</span> m_accelerometers;}</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">inline</span> <a class="code" href="class_data_holder.html">DataHolder</a>* getGyrometersData(){<span class="keywordflow">return</span> m_gyrometers;}</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">inline</span> <a class="code" href="class_data_holder.html">DataHolder</a>* getMagnetometersData(){<span class="keywordflow">return</span> m_magnetometers;}</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keyword">inline</span> <a class="code" href="class_data_holder.html">DataHolder</a>* getBarometerData(){<span class="keywordflow">return</span> m_barometer;}</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">inline</span> <a class="code" href="class_data_holder.html">DataHolder</a>* getTermometerData(){<span class="keywordflow">return</span> m_termometer;}</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="class_i_m_u.html">IMU</a>();</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keyword">static</span> <a class="code" href="class_i_m_u.html">IMU</a> *instance;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="class_data_holder.html">DataHolder</a>* m_accelerometers;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="class_data_holder.html">DataHolder</a>* m_gyrometers;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="class_data_holder.html">DataHolder</a>* m_magnetometers;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="class_data_holder.html">DataHolder</a>* m_barometer;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="class_data_holder.html">DataHolder</a>* m_termometer;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    std::vector&lt;QString&gt; m_rawData; <span class="comment">/* It will allow to save raw data in a file with a call to save() method */</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">const</span> QString c_prefixFolderName = <span class="stringliteral">&quot;imu_data_&quot;</span>;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">const</span> QString c_rawDataFileName = <span class="stringliteral">&quot;raw.csv&quot;</span>;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">const</span> QString c_accDataFileName = <span class="stringliteral">&quot;acc.csv&quot;</span>;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">const</span> QString c_gyrDataFileName = <span class="stringliteral">&quot;gyr.csv&quot;</span>;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keyword">const</span> QString c_magDataFileName = <span class="stringliteral">&quot;mag.csv&quot;</span>;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keyword">const</span> QString c_barDataFileName = <span class="stringliteral">&quot;bar.csv&quot;</span>;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">const</span> QString c_tmpDataFileName = <span class="stringliteral">&quot;tmp.csv&quot;</span>;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">public</span> slots:</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> onStartRecordData();</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">void</span> onStopRecordData();</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">void</span> recordData(QString&amp; data);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">void</span> onStartCalibrate();</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">void</span> calibrate(QString&amp; data);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">void</span> save(QString&amp; folder);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;signals:</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">void</span> dataUpdated();</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> newCalibratedData(std::vector&lt;float&gt;&amp;); <span class="comment">/* emitted each time a new set of data has been filtered */</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">void</span> calibrationFinished();</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;};</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;QObject&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="dataholder_8h.html">dataholder.h</a>&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="class_i_m_u.html">   22</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_i_m_u.html">IMU</a> : <span class="keyword">public</span> QObject</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;{</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    Q_OBJECT</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keyword">static</span> <a class="code" href="class_i_m_u.html">IMU</a>* <a class="code" href="class_i_m_u.html#a8686eeec63f1b790a186d145c0a021c8">getInstance</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="class_i_m_u.html#a3a8e7facbb3f7bfb776f45431d2e4c95">   31</a></span>&#160;    <span class="keyword">inline</span> <a class="code" href="class_data_holder.html">DataHolder</a>* <a class="code" href="class_i_m_u.html#a3a8e7facbb3f7bfb776f45431d2e4c95">getAccelerometersData</a>(){<span class="keywordflow">return</span> m_accelerometers;}</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="class_i_m_u.html#a0746aed25848f7ea79fdb577cff26820">   35</a></span>&#160;    <span class="keyword">inline</span> <a class="code" href="class_data_holder.html">DataHolder</a>* <a class="code" href="class_i_m_u.html#a0746aed25848f7ea79fdb577cff26820">getGyrometersData</a>(){<span class="keywordflow">return</span> m_gyrometers;}</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="class_i_m_u.html#a25b6d66a2c269aaf3fda730a99d2c0f0">   39</a></span>&#160;    <span class="keyword">inline</span> <a class="code" href="class_data_holder.html">DataHolder</a>* <a class="code" href="class_i_m_u.html#a25b6d66a2c269aaf3fda730a99d2c0f0">getMagnetometersData</a>(){<span class="keywordflow">return</span> m_magnetometers;}</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="class_i_m_u.html#a322cfb2c81d0064c544039768f10a4a2">   43</a></span>&#160;    <span class="keyword">inline</span> <a class="code" href="class_data_holder.html">DataHolder</a>* <a class="code" href="class_i_m_u.html#a322cfb2c81d0064c544039768f10a4a2">getBarometerData</a>(){<span class="keywordflow">return</span> m_barometer;}</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="class_i_m_u.html#a8d194215abc075438348003c98a73d6a">   47</a></span>&#160;    <span class="keyword">inline</span> <a class="code" href="class_data_holder.html">DataHolder</a>* <a class="code" href="class_i_m_u.html#a8d194215abc075438348003c98a73d6a">getTermometerData</a>(){<span class="keywordflow">return</span> m_termometer;}</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="class_i_m_u.html">IMU</a>();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keyword">static</span> <a class="code" href="class_i_m_u.html">IMU</a> *instance;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#endif // IMU_H</span></div>
-<div class="ttc" id="class_i_m_u_html"><div class="ttname"><a href="class_i_m_u.html">IMU</a></div><div class="ttdef"><b>Definition:</b> imu.h:7</div></div>
-<div class="ttc" id="class_data_holder_html"><div class="ttname"><a href="class_data_holder.html">DataHolder</a></div><div class="ttdef"><b>Definition:</b> dataholder.h:7</div></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="class_data_holder.html">DataHolder</a>* m_accelerometers;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="class_data_holder.html">DataHolder</a>* m_gyrometers;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="class_data_holder.html">DataHolder</a>* m_magnetometers;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="class_data_holder.html">DataHolder</a>* m_barometer;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <a class="code" href="class_data_holder.html">DataHolder</a>* m_termometer;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    std::vector&lt;QString&gt; m_rawData; <span class="comment">/* It will allow to save raw data in a file with a call to save() method */</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keyword">const</span> QString c_prefixFolderName = <span class="stringliteral">&quot;imu_data_&quot;</span>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keyword">const</span> QString c_rawDataFileName = <span class="stringliteral">&quot;raw.csv&quot;</span>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keyword">const</span> QString c_accDataFileName = <span class="stringliteral">&quot;acc.csv&quot;</span>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keyword">const</span> QString c_gyrDataFileName = <span class="stringliteral">&quot;gyr.csv&quot;</span>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keyword">const</span> QString c_magDataFileName = <span class="stringliteral">&quot;mag.csv&quot;</span>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keyword">const</span> QString c_barDataFileName = <span class="stringliteral">&quot;bar.csv&quot;</span>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keyword">const</span> QString c_tmpDataFileName = <span class="stringliteral">&quot;tmp.csv&quot;</span>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keyword">public</span> slots:</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_m_u.html#aae4b959604d8b284a014777de99bf6c0">onStartRecordData</a>();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_m_u.html#a48b3832a9ee547965969d486a461822d">onStopRecordData</a>();</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_m_u.html#a4373f3864c6bcc01251fb66d377235d4">recordData</a>(QString&amp; data);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_m_u.html#a41c3e25b2d8d79f9433f9a9883586356">onStartCalibrate</a>();</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_m_u.html#a0f57f80beefd8f297987dc48febacb9b">calibrate</a>(QString&amp; data);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_m_u.html#a409f149ec2040f488c2f344562bcf29a">save</a>(QString&amp; folder);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;signals:</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_m_u.html#a99c99d2d9c80b3f94d29792ec7f3586c">dataUpdated</a>();</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_m_u.html#a67b43ecbda68a79d2c3cb21a83c33d5b">newCalibratedData</a>(std::vector&lt;float&gt;&amp;); <span class="comment">/* emitted each time a new set of data has been filtered */</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;};</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="preprocessor">#endif // IMU_H</span></div>
+<div class="ttc" id="class_i_m_u_html_a25b6d66a2c269aaf3fda730a99d2c0f0"><div class="ttname"><a href="class_i_m_u.html#a25b6d66a2c269aaf3fda730a99d2c0f0">IMU::getMagnetometersData</a></div><div class="ttdeci">DataHolder * getMagnetometersData()</div><div class="ttdoc">Return a pointer to the DataHolder linked to the magnetometers. </div><div class="ttdef"><b>Definition:</b> imu.h:39</div></div>
+<div class="ttc" id="dataholder_8h_html"><div class="ttname"><a href="dataholder_8h.html">dataholder.h</a></div></div>
+<div class="ttc" id="class_i_m_u_html_a48b3832a9ee547965969d486a461822d"><div class="ttname"><a href="class_i_m_u.html#a48b3832a9ee547965969d486a461822d">IMU::onStopRecordData</a></div><div class="ttdeci">void onStopRecordData()</div><div class="ttdoc">[SLOT] Stop the acquisition. </div><div class="ttdef"><b>Definition:</b> imu.cpp:51</div></div>
+<div class="ttc" id="class_i_m_u_html_a4373f3864c6bcc01251fb66d377235d4"><div class="ttname"><a href="class_i_m_u.html#a4373f3864c6bcc01251fb66d377235d4">IMU::recordData</a></div><div class="ttdeci">void recordData(QString &amp;data)</div><div class="ttdoc">[SLOT] Process the data comming from the data source and fills the DataHolders with it...</div><div class="ttdef"><b>Definition:</b> imu.cpp:59</div></div>
+<div class="ttc" id="class_i_m_u_html"><div class="ttname"><a href="class_i_m_u.html">IMU</a></div><div class="ttdoc">This class represents the Inertial Movement Unit. It implements a singleton pattern, you don&#39;t need to create an instance of this class. You just need to call getInstance() to get a pointer to the unique instance of this class. The first call will create the unique instance. From this class you can acces to all the data recorded from all the sensors of the inertial unit. </div><div class="ttdef"><b>Definition:</b> imu.h:22</div></div>
+<div class="ttc" id="class_i_m_u_html_a409f149ec2040f488c2f344562bcf29a"><div class="ttname"><a href="class_i_m_u.html#a409f149ec2040f488c2f344562bcf29a">IMU::save</a></div><div class="ttdeci">void save(QString &amp;folder)</div><div class="ttdoc">[SLOT] Save all the data recorded including raw data and data of each DataHolders. </div><div class="ttdef"><b>Definition:</b> imu.cpp:126</div></div>
+<div class="ttc" id="class_i_m_u_html_a3a8e7facbb3f7bfb776f45431d2e4c95"><div class="ttname"><a href="class_i_m_u.html#a3a8e7facbb3f7bfb776f45431d2e4c95">IMU::getAccelerometersData</a></div><div class="ttdeci">DataHolder * getAccelerometersData()</div><div class="ttdoc">Return a pointer to the DataHolder linked to the accelerometers. </div><div class="ttdef"><b>Definition:</b> imu.h:31</div></div>
+<div class="ttc" id="class_i_m_u_html_a0746aed25848f7ea79fdb577cff26820"><div class="ttname"><a href="class_i_m_u.html#a0746aed25848f7ea79fdb577cff26820">IMU::getGyrometersData</a></div><div class="ttdeci">DataHolder * getGyrometersData()</div><div class="ttdoc">Return a pointer to the DataHolder linked to the gyrometers. </div><div class="ttdef"><b>Definition:</b> imu.h:35</div></div>
+<div class="ttc" id="class_i_m_u_html_a8d194215abc075438348003c98a73d6a"><div class="ttname"><a href="class_i_m_u.html#a8d194215abc075438348003c98a73d6a">IMU::getTermometerData</a></div><div class="ttdeci">DataHolder * getTermometerData()</div><div class="ttdoc">Return a pointer to the DataHolder linked to the termometer. </div><div class="ttdef"><b>Definition:</b> imu.h:47</div></div>
+<div class="ttc" id="class_i_m_u_html_a67b43ecbda68a79d2c3cb21a83c33d5b"><div class="ttname"><a href="class_i_m_u.html#a67b43ecbda68a79d2c3cb21a83c33d5b">IMU::newCalibratedData</a></div><div class="ttdeci">void newCalibratedData(std::vector&lt; float &gt; &amp;)</div><div class="ttdoc">[SIGNAL] This signal is emitted each time new data have been filtered for calibration. </div></div>
+<div class="ttc" id="class_i_m_u_html_a0f57f80beefd8f297987dc48febacb9b"><div class="ttname"><a href="class_i_m_u.html#a0f57f80beefd8f297987dc48febacb9b">IMU::calibrate</a></div><div class="ttdeci">void calibrate(QString &amp;data)</div><div class="ttdoc">[SLOT] Filter the data comming from the data source. </div><div class="ttdef"><b>Definition:</b> imu.cpp:96</div></div>
+<div class="ttc" id="class_i_m_u_html_a8686eeec63f1b790a186d145c0a021c8"><div class="ttname"><a href="class_i_m_u.html#a8686eeec63f1b790a186d145c0a021c8">IMU::getInstance</a></div><div class="ttdeci">static IMU * getInstance(void)</div><div class="ttdoc">Return a pointer to the unique instance of the class. Create a unique instance before returning it if...</div><div class="ttdef"><b>Definition:</b> imu.cpp:14</div></div>
+<div class="ttc" id="class_i_m_u_html_a41c3e25b2d8d79f9433f9a9883586356"><div class="ttname"><a href="class_i_m_u.html#a41c3e25b2d8d79f9433f9a9883586356">IMU::onStartCalibrate</a></div><div class="ttdeci">void onStartCalibrate()</div><div class="ttdoc">[SLOT] Change the beavior of the class to use the next incomming data for calibration only...</div><div class="ttdef"><b>Definition:</b> imu.cpp:82</div></div>
+<div class="ttc" id="class_i_m_u_html_aae4b959604d8b284a014777de99bf6c0"><div class="ttname"><a href="class_i_m_u.html#aae4b959604d8b284a014777de99bf6c0">IMU::onStartRecordData</a></div><div class="ttdeci">void onStartRecordData()</div><div class="ttdoc">[SLOT] Start the acquisition. </div><div class="ttdef"><b>Definition:</b> imu.cpp:43</div></div>
+<div class="ttc" id="class_i_m_u_html_a322cfb2c81d0064c544039768f10a4a2"><div class="ttname"><a href="class_i_m_u.html#a322cfb2c81d0064c544039768f10a4a2">IMU::getBarometerData</a></div><div class="ttdeci">DataHolder * getBarometerData()</div><div class="ttdoc">Return a pointer to the DataHolder linked to the barometer. </div><div class="ttdef"><b>Definition:</b> imu.h:43</div></div>
+<div class="ttc" id="class_data_holder_html"><div class="ttname"><a href="class_data_holder.html">DataHolder</a></div><div class="ttdoc">This class represents a data storage object and provides storage for several sets of data each...</div><div class="ttdef"><b>Definition:</b> dataholder.h:20</div></div>
+<div class="ttc" id="class_i_m_u_html_a99c99d2d9c80b3f94d29792ec7f3586c"><div class="ttname"><a href="class_i_m_u.html#a99c99d2d9c80b3f94d29792ec7f3586c">IMU::dataUpdated</a></div><div class="ttdeci">void dataUpdated()</div><div class="ttdoc">[SIGNAL] This signal is emitted each time new data have been processed and added to the right DataHol...</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 3 2014 10:03:59 for IHM by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 4 2014 15:16:27 for IMU Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

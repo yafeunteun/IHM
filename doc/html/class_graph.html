@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.7"/>
-<title>IHM: Graph Class Reference</title>
+<title>IMU Project: Graph Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,8 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">IHM
-   &#160;<span id="projectnumber">0.7</span>
+   <div id="projectname">IMU Project
    </div>
   </td>
  </tr>
@@ -38,7 +37,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -72,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -91,6 +89,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Graph Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Graphical view of the data contained in a <a class="el" href="class_data_holder.html" title="This class represents a data storage object and provides storage for several sets of data each...">DataHolder</a> object.  
+ <a href="class_graph.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="graph_8h_source.html">graph.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Graph:</div>
 <div class="dyncontent">
@@ -103,24 +106,82 @@ Inheritance diagram for Graph:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-slots"></a>
 Public Slots</h2></td></tr>
 <tr class="memitem:aa604c98e725572d0b99ccfe5211233e1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa604c98e725572d0b99ccfe5211233e1"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>curveDisplay</b> (void)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#aa604c98e725572d0b99ccfe5211233e1">curveDisplay</a> (void)</td></tr>
+<tr class="memdesc:aa604c98e725572d0b99ccfe5211233e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">[SLOT] Change the visibility of the curve on the <a class="el" href="class_graph.html" title="Graphical view of the data contained in a DataHolder object. ">Graph</a>. <br /></td></tr>
 <tr class="separator:aa604c98e725572d0b99ccfe5211233e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa35f4ad7c5a9b04bdbb34c8093d3ff1c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa35f4ad7c5a9b04bdbb34c8093d3ff1c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>changeColor</b> (void)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#aa35f4ad7c5a9b04bdbb34c8093d3ff1c">changeColor</a> (void)</td></tr>
+<tr class="memdesc:aa35f4ad7c5a9b04bdbb34c8093d3ff1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">[SLOT] Change the color of the curve and the button associated to. Opens a window to select the color. <br /></td></tr>
 <tr class="separator:aa35f4ad7c5a9b04bdbb34c8093d3ff1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af14da86c086a2e315bbb540e117e0b19"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af14da86c086a2e315bbb540e117e0b19"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> (void)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#af14da86c086a2e315bbb540e117e0b19">update</a> (void)</td></tr>
+<tr class="memdesc:af14da86c086a2e315bbb540e117e0b19"><td class="mdescLeft">&#160;</td><td class="mdescRight">[SLOT] Update the curves, i.e. displays the new points appended to the <a class="el" href="class_data_holder.html" title="This class represents a data storage object and provides storage for several sets of data each...">DataHolder</a> linked to the instance. <br /></td></tr>
 <tr class="separator:af14da86c086a2e315bbb540e117e0b19"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a21ca371298ce2502cc7f19186335d1fe"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a21ca371298ce2502cc7f19186335d1fe"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Graph</b> (std::initializer_list&lt; QString &gt; labels, <a class="el" href="class_data_holder.html">DataHolder</a> *source, QWidget *parent=0)</td></tr>
+<tr class="memitem:a21ca371298ce2502cc7f19186335d1fe"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a21ca371298ce2502cc7f19186335d1fe">Graph</a> (std::initializer_list&lt; QString &gt; labels, <a class="el" href="class_data_holder.html">DataHolder</a> *source, QWidget *parent=0)</td></tr>
+<tr class="memdesc:a21ca371298ce2502cc7f19186335d1fe"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_graph.html" title="Graphical view of the data contained in a DataHolder object. ">Graph</a>.  <a href="#a21ca371298ce2502cc7f19186335d1fe">More...</a><br /></td></tr>
 <tr class="separator:a21ca371298ce2502cc7f19186335d1fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5ab1b404cf48ec2c5c60374c94db59b6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5ab1b404cf48ec2c5c60374c94db59b6"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setTitle</b> (const QString &amp;title)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a5ab1b404cf48ec2c5c60374c94db59b6">setTitle</a> (const QString &amp;title)</td></tr>
+<tr class="memdesc:a5ab1b404cf48ec2c5c60374c94db59b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the title of the <a class="el" href="class_graph.html" title="Graphical view of the data contained in a DataHolder object. ">Graph</a>. <br /></td></tr>
 <tr class="separator:a5ab1b404cf48ec2c5c60374c94db59b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Graphical view of the data contained in a <a class="el" href="class_data_holder.html" title="This class represents a data storage object and provides storage for several sets of data each...">DataHolder</a> object. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a21ca371298ce2502cc7f19186335d1fe"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Graph::Graph </td>
+          <td>(</td>
+          <td class="paramtype">std::initializer_list&lt; QString &gt;&#160;</td>
+          <td class="paramname"><em>labels</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_data_holder.html">DataHolder</a> *&#160;</td>
+          <td class="paramname"><em>source</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QWidget *&#160;</td>
+          <td class="paramname"><em>parent</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="class_graph.html" title="Graphical view of the data contained in a DataHolder object. ">Graph</a>. </p>
+<p>Constructor of <a class="el" href="class_graph.html" title="Graphical view of the data contained in a DataHolder object. ">Graph</a> class</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">labels</td><td>: The same labels the source parameter holds. </td></tr>
+    <tr><td class="paramname">source</td><td>: The <a class="el" href="class_data_holder.html" title="This class represents a data storage object and provides storage for several sets of data each...">DataHolder</a> the graph must be connected to. </td></tr>
+    <tr><td class="paramname">parent</td><td>: Constructs a widget which is a child of parent. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="graph_8h_source.html">graph.h</a></li>
 <li>graph.cpp</li>
@@ -128,7 +189,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setTitle</b> (const Q
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 3 2014 10:03:59 for IHM by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 4 2014 15:16:27 for IMU Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.7"/>
-<title>IHM: dataholder.h Source File</title>
+<title>IMU Project: dataholder.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,8 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">IHM
-   &#160;<span id="projectnumber">0.7</span>
+   <div id="projectname">IMU Project
    </div>
   </td>
  </tr>
@@ -38,7 +37,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -70,7 +68,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -84,39 +82,47 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">dataholder.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef DATAHOLDER_H</span></div>
+<a href="dataholder_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef DATAHOLDER_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define DATAHOLDER_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;dataset.h&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;proxystrategy.h&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
-<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="class_data_holder.html">    7</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_data_holder.html">DataHolder</a></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;{</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <a class="code" href="class_data_holder.html">DataHolder</a>(std::initializer_list&lt;QString&gt; list, ProxyStrategy::Proxy_t type = ProxyStrategy::NOPROXY);</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    ~<a class="code" href="class_data_holder.html">DataHolder</a>();</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> setProxy(ProxyStrategy::Proxy_t type){m_strategy = ProxyStrategy::getProxy(type);}</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordtype">void</span> addDataSet(QString &amp;label);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordtype">void</span> addData(QString &amp;&amp;incommingRawData);</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="class_data_set.html">DataSet</a>* getDataSet(<span class="keyword">const</span> QString&amp; label);</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordtype">int</span> getSize(){<span class="keywordflow">return</span> m_datasets.size();}</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="class_proxy_strategy.html">ProxyStrategy</a>* m_strategy;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    QVector&lt;DataSet*&gt; m_datasets;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;};</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#endif // DATAHOLDER_H</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
-<div class="ttc" id="class_proxy_strategy_html"><div class="ttname"><a href="class_proxy_strategy.html">ProxyStrategy</a></div><div class="ttdef"><b>Definition:</b> proxystrategy.h:10</div></div>
-<div class="ttc" id="class_data_set_html"><div class="ttname"><a href="class_data_set.html">DataSet</a></div><div class="ttdef"><b>Definition:</b> dataset.h:8</div></div>
-<div class="ttc" id="class_data_holder_html"><div class="ttname"><a href="class_data_holder.html">DataHolder</a></div><div class="ttdef"><b>Definition:</b> dataholder.h:7</div></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="dataset_8h.html">dataset.h</a>&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="proxystrategy_8h.html">proxystrategy.h</a>&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_data_holder.html">   20</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_data_holder.html">DataHolder</a></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;{</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="class_data_holder.html#a1fadf5423facd66010292501528a2e05">DataHolder</a>(std::initializer_list&lt;QString&gt; list, ProxyStrategy::Proxy_t type = ProxyStrategy::NOPROXY);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="class_data_holder.html#ad2fa777d932798917fb97195e2ad9754">~DataHolder</a>();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_data_holder.html#a7dea25dd51da6aaa86dfe05828fcdd2e">addDataSet</a>(QString &amp;label);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_data_holder.html#aead96ec821194592dd26272312d06766">addData</a>(QString &amp;&amp;incommingRawData);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="class_data_set.html">DataSet</a>* <a class="code" href="class_data_holder.html#a806070ae193c205317b7b934bd44b9aa">getDataSet</a>(<span class="keyword">const</span> QString&amp; label);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="class_data_holder.html#a2566340003ed7fcc46b94cdff9368533">   32</a></span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">size_t</span> <a class="code" href="class_data_holder.html#a2566340003ed7fcc46b94cdff9368533">getSize</a>(){<span class="keywordflow">return</span> m_datasets.size();}</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="class_proxy_strategy.html">ProxyStrategy</a>* m_strategy;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    QVector&lt;DataSet*&gt; m_datasets;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;};</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#endif // DATAHOLDER_H</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="ttc" id="class_data_holder_html_a1fadf5423facd66010292501528a2e05"><div class="ttname"><a href="class_data_holder.html#a1fadf5423facd66010292501528a2e05">DataHolder::DataHolder</a></div><div class="ttdeci">DataHolder(std::initializer_list&lt; QString &gt; list, ProxyStrategy::Proxy_t type=ProxyStrategy::NOPROXY)</div><div class="ttdoc">Constructor. </div><div class="ttdef"><b>Definition:</b> dataholder.cpp:17</div></div>
+<div class="ttc" id="class_data_holder_html_a7dea25dd51da6aaa86dfe05828fcdd2e"><div class="ttname"><a href="class_data_holder.html#a7dea25dd51da6aaa86dfe05828fcdd2e">DataHolder::addDataSet</a></div><div class="ttdeci">void addDataSet(QString &amp;label)</div><div class="ttdoc">Append a DataSet to the instance. </div><div class="ttdef"><b>Definition:</b> dataholder.cpp:48</div></div>
+<div class="ttc" id="class_data_holder_html_a806070ae193c205317b7b934bd44b9aa"><div class="ttname"><a href="class_data_holder.html#a806070ae193c205317b7b934bd44b9aa">DataHolder::getDataSet</a></div><div class="ttdeci">DataSet * getDataSet(const QString &amp;label)</div><div class="ttdoc">Get access to the DataSet(s) contained in the instance. </div><div class="ttdef"><b>Definition:</b> dataholder.cpp:85</div></div>
+<div class="ttc" id="class_data_holder_html_a2566340003ed7fcc46b94cdff9368533"><div class="ttname"><a href="class_data_holder.html#a2566340003ed7fcc46b94cdff9368533">DataHolder::getSize</a></div><div class="ttdeci">size_t getSize()</div><div class="ttdoc">Return the number of DataSet contained in the object. </div><div class="ttdef"><b>Definition:</b> dataholder.h:32</div></div>
+<div class="ttc" id="class_proxy_strategy_html"><div class="ttname"><a href="class_proxy_strategy.html">ProxyStrategy</a></div><div class="ttdoc">This class and subclasses represents the differents strategies of processing the data comming from th...</div><div class="ttdef"><b>Definition:</b> proxystrategy.h:19</div></div>
+<div class="ttc" id="class_data_set_html"><div class="ttname"><a href="class_data_set.html">DataSet</a></div><div class="ttdoc">This class represents a data storage object for QPointF. It can be regarded as an augmented vector...</div><div class="ttdef"><b>Definition:</b> dataset.h:19</div></div>
+<div class="ttc" id="class_data_holder_html_aead96ec821194592dd26272312d06766"><div class="ttname"><a href="class_data_holder.html#aead96ec821194592dd26272312d06766">DataHolder::addData</a></div><div class="ttdeci">void addData(QString &amp;&amp;incommingRawData)</div><div class="ttdoc">Appends data to the sets stores. </div><div class="ttdef"><b>Definition:</b> dataholder.cpp:64</div></div>
+<div class="ttc" id="class_data_holder_html_ad2fa777d932798917fb97195e2ad9754"><div class="ttname"><a href="class_data_holder.html#ad2fa777d932798917fb97195e2ad9754">DataHolder::~DataHolder</a></div><div class="ttdeci">~DataHolder()</div><div class="ttdoc">Destructor. </div><div class="ttdef"><b>Definition:</b> dataholder.cpp:37</div></div>
+<div class="ttc" id="proxystrategy_8h_html"><div class="ttname"><a href="proxystrategy_8h.html">proxystrategy.h</a></div></div>
+<div class="ttc" id="class_data_holder_html"><div class="ttname"><a href="class_data_holder.html">DataHolder</a></div><div class="ttdoc">This class represents a data storage object and provides storage for several sets of data each...</div><div class="ttdef"><b>Definition:</b> dataholder.h:20</div></div>
+<div class="ttc" id="dataset_8h_html"><div class="ttname"><a href="dataset_8h.html">dataset.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 3 2014 10:03:59 for IHM by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 4 2014 15:16:27 for IMU Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['oncancel',['onCancel',['../class_acquisition_settings.html#af6b2869ea40cbf985c46f9608c670435',1,'AcquisitionSettings']]],
-  ['onnewcalibrateddata',['onNewCalibratedData',['../class_calibration_window.html#a5f6d1040befcf48864273543563fe05e',1,'CalibrationWindow']]],
-  ['onnewconfiguration',['onNewConfiguration',['../class_acquisition_settings.html#ada472a8868de5505712908eeef1ac3c4',1,'AcquisitionSettings']]],
-  ['onnewselection',['onNewSelection',['../class_acquisition_settings.html#a1a55fa13001e4c3cfd160922ee90fc88',1,'AcquisitionSettings']]]
+  ['newcalibrateddata',['newCalibratedData',['../class_i_m_u.html#a67b43ecbda68a79d2c3cb21a83c33d5b',1,'IMU']]],
+  ['newconfiguration',['newConfiguration',['../class_acquisition_settings.html#a09f9649b8dfe32307ff8e2b9a42353c7',1,'AcquisitionSettings']]],
+  ['newdata',['newData',['../class_serial_port.html#a52e668a2b27597153a15724c2c0667f0',1,'SerialPort::newData()'],['../class_server.html#afd5ebd1d5a3349e608dbe66fca790e5c',1,'Server::newData()']]],
+  ['noproxy',['NoProxy',['../class_no_proxy.html',1,'']]]
 ];

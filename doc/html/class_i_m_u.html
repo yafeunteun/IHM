@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.7"/>
-<title>IHM: IMU Class Reference</title>
+<title>IMU Project: IMU Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,8 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">IHM
-   &#160;<span id="projectnumber">0.7</span>
+   <div id="projectname">IMU Project
    </div>
   </td>
  </tr>
@@ -38,7 +37,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -72,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -93,6 +91,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">IMU Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>This class represents the Inertial Movement Unit. It implements a singleton pattern, you don't need to create an instance of this class. You just need to call <a class="el" href="class_i_m_u.html#a8686eeec63f1b790a186d145c0a021c8" title="Return a pointer to the unique instance of the class. Create a unique instance before returning it if...">getInstance()</a> to get a pointer to the unique instance of this class. The first call will create the unique instance. From this class you can acces to all the data recorded from all the sensors of the inertial unit.  
+ <a href="class_i_m_u.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="imu_8h_source.html">imu.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for IMU:</div>
 <div class="dyncontent">
@@ -105,68 +108,81 @@ Inheritance diagram for IMU:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-slots"></a>
 Public Slots</h2></td></tr>
 <tr class="memitem:aae4b959604d8b284a014777de99bf6c0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aae4b959604d8b284a014777de99bf6c0"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>onStartRecordData</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_m_u.html#aae4b959604d8b284a014777de99bf6c0">onStartRecordData</a> ()</td></tr>
+<tr class="memdesc:aae4b959604d8b284a014777de99bf6c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">[SLOT] Start the acquisition. <br /></td></tr>
 <tr class="separator:aae4b959604d8b284a014777de99bf6c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a48b3832a9ee547965969d486a461822d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a48b3832a9ee547965969d486a461822d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>onStopRecordData</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_m_u.html#a48b3832a9ee547965969d486a461822d">onStopRecordData</a> ()</td></tr>
+<tr class="memdesc:a48b3832a9ee547965969d486a461822d"><td class="mdescLeft">&#160;</td><td class="mdescRight">[SLOT] Stop the acquisition. <br /></td></tr>
 <tr class="separator:a48b3832a9ee547965969d486a461822d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4373f3864c6bcc01251fb66d377235d4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4373f3864c6bcc01251fb66d377235d4"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>recordData</b> (QString &amp;data)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_m_u.html#a4373f3864c6bcc01251fb66d377235d4">recordData</a> (QString &amp;data)</td></tr>
+<tr class="memdesc:a4373f3864c6bcc01251fb66d377235d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">[SLOT] Process the data comming from the data source and fills the DataHolders with it. <br /></td></tr>
 <tr class="separator:a4373f3864c6bcc01251fb66d377235d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a41c3e25b2d8d79f9433f9a9883586356"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a41c3e25b2d8d79f9433f9a9883586356"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>onStartCalibrate</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_m_u.html#a41c3e25b2d8d79f9433f9a9883586356">onStartCalibrate</a> ()</td></tr>
+<tr class="memdesc:a41c3e25b2d8d79f9433f9a9883586356"><td class="mdescLeft">&#160;</td><td class="mdescRight">[SLOT] Change the beavior of the class to use the next incomming data for calibration only, the data wont be appended to the DataHolders. <br /></td></tr>
 <tr class="separator:a41c3e25b2d8d79f9433f9a9883586356"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0f57f80beefd8f297987dc48febacb9b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0f57f80beefd8f297987dc48febacb9b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>calibrate</b> (QString &amp;data)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_m_u.html#a0f57f80beefd8f297987dc48febacb9b">calibrate</a> (QString &amp;data)</td></tr>
+<tr class="memdesc:a0f57f80beefd8f297987dc48febacb9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">[SLOT] Filter the data comming from the data source. <br /></td></tr>
 <tr class="separator:a0f57f80beefd8f297987dc48febacb9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a409f149ec2040f488c2f344562bcf29a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a409f149ec2040f488c2f344562bcf29a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>save</b> (QString &amp;folder)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_m_u.html#a409f149ec2040f488c2f344562bcf29a">save</a> (QString &amp;folder)</td></tr>
+<tr class="memdesc:a409f149ec2040f488c2f344562bcf29a"><td class="mdescLeft">&#160;</td><td class="mdescRight">[SLOT] Save all the data recorded including raw data and data of each DataHolders. <br /></td></tr>
 <tr class="separator:a409f149ec2040f488c2f344562bcf29a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="signals"></a>
 Signals</h2></td></tr>
 <tr class="memitem:a99c99d2d9c80b3f94d29792ec7f3586c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a99c99d2d9c80b3f94d29792ec7f3586c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>dataUpdated</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_m_u.html#a99c99d2d9c80b3f94d29792ec7f3586c">dataUpdated</a> ()</td></tr>
+<tr class="memdesc:a99c99d2d9c80b3f94d29792ec7f3586c"><td class="mdescLeft">&#160;</td><td class="mdescRight">[SIGNAL] This signal is emitted each time new data have been processed and added to the right DataHolders). <br /></td></tr>
 <tr class="separator:a99c99d2d9c80b3f94d29792ec7f3586c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a67b43ecbda68a79d2c3cb21a83c33d5b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a67b43ecbda68a79d2c3cb21a83c33d5b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>newCalibratedData</b> (std::vector&lt; float &gt; &amp;)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_m_u.html#a67b43ecbda68a79d2c3cb21a83c33d5b">newCalibratedData</a> (std::vector&lt; float &gt; &amp;)</td></tr>
+<tr class="memdesc:a67b43ecbda68a79d2c3cb21a83c33d5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">[SIGNAL] This signal is emitted each time new data have been filtered for calibration. <br /></td></tr>
 <tr class="separator:a67b43ecbda68a79d2c3cb21a83c33d5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8e4c8944f2102ab4c3202c8a3dd731c8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8e4c8944f2102ab4c3202c8a3dd731c8"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>calibrationFinished</b> ()</td></tr>
-<tr class="separator:a8e4c8944f2102ab4c3202c8a3dd731c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a3a8e7facbb3f7bfb776f45431d2e4c95"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3a8e7facbb3f7bfb776f45431d2e4c95"></a>
-<a class="el" href="class_data_holder.html">DataHolder</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getAccelerometersData</b> ()</td></tr>
+<a class="el" href="class_data_holder.html">DataHolder</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_m_u.html#a3a8e7facbb3f7bfb776f45431d2e4c95">getAccelerometersData</a> ()</td></tr>
+<tr class="memdesc:a3a8e7facbb3f7bfb776f45431d2e4c95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a pointer to the <a class="el" href="class_data_holder.html" title="This class represents a data storage object and provides storage for several sets of data each...">DataHolder</a> linked to the accelerometers. <br /></td></tr>
 <tr class="separator:a3a8e7facbb3f7bfb776f45431d2e4c95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0746aed25848f7ea79fdb577cff26820"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0746aed25848f7ea79fdb577cff26820"></a>
-<a class="el" href="class_data_holder.html">DataHolder</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getGyrometersData</b> ()</td></tr>
+<a class="el" href="class_data_holder.html">DataHolder</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_m_u.html#a0746aed25848f7ea79fdb577cff26820">getGyrometersData</a> ()</td></tr>
+<tr class="memdesc:a0746aed25848f7ea79fdb577cff26820"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a pointer to the <a class="el" href="class_data_holder.html" title="This class represents a data storage object and provides storage for several sets of data each...">DataHolder</a> linked to the gyrometers. <br /></td></tr>
 <tr class="separator:a0746aed25848f7ea79fdb577cff26820"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25b6d66a2c269aaf3fda730a99d2c0f0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a25b6d66a2c269aaf3fda730a99d2c0f0"></a>
-<a class="el" href="class_data_holder.html">DataHolder</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getMagnetometersData</b> ()</td></tr>
+<a class="el" href="class_data_holder.html">DataHolder</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_m_u.html#a25b6d66a2c269aaf3fda730a99d2c0f0">getMagnetometersData</a> ()</td></tr>
+<tr class="memdesc:a25b6d66a2c269aaf3fda730a99d2c0f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a pointer to the <a class="el" href="class_data_holder.html" title="This class represents a data storage object and provides storage for several sets of data each...">DataHolder</a> linked to the magnetometers. <br /></td></tr>
 <tr class="separator:a25b6d66a2c269aaf3fda730a99d2c0f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a322cfb2c81d0064c544039768f10a4a2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a322cfb2c81d0064c544039768f10a4a2"></a>
-<a class="el" href="class_data_holder.html">DataHolder</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getBarometerData</b> ()</td></tr>
+<a class="el" href="class_data_holder.html">DataHolder</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_m_u.html#a322cfb2c81d0064c544039768f10a4a2">getBarometerData</a> ()</td></tr>
+<tr class="memdesc:a322cfb2c81d0064c544039768f10a4a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a pointer to the <a class="el" href="class_data_holder.html" title="This class represents a data storage object and provides storage for several sets of data each...">DataHolder</a> linked to the barometer. <br /></td></tr>
 <tr class="separator:a322cfb2c81d0064c544039768f10a4a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8d194215abc075438348003c98a73d6a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8d194215abc075438348003c98a73d6a"></a>
-<a class="el" href="class_data_holder.html">DataHolder</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getTermometerData</b> ()</td></tr>
+<a class="el" href="class_data_holder.html">DataHolder</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_m_u.html#a8d194215abc075438348003c98a73d6a">getTermometerData</a> ()</td></tr>
+<tr class="memdesc:a8d194215abc075438348003c98a73d6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a pointer to the <a class="el" href="class_data_holder.html" title="This class represents a data storage object and provides storage for several sets of data each...">DataHolder</a> linked to the termometer. <br /></td></tr>
 <tr class="separator:a8d194215abc075438348003c98a73d6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a8686eeec63f1b790a186d145c0a021c8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8686eeec63f1b790a186d145c0a021c8"></a>
-static <a class="el" href="class_i_m_u.html">IMU</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getInstance</b> (void)</td></tr>
+static <a class="el" href="class_i_m_u.html">IMU</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_m_u.html#a8686eeec63f1b790a186d145c0a021c8">getInstance</a> (void)</td></tr>
+<tr class="memdesc:a8686eeec63f1b790a186d145c0a021c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a pointer to the unique instance of the class. Create a unique instance before returning it if this method is called for the first time. <br /></td></tr>
 <tr class="separator:a8686eeec63f1b790a186d145c0a021c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following files:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This class represents the Inertial Movement Unit. It implements a singleton pattern, you don't need to create an instance of this class. You just need to call <a class="el" href="class_i_m_u.html#a8686eeec63f1b790a186d145c0a021c8" title="Return a pointer to the unique instance of the class. Create a unique instance before returning it if...">getInstance()</a> to get a pointer to the unique instance of this class. The first call will create the unique instance. From this class you can acces to all the data recorded from all the sensors of the inertial unit. </p>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="imu_8h_source.html">imu.h</a></li>
 <li>imu.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 3 2014 10:03:59 for IHM by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 4 2014 15:16:27 for IMU Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

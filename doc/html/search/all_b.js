@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['serialport',['SerialPort',['../class_serial_port.html',1,'']]],
-  ['server',['Server',['../class_server.html',1,'']]],
-  ['setcolor',['setColor',['../class_curve.html#a7a82d1052d8e9de03682202a52969338',1,'Curve']]]
+  ['passebasdirect',['passeBasDirect',['../class_filtrage.html#ad4041e524b48f378f80753d143f67168',1,'Filtrage']]],
+  ['passebasrecur',['passeBasRecur',['../class_filtrage.html#acb34b4a297f51b2cae47650e92c93f59',1,'Filtrage']]],
+  ['proxystrategy',['ProxyStrategy',['../class_proxy_strategy.html',1,'']]],
+  ['proxystrategy_2eh',['proxystrategy.h',['../proxystrategy_8h.html',1,'']]]
 ];

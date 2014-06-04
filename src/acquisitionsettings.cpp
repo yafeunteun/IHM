@@ -215,7 +215,7 @@ void AcquisitionSettings::fillVector()
 }
 
 /*!
-    *  \brief [SLOT]Performed each time a source is selected on the widget.
+    *  \brief [SLOT] Performed each time a source is selected on the widget.
     *
     *   This slot guarantees there is only one source selected. It prevents from multiple source selecting.
     *   For instance, you cannot receive data from a remote peer and from a serial port at the same time.

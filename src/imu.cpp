@@ -7,6 +7,10 @@
 
 IMU* IMU::instance = nullptr;
 
+/*!
+*  \brief Return a pointer to the unique instance of the class.
+*  Create a unique instance before returning it if this method is called for the first time.
+*/
 IMU* IMU::getInstance(void)
 {
     if(IMU::instance == nullptr){
@@ -33,18 +37,25 @@ IMU::IMU()
     m_termometer = new DataHolder({QString("temperature")}, ProxyStrategy::TMP);
 }
 
-
+/*!
+*  \brief [SLOT] Start the acquisition.
+*/
 void IMU::onStartRecordData()
 {
     DataSource::getInstance()->start();
 }
 
+/*!
+*  \brief [SLOT] Stop the acquisition.
+*/
 void IMU::onStopRecordData()
 {
     DataSource::getInstance()->stop();
 }
 
-
+/*!
+*  \brief [SLOT] Process the data comming from the data source and fills the DataHolders with it.
+*/
 void IMU::recordData(QString& data)
 {
     DEBUG("Data received in IMU (for data recording) : " + data);
@@ -65,6 +76,9 @@ void IMU::recordData(QString& data)
 
 }
 
+/*!
+*  \brief [SLOT] Change the beavior of the class to use the next incomming data for calibration only, the data wont be appended to the DataHolders.
+*/
 void IMU::onStartCalibrate()
 {
     QObject::disconnect(SerialPort::getInstance(), SIGNAL(newData(QString&)), this, SLOT(recordData(QString&)));
@@ -76,6 +90,9 @@ void IMU::onStartCalibrate()
     DataSource::getInstance()->start();
 }
 
+/*!
+*  \brief [SLOT] Filter the data comming from the data source.
+*/
 void IMU::calibrate(QString &data)
 {
     DEBUG("Data received in IMU (pressure calibration) : " + data);
@@ -102,6 +119,10 @@ void IMU::calibrate(QString &data)
     valuesN.clear();
 }
 
+
+/*!
+*  \brief [SLOT] Save all the data recorded including raw data and data of each DataHolders.
+*/
 void IMU::save(QString &folder)
 {
     DEBUG("Trying to save data");

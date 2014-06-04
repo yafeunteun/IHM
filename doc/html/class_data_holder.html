@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.7"/>
-<title>IHM: DataHolder Class Reference</title>
+<title>IMU Project: DataHolder Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,8 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">IHM
-   &#160;<span id="projectnumber">0.7</span>
+   <div id="projectname">IMU Project
    </div>
   </td>
  </tr>
@@ -38,7 +37,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -72,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -90,28 +88,166 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">DataHolder Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>This class represents a data storage object and provides storage for several sets of data each. It also furnishes methods to organize and to access the differents sets of data.  
+ <a href="class_data_holder.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="dataholder_8h_source.html">dataholder.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a1fadf5423facd66010292501528a2e05"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1fadf5423facd66010292501528a2e05"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>DataHolder</b> (std::initializer_list&lt; QString &gt; list, ProxyStrategy::Proxy_t type=ProxyStrategy::NOPROXY)</td></tr>
+<tr class="memitem:a1fadf5423facd66010292501528a2e05"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_data_holder.html#a1fadf5423facd66010292501528a2e05">DataHolder</a> (std::initializer_list&lt; QString &gt; list, ProxyStrategy::Proxy_t type=ProxyStrategy::NOPROXY)</td></tr>
+<tr class="memdesc:a1fadf5423facd66010292501528a2e05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#a1fadf5423facd66010292501528a2e05">More...</a><br /></td></tr>
 <tr class="separator:a1fadf5423facd66010292501528a2e05"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad602cde2d6a344927885c785119e0025"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad602cde2d6a344927885c785119e0025"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setProxy</b> (ProxyStrategy::Proxy_t type)</td></tr>
-<tr class="separator:ad602cde2d6a344927885c785119e0025"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7dea25dd51da6aaa86dfe05828fcdd2e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7dea25dd51da6aaa86dfe05828fcdd2e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>addDataSet</b> (QString &amp;label)</td></tr>
+<tr class="memitem:ad2fa777d932798917fb97195e2ad9754"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_data_holder.html#ad2fa777d932798917fb97195e2ad9754">~DataHolder</a> ()</td></tr>
+<tr class="memdesc:ad2fa777d932798917fb97195e2ad9754"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor.  <a href="#ad2fa777d932798917fb97195e2ad9754">More...</a><br /></td></tr>
+<tr class="separator:ad2fa777d932798917fb97195e2ad9754"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7dea25dd51da6aaa86dfe05828fcdd2e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_data_holder.html#a7dea25dd51da6aaa86dfe05828fcdd2e">addDataSet</a> (QString &amp;label)</td></tr>
+<tr class="memdesc:a7dea25dd51da6aaa86dfe05828fcdd2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Append a <a class="el" href="class_data_set.html" title="This class represents a data storage object for QPointF. It can be regarded as an augmented vector...">DataSet</a> to the instance.  <a href="#a7dea25dd51da6aaa86dfe05828fcdd2e">More...</a><br /></td></tr>
 <tr class="separator:a7dea25dd51da6aaa86dfe05828fcdd2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aead96ec821194592dd26272312d06766"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aead96ec821194592dd26272312d06766"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>addData</b> (QString &amp;&amp;incommingRawData)</td></tr>
+<tr class="memitem:aead96ec821194592dd26272312d06766"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_data_holder.html#aead96ec821194592dd26272312d06766">addData</a> (QString &amp;&amp;incommingRawData)</td></tr>
+<tr class="memdesc:aead96ec821194592dd26272312d06766"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appends data to the sets stores.  <a href="#aead96ec821194592dd26272312d06766">More...</a><br /></td></tr>
 <tr class="separator:aead96ec821194592dd26272312d06766"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a806070ae193c205317b7b934bd44b9aa"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a806070ae193c205317b7b934bd44b9aa"></a>
-<a class="el" href="class_data_set.html">DataSet</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getDataSet</b> (const QString &amp;label)</td></tr>
+<tr class="memitem:a806070ae193c205317b7b934bd44b9aa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_data_set.html">DataSet</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_data_holder.html#a806070ae193c205317b7b934bd44b9aa">getDataSet</a> (const QString &amp;label)</td></tr>
+<tr class="memdesc:a806070ae193c205317b7b934bd44b9aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get access to the <a class="el" href="class_data_set.html" title="This class represents a data storage object for QPointF. It can be regarded as an augmented vector...">DataSet(s)</a> contained in the instance.  <a href="#a806070ae193c205317b7b934bd44b9aa">More...</a><br /></td></tr>
 <tr class="separator:a806070ae193c205317b7b934bd44b9aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab2d9ab1a65c651f126186e870dea4be7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab2d9ab1a65c651f126186e870dea4be7"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getSize</b> ()</td></tr>
-<tr class="separator:ab2d9ab1a65c651f126186e870dea4be7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2566340003ed7fcc46b94cdff9368533"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2566340003ed7fcc46b94cdff9368533"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_data_holder.html#a2566340003ed7fcc46b94cdff9368533">getSize</a> ()</td></tr>
+<tr class="memdesc:a2566340003ed7fcc46b94cdff9368533"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the number of <a class="el" href="class_data_set.html" title="This class represents a data storage object for QPointF. It can be regarded as an augmented vector...">DataSet</a> contained in the object. <br /></td></tr>
+<tr class="separator:a2566340003ed7fcc46b94cdff9368533"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This class represents a data storage object and provides storage for several sets of data each. It also furnishes methods to organize and to access the differents sets of data. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a1fadf5423facd66010292501528a2e05"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DataHolder::DataHolder </td>
+          <td>(</td>
+          <td class="paramtype">std::initializer_list&lt; QString &gt;&#160;</td>
+          <td class="paramname"><em>list</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ProxyStrategy::Proxy_t&#160;</td>
+          <td class="paramname"><em>type</em> = <code>ProxyStrategy::NOPROXY</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructor. </p>
+<p>Constructor of <a class="el" href="class_data_holder.html" title="This class represents a data storage object and provides storage for several sets of data each...">DataHolder</a> class</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">list</td><td>: A list of strings. Each string defines the label of a set of data. For instance let's say you want to store 3D points (i.e 3 vectors of data: x, y, z), the list could be {"x", "y", "z"}. If so, 3 sets will be created with the corresponding label.</td></tr>
+    <tr><td class="paramname">type</td><td>: The <a class="el" href="class_proxy_strategy.html" title="This class and subclasses represents the differents strategies of processing the data comming from th...">ProxyStrategy</a> associated with the <a class="el" href="class_data_holder.html" title="This class represents a data storage object and provides storage for several sets of data each...">DataHolder</a>, when data will be added to the instance, the data will be filtered before using the <a class="el" href="class_proxy_strategy.html" title="This class and subclasses represents the differents strategies of processing the data comming from th...">ProxyStrategy</a> associated to the type chosen. See <a class="el" href="class_proxy_strategy.html" title="This class and subclasses represents the differents strategies of processing the data comming from th...">ProxyStrategy</a> documentation for more. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ad2fa777d932798917fb97195e2ad9754"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DataHolder::~DataHolder </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Destructor. </p>
+<p>Destructor of <a class="el" href="class_data_holder.html" title="This class represents a data storage object and provides storage for several sets of data each...">DataHolder</a> class </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="aead96ec821194592dd26272312d06766"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DataHolder::addData </td>
+          <td>(</td>
+          <td class="paramtype">QString &amp;&amp;&#160;</td>
+          <td class="paramname"><em>incommingRawData</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Appends data to the sets stores. </p>
+<p>The data are given as a QString object which will be parsed by the <a class="el" href="class_proxy_strategy.html" title="This class and subclasses represents the differents strategies of processing the data comming from th...">ProxyStrategy</a> chosen and added to the differents sets.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">incommingRawData</td><td>: A string containing the data to parse and add. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a7dea25dd51da6aaa86dfe05828fcdd2e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DataHolder::addDataSet </td>
+          <td>(</td>
+          <td class="paramtype">QString &amp;&#160;</td>
+          <td class="paramname"><em>label</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Append a <a class="el" href="class_data_set.html" title="This class represents a data storage object for QPointF. It can be regarded as an augmented vector...">DataSet</a> to the instance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">label</td><td>: A string describing the nature of the data stored by the <a class="el" href="class_data_set.html" title="This class represents a data storage object for QPointF. It can be regarded as an augmented vector...">DataSet</a> added. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a806070ae193c205317b7b934bd44b9aa"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_data_set.html">DataSet</a> * DataHolder::getDataSet </td>
+          <td>(</td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>label</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get access to the <a class="el" href="class_data_set.html" title="This class represents a data storage object for QPointF. It can be regarded as an augmented vector...">DataSet(s)</a> contained in the instance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">label</td><td>: A string describing the <a class="el" href="class_data_set.html" title="This class represents a data storage object for QPointF. It can be regarded as an augmented vector...">DataSet</a> you want to get access to.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to the <a class="el" href="class_data_set.html" title="This class represents a data storage object for QPointF. It can be regarded as an augmented vector...">DataSet</a> corresponding to the label given. </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="dataholder_8h_source.html">dataholder.h</a></li>
 <li>dataholder.cpp</li>
@@ -119,7 +255,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>getSize</b> ()</td></t
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 3 2014 10:03:59 for IHM by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 4 2014 15:16:27 for IMU Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

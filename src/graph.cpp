@@ -7,7 +7,16 @@
 #include "graph.h"
 
 
-
+/*!
+    *  \brief Graph
+    *
+    *  Constructor of Graph class
+    *
+    *  \param labels : The same labels the source parameter holds.
+    *  \param source : The DataHolder the graph must be connected to.
+    *  \param parent : Constructs a widget which is a child of parent.
+    *
+    */
 Graph::Graph(std::initializer_list<QString> labels, DataHolder* source, QWidget *parent) :
     QWidget(parent)
 {
@@ -68,6 +77,10 @@ Graph::Graph(std::initializer_list<QString> labels, DataHolder* source, QWidget 
     //this->setFixedHeight(200);
 }
 
+
+/*!
+*  \brief [SLOT] Change the visibility of the curve on the Graph.
+*/
 void Graph::curveDisplay()
 {
     int index = m_checkboxes.indexOf((QCheckBox*)QObject::sender());
@@ -75,6 +88,10 @@ void Graph::curveDisplay()
 
 }
 
+/*!
+*  \brief [SLOT] Change the color of the curve and the button associated to.
+*   Opens a window to select the color.
+*/
 void Graph::changeColor()
 {
     QPushButton* sender = (QPushButton*)QObject::sender();
@@ -88,11 +105,17 @@ void Graph::changeColor()
     }
 }
 
+/*!
+*  \brief Set the title of the Graph.
+*/
 void Graph::setTitle(const QString& title)
 {
     m_plot->setTitle(title);
 }
 
+/*!
+*  \brief [SLOT] Update the curves, i.e. displays the new points appended to the DataHolder linked to the instance.
+*/
 void Graph::update()
 {
     for(Curve* c : this->m_curves)

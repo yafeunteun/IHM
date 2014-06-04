@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.7"/>
-<title>IHM: NoProxy Class Reference</title>
+<title>IMU Project: NoProxy Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,8 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">IHM
-   &#160;<span id="projectnumber">0.7</span>
+   <div id="projectname">IMU Project
    </div>
   </td>
  </tr>
@@ -38,7 +37,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -72,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -96,14 +94,14 @@ Inheritance diagram for NoProxy:</div>
  <div class="center">
   <img src="class_no_proxy.png" usemap="#NoProxy_map" alt=""/>
   <map id="NoProxy_map" name="NoProxy_map">
-<area href="class_proxy_strategy.html" alt="ProxyStrategy" shape="rect" coords="0,0,92,24"/>
+<area href="class_proxy_strategy.html" title="This class and subclasses represents the differents strategies of processing the data comming from th..." alt="ProxyStrategy" shape="rect" coords="0,0,92,24"/>
 </map>
  </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae18544bdf6af5ac648624acbd523c528"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae18544bdf6af5ac648624acbd523c528"></a>
-std::vector&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>doAlgorithm</b> (QString &amp;incommingRawData)</td></tr>
+<tr class="memitem:ae18544bdf6af5ac648624acbd523c528"><td class="memItemLeft" align="right" valign="top">std::vector&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_no_proxy.html#ae18544bdf6af5ac648624acbd523c528">doAlgorithm</a> (QString &amp;incommingRawData)</td></tr>
+<tr class="memdesc:ae18544bdf6af5ac648624acbd523c528"><td class="mdescLeft">&#160;</td><td class="mdescRight">This type of proxy doesn't modify the raw data. It can be useful for passing it by parameter when required by a function where you don't want to modify the data.  <a href="#ae18544bdf6af5ac648624acbd523c528">More...</a><br /></td></tr>
 <tr class="separator:ae18544bdf6af5ac648624acbd523c528"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab751bd2a24bc1856d19870700a413b0a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab751bd2a24bc1856d19870700a413b0a"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>setConfiguration</b> (QVector&lt; QVariant &gt; *configuration)</td></tr>
@@ -124,10 +122,46 @@ Additional Inherited Members</h2></td></tr>
  }</td></tr>
 <tr class="separator:a6f36624b917997048100120d8c423b41 inherit pub_types_class_proxy_strategy"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_static_methods_class_proxy_strategy"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_class_proxy_strategy')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="class_proxy_strategy.html">ProxyStrategy</a></td></tr>
-<tr class="memitem:a8603651a2b7ad9a0041aa2cdfb208d23 inherit pub_static_methods_class_proxy_strategy"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8603651a2b7ad9a0041aa2cdfb208d23"></a>
-static <a class="el" href="class_proxy_strategy.html">ProxyStrategy</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getProxy</b> (Proxy_t type)</td></tr>
+<tr class="memitem:a8603651a2b7ad9a0041aa2cdfb208d23 inherit pub_static_methods_class_proxy_strategy"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_proxy_strategy.html">ProxyStrategy</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_proxy_strategy.html#a8603651a2b7ad9a0041aa2cdfb208d23">getProxy</a> (Proxy_t type)</td></tr>
+<tr class="memdesc:a8603651a2b7ad9a0041aa2cdfb208d23 inherit pub_static_methods_class_proxy_strategy"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a pointer on a <a class="el" href="class_proxy_strategy.html" title="This class and subclasses represents the differents strategies of processing the data comming from th...">ProxyStrategy</a> subclass according to the type passing in parameter.  <a href="#a8603651a2b7ad9a0041aa2cdfb208d23">More...</a><br /></td></tr>
 <tr class="separator:a8603651a2b7ad9a0041aa2cdfb208d23 inherit pub_static_methods_class_proxy_strategy"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="ae18544bdf6af5ac648624acbd523c528"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; float &gt; NoProxy::doAlgorithm </td>
+          <td>(</td>
+          <td class="paramtype">QString &amp;&#160;</td>
+          <td class="paramname"><em>incommingRawData</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This type of proxy doesn't modify the raw data. It can be useful for passing it by parameter when required by a function where you don't want to modify the data. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">incommingRawData</td><td>: The raw data to process. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns the data processed. </dd></dl>
+
+<p>Implements <a class="el" href="class_proxy_strategy.html">ProxyStrategy</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="proxystrategy_8h_source.html">proxystrategy.h</a></li>
 <li>proxystrategy.cpp</li>
@@ -135,7 +169,7 @@ static <a class="el" href="class_proxy_strategy.html">ProxyStrategy</a> *&#160;<
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 3 2014 10:03:59 for IHM by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 4 2014 15:16:27 for IMU Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['setcolor',['setColor',['../class_curve.html#a7a82d1052d8e9de03682202a52969338',1,'Curve']]]
+  ['filtrage',['Filtrage',['../class_filtrage.html#a2fef8cecbea86b3c3948a816ebbe22e9',1,'Filtrage']]]
 ];

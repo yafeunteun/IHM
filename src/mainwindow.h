@@ -1,6 +1,13 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+/*!
+ * \file mainwindow.h
+ * \author yann feunteun
+ * \version 0.1
+ * \date 05/14/2014
+ */
+
 #include <QMainWindow>
 #include <QtGui>
 #include "ui_IHM.h"
@@ -10,9 +17,10 @@ namespace Ui {
 class MainWindow;
 }
 
-class CurvePerso;
 
-
+/*! \class MainWindow
+   * \brief This class represents the main window of this software.
+   */
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -63,11 +71,6 @@ public:
     void createActions();
     void createStatusBar();
     void createToolBar();
-    double doubleintegration(double acc);
-    double filtrerecursif(double);
-    void dessindonnees(QVector<double> entree);
-    void resetCurves();
-
 
 
 private slots :

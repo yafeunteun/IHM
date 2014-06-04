@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['oncancel',['onCancel',['../class_acquisition_settings.html#af6b2869ea40cbf985c46f9608c670435',1,'AcquisitionSettings']]],
-  ['onnewcalibrateddata',['onNewCalibratedData',['../class_calibration_window.html#a5f6d1040befcf48864273543563fe05e',1,'CalibrationWindow']]],
-  ['onnewconfiguration',['onNewConfiguration',['../class_acquisition_settings.html#ada472a8868de5505712908eeef1ac3c4',1,'AcquisitionSettings']]],
-  ['onnewselection',['onNewSelection',['../class_acquisition_settings.html#a1a55fa13001e4c3cfd160922ee90fc88',1,'AcquisitionSettings']]]
+  ['error',['error',['../class_data_source.html#aec00a7c02407901b7f006d0147ebc4c4',1,'DataSource::error()'],['../class_serial_port.html#ab02b47d80abb0d9e91e8eb947e557d2a',1,'SerialPort::error()'],['../class_server.html#aea336ca64420c84f00e24a2bcf62093b',1,'Server::error()']]]
 ];

@@ -3,7 +3,6 @@
 
 /*!
  * \file acquisitionsettings.h
- * \brief Graphical interface to configure data source.
  * \author yann feunteun
  * \version 0.1
  * \date 05/14/2014
@@ -64,6 +63,9 @@ private:
 
 
 signals:
+    /*!
+    *  \brief [SIGNAL] Emitted each time an error occurs with the data source.
+    */
     void newConfiguration(AcquisitionSettings::Type_t type, const QVector<QVariant>& parameters);/*emitted in onNewConfiguration()*/
 
 public slots:

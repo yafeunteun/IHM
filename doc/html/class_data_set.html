@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.7"/>
-<title>IHM: DataSet Class Reference</title>
+<title>IMU Project: DataSet Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,8 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">IHM
-   &#160;<span id="projectnumber">0.7</span>
+   <div id="projectname">IMU Project
    </div>
   </td>
  </tr>
@@ -38,7 +37,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -72,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -91,6 +89,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">DataSet Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>This class represents a data storage object for QPointF. It can be regarded as an augmented vector.  
+ <a href="class_data_set.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="dataset_8h_source.html">dataset.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for DataSet:</div>
 <div class="dyncontent">
@@ -103,39 +106,95 @@ Inheritance diagram for DataSet:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="signals"></a>
 Signals</h2></td></tr>
 <tr class="memitem:a15877c37bbac452e7e18b46deb22a218"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a15877c37bbac452e7e18b46deb22a218"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>dataUpdated</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_data_set.html#a15877c37bbac452e7e18b46deb22a218">dataUpdated</a> ()</td></tr>
+<tr class="memdesc:a15877c37bbac452e7e18b46deb22a218"><td class="mdescLeft">&#160;</td><td class="mdescRight">[SIGNAL] Emitted each time data are appended to the object with a call to addPoints() <br /></td></tr>
 <tr class="separator:a15877c37bbac452e7e18b46deb22a218"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a86ff249393cdfd0eb7deb96249b35506"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a86ff249393cdfd0eb7deb96249b35506"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>DataSet</b> (QWidget *parent=0)</td></tr>
-<tr class="separator:a86ff249393cdfd0eb7deb96249b35506"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1f1e10b69baf5ac6021cabbd0e5a5fcb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1f1e10b69baf5ac6021cabbd0e5a5fcb"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>DataSet</b> (QString &amp;label, QWidget *parent=0)</td></tr>
+<tr class="memitem:a1f1e10b69baf5ac6021cabbd0e5a5fcb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_data_set.html#a1f1e10b69baf5ac6021cabbd0e5a5fcb">DataSet</a> (QString &amp;label, QWidget *parent=0)</td></tr>
+<tr class="memdesc:a1f1e10b69baf5ac6021cabbd0e5a5fcb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#a1f1e10b69baf5ac6021cabbd0e5a5fcb">More...</a><br /></td></tr>
 <tr class="separator:a1f1e10b69baf5ac6021cabbd0e5a5fcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abac5ce315bc4fdca2eba08cd12512dce"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abac5ce315bc4fdca2eba08cd12512dce"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>DataSet</b> (const <a class="el" href="class_data_set.html">DataSet</a> &amp;)</td></tr>
-<tr class="separator:abac5ce315bc4fdca2eba08cd12512dce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b01bd9c7eee11448bbb079447224a2f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4b01bd9c7eee11448bbb079447224a2f"></a>
-<a class="el" href="class_data_set.html">DataSet</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="class_data_set.html">DataSet</a> &amp;)</td></tr>
-<tr class="separator:a4b01bd9c7eee11448bbb079447224a2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac44a79963c092a8bdba7cfb835431107"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac44a79963c092a8bdba7cfb835431107"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>addPoint</b> (const float point)</td></tr>
+<tr class="memitem:ac44a79963c092a8bdba7cfb835431107"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_data_set.html#ac44a79963c092a8bdba7cfb835431107">addPoint</a> (const float point)</td></tr>
+<tr class="memdesc:ac44a79963c092a8bdba7cfb835431107"><td class="mdescLeft">&#160;</td><td class="mdescRight">Append a point to the object.  <a href="#ac44a79963c092a8bdba7cfb835431107">More...</a><br /></td></tr>
 <tr class="separator:ac44a79963c092a8bdba7cfb835431107"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a79f2306592b974e89cf627320ab1461a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a79f2306592b974e89cf627320ab1461a"></a>
-QVector&lt; QPointF &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getPoints</b> ()</td></tr>
+QVector&lt; QPointF &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_data_set.html#a79f2306592b974e89cf627320ab1461a">getPoints</a> ()</td></tr>
+<tr class="memdesc:a79f2306592b974e89cf627320ab1461a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a reference on the container used to store the data. <br /></td></tr>
 <tr class="separator:a79f2306592b974e89cf627320ab1461a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab54ee5a08fb6f38ae16ea5d6aeb9792c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab54ee5a08fb6f38ae16ea5d6aeb9792c"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getSize</b> ()</td></tr>
-<tr class="separator:ab54ee5a08fb6f38ae16ea5d6aeb9792c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a685e1d90b488656b6133a816d1f38e99"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a685e1d90b488656b6133a816d1f38e99"></a>
-QString &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getLabel</b> ()</td></tr>
-<tr class="separator:a685e1d90b488656b6133a816d1f38e99"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b228deebbb098dce851ec4fa7013432"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4b228deebbb098dce851ec4fa7013432"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setLabel</b> (const QString &amp;label)</td></tr>
-<tr class="separator:a4b228deebbb098dce851ec4fa7013432"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63cc3ada9e570b53c78a22459097cd46"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a63cc3ada9e570b53c78a22459097cd46"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_data_set.html#a63cc3ada9e570b53c78a22459097cd46">getSize</a> ()</td></tr>
+<tr class="memdesc:a63cc3ada9e570b53c78a22459097cd46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the number of points stored. <br /></td></tr>
+<tr class="separator:a63cc3ada9e570b53c78a22459097cd46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aebe7e1ea1ff3e2f2288b6cd2e881b74e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aebe7e1ea1ff3e2f2288b6cd2e881b74e"></a>
+const QString &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_data_set.html#aebe7e1ea1ff3e2f2288b6cd2e881b74e">getLabel</a> ()</td></tr>
+<tr class="memdesc:aebe7e1ea1ff3e2f2288b6cd2e881b74e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the label of the object. <br /></td></tr>
+<tr class="separator:aebe7e1ea1ff3e2f2288b6cd2e881b74e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This class represents a data storage object for QPointF. It can be regarded as an augmented vector. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a1f1e10b69baf5ac6021cabbd0e5a5fcb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DataSet::DataSet </td>
+          <td>(</td>
+          <td class="paramtype">QString &amp;&#160;</td>
+          <td class="paramname"><em>label</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QWidget *&#160;</td>
+          <td class="paramname"><em>parent</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructor. </p>
+<p>Constructor of <a class="el" href="class_data_set.html" title="This class represents a data storage object for QPointF. It can be regarded as an augmented vector...">DataSet</a> class</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">label</td><td>: A QString describing the nature of the data for instance : velocity. </td></tr>
+    <tr><td class="paramname">parent</td><td>: Constructs a widget which is a child of parent. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="ac44a79963c092a8bdba7cfb835431107"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DataSet::addPoint </td>
+          <td>(</td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>point</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Append a point to the object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">point</td><td>: The ordinate of the point to add. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="dataset_8h_source.html">dataset.h</a></li>
 <li>dataset.cpp</li>
@@ -143,7 +202,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setLabel</b> (const Q
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 3 2014 10:03:59 for IHM by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 4 2014 15:16:27 for IMU Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

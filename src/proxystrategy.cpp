@@ -1,6 +1,10 @@
 #include "proxystrategy.h"
 #include "debug.h"
 
+/*!
+*  \brief Returns a pointer on a ProxyStrategy subclass according to the type passing in parameter.
+*  \param type : The type of proxy you want to get i.e. a subclass of ProxyStrategy.
+*/
 ProxyStrategy* ProxyStrategy::getProxy(Proxy_t type)
 {
 
@@ -28,6 +32,12 @@ ProxyStrategy* ProxyStrategy::getProxy(Proxy_t type)
 }
 
 
+/*!
+*  \brief This type of proxy doesn't modify the raw data.
+*   It can be useful for passing it by parameter when required by a function where you don't want to modify the data.
+*  \param incommingRawData : The raw data to process.
+*  \return Returns the data processed.
+*/
 std::vector<float> NoProxy::doAlgorithm(QString& incommingRawData)
 {
     std::vector<float>  data;
@@ -49,12 +59,19 @@ std::vector<float> NoProxy::doAlgorithm(QString& incommingRawData)
     return data;
 }
 
+
 void NoProxy::setConfiguration(QVector<QVariant>* configuration)
 {
     /* Configure members with argument here if needed */
     /* nota : there is no member to configure yet, you need to add it if needed */
 }
 
+
+/*!
+*  \brief This type of proxy is used to process data comming from the accelerometers.
+*  \param incommingRawData : The raw data to process.
+*  \return Returns the data processed
+*/
 std::vector<float> AccelerometerProxy::doAlgorithm(QString& incommingRawData)
 {
     std::vector<float>  data;
@@ -83,7 +100,11 @@ void AccelerometerProxy::setConfiguration(QVector<QVariant>* configuration)
     /* nota : there is no member to configure yet, you need to add it if needed */
 }
 
-
+/*!
+*  \brief This type of proxy is used to process data comming from the gyrometers.
+*  \param incommingRawData : The raw data to process.
+*  \return Returns the data processed
+*/
 std::vector<float> GyrometerProxy::doAlgorithm(QString& incommingRawData)
 {
     std::vector<float>  data;
@@ -113,6 +134,11 @@ void GyrometerProxy::setConfiguration(QVector<QVariant>* configuration)
 }
 
 
+/*!
+*  \brief This type of proxy is used to process data comming from the magnetometers.
+*  \param incommingRawData : The raw data to process.
+*  \return Returns the data processed
+*/
 std::vector<float> MagnetometerProxy::doAlgorithm(QString& incommingRawData)
 {
     std::vector<float> data;
@@ -141,7 +167,11 @@ void MagnetometerProxy::setConfiguration(QVector<QVariant>* configuration)
     /* nota : there is no member to configure yet, you need to add it if needed */
 }
 
-
+/*!
+*  \brief This type of proxy is used to process data comming from the barometer.
+*  \param incommingRawData : The raw data to process.
+*  \return Returns the data processed
+*/
 std::vector<float> BarometerProxy::doAlgorithm(QString& incommingRawData)
 {
     std::vector<float> data;
@@ -170,7 +200,11 @@ void BarometerProxy::setConfiguration(QVector<QVariant>* configuration)
     /* nota : there is no member to configure yet, you need to add it if needed */
 }
 
-
+/*!
+*  \brief This type of proxy is used to process data comming from the termometer.
+*  \param incommingRawData : The raw data to process.
+*  \return Returns the data processed
+*/
 std::vector<float> TermometerProxy::doAlgorithm(QString& incommingRawData)
 {
     std::vector<float> data;
@@ -200,31 +234,4 @@ void TermometerProxy::setConfiguration(QVector<QVariant>* configuration)
     /* Configure members with argument here if needed */
     /* nota : there is no member to configure yet, you need to add it if needed */
 }
-
-
-
-
-
-
-/* calibrate(QString data)
- * {
- *      static int i = 0;
- *      static int sum = 0;
- *      bool ok = false;
- *
- *      float m = data.toFloat(&ok);
- *      if(ok){
- *          sum += m;
- *          ++i;
- *      }
- *      if(i == 10)
- *      {
- *          i=0;
- *          m_offset = sum / 10.;
- *          emit calibrationFinished();  Tells the Graph object to send the next data to the DataHolder.
- *      }
- * }
- * */
-
-
 

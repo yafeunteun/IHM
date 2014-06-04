@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['magnetometerproxy',['MagnetometerProxy',['../class_magnetometer_proxy.html',1,'']]],
-  ['mainwindow',['MainWindow',['../class_main_window.html',1,'']]]
+  ['imu',['IMU',['../class_i_m_u.html',1,'']]]
 ];

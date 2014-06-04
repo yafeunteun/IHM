@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.7"/>
-<title>IHM: Filtrage Class Reference</title>
+<title>IMU Project: Filtrage Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,8 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">IHM
-   &#160;<span id="projectnumber">0.7</span>
+   <div id="projectname">IMU Project
    </div>
   </td>
  </tr>
@@ -38,7 +37,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -72,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -90,25 +88,171 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Filtrage Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>This class provides several methods of filtering.  
+ <a href="class_filtrage.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="filtrage_8h_source.html">filtrage.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a2fef8cecbea86b3c3948a816ebbe22e9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2fef8cecbea86b3c3948a816ebbe22e9"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Filtrage</b> (unsigned size)</td></tr>
+<tr class="memitem:a2fef8cecbea86b3c3948a816ebbe22e9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_filtrage.html#a2fef8cecbea86b3c3948a816ebbe22e9">Filtrage</a> (unsigned size)</td></tr>
+<tr class="memdesc:a2fef8cecbea86b3c3948a816ebbe22e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#a2fef8cecbea86b3c3948a816ebbe22e9">More...</a><br /></td></tr>
 <tr class="separator:a2fef8cecbea86b3c3948a816ebbe22e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acb34b4a297f51b2cae47650e92c93f59"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acb34b4a297f51b2cae47650e92c93f59"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>passeBasRecur</b> (std::vector&lt; float &gt; &amp;val)</td></tr>
+<tr class="memitem:acb34b4a297f51b2cae47650e92c93f59"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_filtrage.html#acb34b4a297f51b2cae47650e92c93f59">passeBasRecur</a> (std::vector&lt; float &gt; &amp;val)</td></tr>
+<tr class="memdesc:acb34b4a297f51b2cae47650e92c93f59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recursive low pass filter.  <a href="#acb34b4a297f51b2cae47650e92c93f59">More...</a><br /></td></tr>
 <tr class="separator:acb34b4a297f51b2cae47650e92c93f59"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad4041e524b48f378f80753d143f67168"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad4041e524b48f378f80753d143f67168"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>passeBasDirect</b> (std::vector&lt; float &gt; &amp;val)</td></tr>
+<tr class="memitem:ad4041e524b48f378f80753d143f67168"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_filtrage.html#ad4041e524b48f378f80753d143f67168">passeBasDirect</a> (std::vector&lt; float &gt; &amp;val)</td></tr>
+<tr class="memdesc:ad4041e524b48f378f80753d143f67168"><td class="mdescLeft">&#160;</td><td class="mdescRight">Low pass filter.  <a href="#ad4041e524b48f378f80753d143f67168">More...</a><br /></td></tr>
 <tr class="separator:ad4041e524b48f378f80753d143f67168"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a574466584a1d6eb09a997653a183a40e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a574466584a1d6eb09a997653a183a40e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setK</b> (float k)</td></tr>
+<tr class="memitem:a574466584a1d6eb09a997653a183a40e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_filtrage.html#a574466584a1d6eb09a997653a183a40e">setK</a> (float k)</td></tr>
+<tr class="memdesc:a574466584a1d6eb09a997653a183a40e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the coefficient for the recursive method (method passeBasRecur).  <a href="#a574466584a1d6eb09a997653a183a40e">More...</a><br /></td></tr>
 <tr class="separator:a574466584a1d6eb09a997653a183a40e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6358d77dd80e897cf53d11d2dade8a52"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6358d77dd80e897cf53d11d2dade8a52"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setN</b> (float n)</td></tr>
+<tr class="memitem:a6358d77dd80e897cf53d11d2dade8a52"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_filtrage.html#a6358d77dd80e897cf53d11d2dade8a52">setN</a> (float n)</td></tr>
+<tr class="memdesc:a6358d77dd80e897cf53d11d2dade8a52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the number of data to accumulate for the filtering (method passeBasDirect).  <a href="#a6358d77dd80e897cf53d11d2dade8a52">More...</a><br /></td></tr>
 <tr class="separator:a6358d77dd80e897cf53d11d2dade8a52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This class provides several methods of filtering. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a2fef8cecbea86b3c3948a816ebbe22e9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Filtrage::Filtrage </td>
+          <td>(</td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>size</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructor. </p>
+<p>Constructor of <a class="el" href="class_filtrage.html" title="This class provides several methods of filtering. ">Filtrage</a> class</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size</td><td>: The number of data sent to the filter each time. i.e the size of the vector sent to the differents methods of filtering. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="ad4041e524b48f378f80753d143f67168"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Filtrage::passeBasDirect </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; float &gt; &amp;&#160;</td>
+          <td class="paramname"><em>values</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Low pass filter. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">values</td><td>: A reference on the vector containing the values to filter. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="acb34b4a297f51b2cae47650e92c93f59"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Filtrage::passeBasRecur </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; float &gt; &amp;&#160;</td>
+          <td class="paramname"><em>values</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Recursive low pass filter. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">values</td><td>: A reference on the vector containing the values to filter. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a574466584a1d6eb09a997653a183a40e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Filtrage::setK </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>k</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the coefficient for the recursive method (method passeBasRecur). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">k</td><td>: The coefficient between 0 and 1 (1 means no filtering). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a6358d77dd80e897cf53d11d2dade8a52"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Filtrage::setN </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the number of data to accumulate for the filtering (method passeBasDirect). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>: The number of data to accumulate. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="filtrage_8h_source.html">filtrage.h</a></li>
 <li>filtrage.cpp</li>
@@ -116,7 +260,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setN</b> (float n)</t
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 3 2014 10:03:59 for IHM by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 4 2014 15:16:27 for IMU Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

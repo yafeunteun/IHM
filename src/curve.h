@@ -3,7 +3,6 @@
 
 /*!
  * \file curve.h
- * \brief Graphical representation of a curve on the graphs
  * \author yann feunteun
  * \version 0.1
  * \date 06/03/2014

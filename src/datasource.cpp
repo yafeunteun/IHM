@@ -4,6 +4,11 @@
 
 DataSource* DataSource::instance = nullptr;
 
+
+/*!
+*  \brief Return a pointer to the unique instance of the class.
+*  Create a unique instance before returning it if this method is called for the first time.
+*/
 DataSource* DataSource::getInstance(void)
 {
     if(DataSource::instance == nullptr){
@@ -15,6 +20,9 @@ DataSource* DataSource::getInstance(void)
     }
 }
 
+/*!
+*  \brief [SLOT] Begin data acquisition if a source has been properly set.
+*/
 void DataSource::start()
 {
     if(!m_configured)
@@ -31,6 +39,9 @@ void DataSource::start()
     }
 }
 
+/*!
+*  \brief [SLOT] Stop data acquisition.
+*/
 void DataSource::stop()
 {
     if(m_source == AcquisitionSettings::SERIAL_PORT){
@@ -40,11 +51,21 @@ void DataSource::stop()
     }
 }
 
+
 void DataSource::resume()
 {
 
 }
 
+
+/*!
+*  \brief [SLOT] Congigure the data source
+*
+*  This slot must be exclusiely used connected to the signal newConfiguration of the class AcquisitionSettings.
+*
+*  \param type : The type of the data source. Can be SerialPort or Server.
+*  \param parameters : A vector containing the parameters used to configure the data source.
+*/
 void DataSource::configure(AcquisitionSettings::Type_t type, QVector<QVariant> parameters)
 {
     m_source = type;
@@ -69,6 +90,9 @@ void DataSource::configure(AcquisitionSettings::Type_t type, QVector<QVariant> p
 
 }
 
+/*!
+*  \brief [SLOT] Emit a signal describing the last error thrown by the data source.
+*/
 void DataSource::onError(QString& err)
 {
     emit error(err);

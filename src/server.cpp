@@ -10,6 +10,10 @@ quint64 Server::offsetW = 0;
 char* Server::buffer = new char[10000000]; /* 10^7 bytes */
 
 
+/*!
+*  \brief Return a pointer to the unique instance of the class.
+*  Create a unique instance before returning it if this method is called for the first time.
+*/
 Server* Server::getInstance(void)
 {
     if(Server::instance == nullptr){
@@ -39,6 +43,9 @@ Server::~Server()
 {
 }
 
+/*!
+*  \brief Starts reading on the serial port.
+*/
 void Server::start()
 {    
     QString stat = "Trying to start the server...";
@@ -74,20 +81,13 @@ void Server::start()
     }
 }
 
+/*!
+*  \brief Stops reading on the serial port.
+*/
 void Server::stop()
 {
     m_timer1->stop();
     m_timer2->stop();
-}
-
-void Server::resume()
-{
-    if(m_peer != nullptr){
-        this->start();
-    }else{
-        QString err("No peer connected");
-        emit error(err);
-    }
 }
 
 
@@ -127,15 +127,6 @@ void Server::onConnection()
     emit status(stat, 10000);
 }
 
-
-void Server::sendToPeer(QString answer)
-{
-    if(m_peer!=nullptr && m_peer->isWritable()){
-        answer = answer.trimmed();
-        answer.append("\r\n");
-        m_peer->write(answer.toUtf8());
-    }
-}
 
 
 

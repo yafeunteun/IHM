@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.7"/>
-<title>IHM: filtrage.h Source File</title>
+<title>IMU Project: filtrage.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,8 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">IHM
-   &#160;<span id="projectnumber">0.7</span>
+   <div id="projectname">IMU Project
    </div>
   </td>
  </tr>
@@ -38,7 +37,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -70,7 +68,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -84,36 +82,44 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">filtrage.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef FILTRAGE_H</span></div>
+<a href="filtrage_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef FILTRAGE_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define FILTRAGE_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
-<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="class_filtrage.html">    6</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_filtrage.html">Filtrage</a></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;{</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <a class="code" href="class_filtrage.html">Filtrage</a>(<span class="keywordtype">unsigned</span> size);</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keywordtype">void</span> passeBasRecur(std::vector&lt;float&gt;&amp; val);</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordtype">void</span> passeBasDirect(std::vector&lt;float&gt;&amp; val);</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> setK(<span class="keywordtype">float</span> k){m_K = k;}</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> setN(<span class="keywordtype">float</span> n){m_N = n;}</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    std::vector&lt;float&gt; m_last;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    std::vector&lt;double&gt; m_cumul;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">float</span> m_K = 1.;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">unsigned</span> m_N = 1;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;};</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#endif // FILTRAGE_H</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="class_filtrage.html">   18</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_filtrage.html">Filtrage</a></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="class_filtrage.html#a2fef8cecbea86b3c3948a816ebbe22e9">Filtrage</a>(<span class="keywordtype">unsigned</span> size);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_filtrage.html#acb34b4a297f51b2cae47650e92c93f59">passeBasRecur</a>(std::vector&lt;float&gt;&amp; val);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_filtrage.html#ad4041e524b48f378f80753d143f67168">passeBasDirect</a>(std::vector&lt;float&gt;&amp; val);</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="ttc" id="class_filtrage_html"><div class="ttname"><a href="class_filtrage.html">Filtrage</a></div><div class="ttdef"><b>Definition:</b> filtrage.h:6</div></div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="class_filtrage.html#a574466584a1d6eb09a997653a183a40e">   29</a></span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="class_filtrage.html#a574466584a1d6eb09a997653a183a40e">setK</a>(<span class="keywordtype">float</span> k){<span class="keywordflow">if</span>(k &gt; 0. &amp;&amp; k &lt; 1.)m_K = k;}</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="class_filtrage.html#a6358d77dd80e897cf53d11d2dade8a52">   35</a></span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="class_filtrage.html#a6358d77dd80e897cf53d11d2dade8a52">setN</a>(<span class="keywordtype">float</span> n){<span class="keywordflow">if</span>(n &gt; 0.)m_N = n;}</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    std::vector&lt;float&gt; m_last;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    std::vector&lt;double&gt; m_cumul;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">float</span> m_K = 1.;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">unsigned</span> m_N = 1;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;};</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#endif // FILTRAGE_H</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="ttc" id="class_filtrage_html_a574466584a1d6eb09a997653a183a40e"><div class="ttname"><a href="class_filtrage.html#a574466584a1d6eb09a997653a183a40e">Filtrage::setK</a></div><div class="ttdeci">void setK(float k)</div><div class="ttdoc">Set the coefficient for the recursive method (method passeBasRecur). </div><div class="ttdef"><b>Definition:</b> filtrage.h:29</div></div>
+<div class="ttc" id="class_filtrage_html_acb34b4a297f51b2cae47650e92c93f59"><div class="ttname"><a href="class_filtrage.html#acb34b4a297f51b2cae47650e92c93f59">Filtrage::passeBasRecur</a></div><div class="ttdeci">void passeBasRecur(std::vector&lt; float &gt; &amp;val)</div><div class="ttdoc">Recursive low pass filter. </div><div class="ttdef"><b>Definition:</b> filtrage.cpp:28</div></div>
+<div class="ttc" id="class_filtrage_html_a2fef8cecbea86b3c3948a816ebbe22e9"><div class="ttname"><a href="class_filtrage.html#a2fef8cecbea86b3c3948a816ebbe22e9">Filtrage::Filtrage</a></div><div class="ttdeci">Filtrage(unsigned size)</div><div class="ttdoc">Constructor. </div><div class="ttdef"><b>Definition:</b> filtrage.cpp:13</div></div>
+<div class="ttc" id="class_filtrage_html_ad4041e524b48f378f80753d143f67168"><div class="ttname"><a href="class_filtrage.html#ad4041e524b48f378f80753d143f67168">Filtrage::passeBasDirect</a></div><div class="ttdeci">void passeBasDirect(std::vector&lt; float &gt; &amp;val)</div><div class="ttdoc">Low pass filter. </div><div class="ttdef"><b>Definition:</b> filtrage.cpp:44</div></div>
+<div class="ttc" id="class_filtrage_html"><div class="ttname"><a href="class_filtrage.html">Filtrage</a></div><div class="ttdoc">This class provides several methods of filtering. </div><div class="ttdef"><b>Definition:</b> filtrage.h:18</div></div>
+<div class="ttc" id="class_filtrage_html_a6358d77dd80e897cf53d11d2dade8a52"><div class="ttname"><a href="class_filtrage.html#a6358d77dd80e897cf53d11d2dade8a52">Filtrage::setN</a></div><div class="ttdeci">void setN(float n)</div><div class="ttdoc">Set the number of data to accumulate for the filtering (method passeBasDirect). </div><div class="ttdef"><b>Definition:</b> filtrage.h:35</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 3 2014 10:03:59 for IHM by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 4 2014 15:16:27 for IMU Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

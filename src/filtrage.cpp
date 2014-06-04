@@ -2,6 +2,14 @@
 #include "debug.h"
 
 
+/*!
+*  \brief Constructor
+*
+*  Constructor of Filtrage class
+*
+*  \param size : The number of data sent to the filter each time. i.e the size of the vector
+*   sent to the differents methods of filtering.
+*/
 Filtrage::Filtrage(unsigned size)
 {
     m_last.resize(size);
@@ -13,7 +21,10 @@ Filtrage::Filtrage(unsigned size)
     }
 }
 
-
+/*!
+*  \brief Recursive low pass filter.
+*  \param values : A reference on the vector containing the values to filter.
+*/
 void Filtrage::passeBasRecur(std::vector<float> &values)
 {
     for(unsigned short i = 0; i < values.size(); ++i){
@@ -25,6 +36,11 @@ void Filtrage::passeBasRecur(std::vector<float> &values)
 
 }
 
+
+/*!
+*  \brief Low pass filter.
+*  \param values : A reference on the vector containing the values to filter.
+*/
 void Filtrage::passeBasDirect(std::vector<float> &values)
 {
     static unsigned count = 0;

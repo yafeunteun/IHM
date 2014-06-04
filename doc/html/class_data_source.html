@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.7"/>
-<title>IHM: DataSource Class Reference</title>
+<title>IMU Project: DataSource Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,8 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">IHM
-   &#160;<span id="projectnumber">0.7</span>
+   <div id="projectname">IMU Project
    </div>
   </td>
  </tr>
@@ -38,7 +37,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -72,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -92,6 +90,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">DataSource Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>This class implements a proxy pattern for both the <a class="el" href="class_serial_port.html" title="This class represents the serial port. It implements a singleton pattern, you don&#39;t need to create an...">SerialPort</a> and the <a class="el" href="class_server.html" title="This class represents the server. It implements a singleton pattern, you don&#39;t need to create an inst...">Server</a> classes. Since it also implements a singleton pattern, you don't need to create an instance of this class. You just need to call <a class="el" href="class_data_source.html#ac93e39ec9f5f332188251261f7acd510" title="Return a pointer to the unique instance of the class. Create a unique instance before returning it if...">getInstance()</a> to get a pointer to the unique instance of this class. The first call will create the unique instance.  
+ <a href="class_data_source.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="datasource_8h_source.html">datasource.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for DataSource:</div>
 <div class="dyncontent">
@@ -104,33 +107,85 @@ Inheritance diagram for DataSource:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-slots"></a>
 Public Slots</h2></td></tr>
 <tr class="memitem:adfb7abac9fe7379fe33da84d96c9fd07"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adfb7abac9fe7379fe33da84d96c9fd07"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>start</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_data_source.html#adfb7abac9fe7379fe33da84d96c9fd07">start</a> ()</td></tr>
+<tr class="memdesc:adfb7abac9fe7379fe33da84d96c9fd07"><td class="mdescLeft">&#160;</td><td class="mdescRight">[SLOT] Begin data acquisition if a source has been properly set. <br /></td></tr>
 <tr class="separator:adfb7abac9fe7379fe33da84d96c9fd07"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a11e68c83bafa903c5ea8c1cbb71b7ef0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a11e68c83bafa903c5ea8c1cbb71b7ef0"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>stop</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_data_source.html#a11e68c83bafa903c5ea8c1cbb71b7ef0">stop</a> ()</td></tr>
+<tr class="memdesc:a11e68c83bafa903c5ea8c1cbb71b7ef0"><td class="mdescLeft">&#160;</td><td class="mdescRight">[SLOT] Stop data acquisition. <br /></td></tr>
 <tr class="separator:a11e68c83bafa903c5ea8c1cbb71b7ef0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aefae11a2b5ddec488a0d4c07c841ff61"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aefae11a2b5ddec488a0d4c07c841ff61"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>resume</b> ()</td></tr>
 <tr class="separator:aefae11a2b5ddec488a0d4c07c841ff61"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af93a072ade0776e1c9e86ec662ba5a67"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af93a072ade0776e1c9e86ec662ba5a67"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>configure</b> (AcquisitionSettings::Type_t type, QVector&lt; QVariant &gt; parameters)</td></tr>
+<tr class="memitem:af93a072ade0776e1c9e86ec662ba5a67"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_data_source.html#af93a072ade0776e1c9e86ec662ba5a67">configure</a> (AcquisitionSettings::Type_t type, QVector&lt; QVariant &gt; parameters)</td></tr>
+<tr class="memdesc:af93a072ade0776e1c9e86ec662ba5a67"><td class="mdescLeft">&#160;</td><td class="mdescRight">[SLOT] Congigure the data source  <a href="#af93a072ade0776e1c9e86ec662ba5a67">More...</a><br /></td></tr>
 <tr class="separator:af93a072ade0776e1c9e86ec662ba5a67"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8e25a097f864246be84467db7d929d11"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8e25a097f864246be84467db7d929d11"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>onError</b> (QString &amp;err)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_data_source.html#a8e25a097f864246be84467db7d929d11">onError</a> (QString &amp;err)</td></tr>
+<tr class="memdesc:a8e25a097f864246be84467db7d929d11"><td class="mdescLeft">&#160;</td><td class="mdescRight">[SLOT] Emit a signal describing the last error thrown by the data source. <br /></td></tr>
 <tr class="separator:a8e25a097f864246be84467db7d929d11"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="signals"></a>
 Signals</h2></td></tr>
 <tr class="memitem:aec00a7c02407901b7f006d0147ebc4c4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aec00a7c02407901b7f006d0147ebc4c4"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>error</b> (QString &amp;)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_data_source.html#aec00a7c02407901b7f006d0147ebc4c4">error</a> (QString &amp;)</td></tr>
+<tr class="memdesc:aec00a7c02407901b7f006d0147ebc4c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">[SIGNAL] Emitted each time an error occurs with the data source. <br /></td></tr>
 <tr class="separator:aec00a7c02407901b7f006d0147ebc4c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:ac93e39ec9f5f332188251261f7acd510"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac93e39ec9f5f332188251261f7acd510"></a>
-static <a class="el" href="class_data_source.html">DataSource</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getInstance</b> (void)</td></tr>
+static <a class="el" href="class_data_source.html">DataSource</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_data_source.html#ac93e39ec9f5f332188251261f7acd510">getInstance</a> (void)</td></tr>
+<tr class="memdesc:ac93e39ec9f5f332188251261f7acd510"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a pointer to the unique instance of the class. Create a unique instance before returning it if this method is called for the first time. <br /></td></tr>
 <tr class="separator:ac93e39ec9f5f332188251261f7acd510"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This class implements a proxy pattern for both the <a class="el" href="class_serial_port.html" title="This class represents the serial port. It implements a singleton pattern, you don&#39;t need to create an...">SerialPort</a> and the <a class="el" href="class_server.html" title="This class represents the server. It implements a singleton pattern, you don&#39;t need to create an inst...">Server</a> classes. Since it also implements a singleton pattern, you don't need to create an instance of this class. You just need to call <a class="el" href="class_data_source.html#ac93e39ec9f5f332188251261f7acd510" title="Return a pointer to the unique instance of the class. Create a unique instance before returning it if...">getInstance()</a> to get a pointer to the unique instance of this class. The first call will create the unique instance. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="af93a072ade0776e1c9e86ec662ba5a67"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DataSource::configure </td>
+          <td>(</td>
+          <td class="paramtype">AcquisitionSettings::Type_t&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QVector&lt; QVariant &gt;&#160;</td>
+          <td class="paramname"><em>parameters</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>[SLOT] Congigure the data source </p>
+<p>This slot must be exclusiely used connected to the signal newConfiguration of the class <a class="el" href="class_acquisition_settings.html" title="This class represents the graphical widget allowing to configure the data source. The source can be :...">AcquisitionSettings</a>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>: The type of the data source. Can be <a class="el" href="class_serial_port.html" title="This class represents the serial port. It implements a singleton pattern, you don&#39;t need to create an...">SerialPort</a> or <a class="el" href="class_server.html" title="This class represents the server. It implements a singleton pattern, you don&#39;t need to create an inst...">Server</a>. </td></tr>
+    <tr><td class="paramname">parameters</td><td>: A vector containing the parameters used to configure the data source. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="datasource_8h_source.html">datasource.h</a></li>
 <li>datasource.cpp</li>
@@ -138,7 +193,7 @@ static <a class="el" href="class_data_source.html">DataSource</a> *&#160;</td><t
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 3 2014 10:03:59 for IHM by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 4 2014 15:16:27 for IMU Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

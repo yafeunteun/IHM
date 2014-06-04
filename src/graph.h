@@ -1,6 +1,13 @@
 #ifndef GRAPH_H
 #define GRAPH_H
 
+/*!
+ * \file graph.h
+ * \author yann feunteun
+ * \version 0.1
+ * \date 06/03/2014
+ */
+
 #include <QWidget>
 #include <qwt_plot.h>
 #include <qwt_plot_curve.h>
@@ -11,6 +18,9 @@
 #include "curve.h"
 #include "dataholder.h"
 
+/*! \class Graph
+   * \brief Graphical view of the data contained in a DataHolder object.
+   */
 class Graph : public QWidget
 {
     Q_OBJECT

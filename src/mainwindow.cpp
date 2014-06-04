@@ -1,10 +1,7 @@
 #include <QMessageBox>
 #include <QFileDialog>
-#include <QSplitter>
 #include <QToolBar>
 #include <QLabel>
-#include <sstream>
-#include <qwt_legend.h>
 #include "mainwindow.h"
 #include "serialport.h"
 #include "acquisitionsettings.h"
@@ -12,6 +9,15 @@
 #include "imu.h"
 #include "calibrationwindow.h"
 
+
+/*!
+*  \brief Constructor
+*
+*  Constructor of MainWindow class
+*
+*  \param parent : Constructs a widget which is a child of parent.
+*
+*/
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent), parent(parent),
     ui(new Ui::MainWindow)
@@ -59,11 +65,20 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(ui->tabMaster, SIGNAL(currentChanged(int)), this, SLOT(updateView()));
 }
 
+/*!
+*  \brief Destructor
+*
+*  Destructor of MainWindow class
+*
+*/
 MainWindow::~MainWindow()
 {
     delete ui;
 }
 
+/*!
+*  \brief Builds the menu bar.
+*/
 void MainWindow::createMenu()
 {
     QMenu* fileMenu = new QMenu("Files");
@@ -110,6 +125,9 @@ void MainWindow::createMenu()
 
 }
 
+/*!
+*  \brief Makes the connections between the items of the menu bar and the actions associated.
+*/
 void MainWindow::createActions(void)
 {
 
@@ -159,11 +177,17 @@ void MainWindow::createActions(void)
 
 }
 
+/*!
+*  \brief Initialize the status bar with a message.
+*/
 void MainWindow::createStatusBar()
 {
     this->statusBar()->showMessage("test status bar");
 }
 
+/*!
+*  \brief Builds the tool bar.
+*/
 void MainWindow::createToolBar()
 {
     QToolBar* fileToolbar = addToolBar("File");
@@ -183,21 +207,6 @@ void MainWindow::selectSource()
     settings->show();
 }
 
-
-
-/** @todo
- * Méthode qui sera à ajouter au proxy
- * */
-double MainWindow::doubleintegration(double acc){
-    double vitesse;
-    double position;
-
-    vitesse=acc*1.01;
-    //a=d/t
-    position=vitesse*1.01;
-    //v=d/t
-    return position;
-}
 
 
 void MainWindow::onError(QString& err)

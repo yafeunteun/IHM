@@ -15,6 +15,11 @@ quint64 SerialPort::offsetR = 0;
 quint64 SerialPort::offsetW = 0;
 char* SerialPort::buffer = new char[10000000]; /* 10^7 bytes */
 
+
+/*!
+*  \brief Return a pointer to the unique instance of the class.
+*  Create a unique instance before returning it if this method is called for the first time.
+*/
 SerialPort* SerialPort::getInstance(void)
 {
     if(SerialPort::instance == nullptr){
@@ -43,7 +48,9 @@ SerialPort::~SerialPort()
 {
 }
 
-
+/*!
+*  \brief Starts reading on the serial port.
+*/
 void SerialPort::start()
 {
     QString stat = "Trying to open serial port " + this->portName();
@@ -65,7 +72,9 @@ void SerialPort::start()
     }
 }
 
-
+/*!
+*  \brief Stops reading on the serial port.
+*/
 void SerialPort::stop()
 {
     QString stat = "Record has been stopped.";
@@ -74,13 +83,6 @@ void SerialPort::stop()
     m_timer2->stop();
     this->close();
 }
-
-void SerialPort::resume()
-{
-    this->start();
-}
-
-
 
 void SerialPort::writeToFile(void)
 {
