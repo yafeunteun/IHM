@@ -227,7 +227,7 @@ void MainWindow::onStatusChanged(QString& stat, int timeout)
 
 void MainWindow::about()
 {
-    QMessageBox::information(this, "About", "Version 0.7\nStill in Developpement\nIn case of problem please contact the author at yannfeunteun@gmail.com\n");
+    QMessageBox::information(this, "About", "Version 0.8\nStill in Developpement\nIn case of problem please contact the author at yannfeunteun@gmail.com\n");
 }
 
 
