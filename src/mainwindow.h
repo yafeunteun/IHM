@@ -81,6 +81,7 @@ private slots :
     void about(void);
     void onSaveRecordedData(void);
     void onCalibrate(void);
+    void openManual(void);
 };
 
 #endif // MAINWINDOW_H

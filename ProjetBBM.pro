@@ -10,21 +10,24 @@ TEMPLATE = app
 CONFIG += qwt
 CONFIG += console debug
 
+# Static linking
+INCLUDEPATH += C:\QwtSource-static\qwt-6.1.0\src
+LIBS += -LC:\QwtSource-static\qwt-6.1.0\lib -lqwt
 
-# QWT Headers
-QWT_LOCATION = C:\Qwt-6.1.0
-INCLUDEPATH += $${QWT_LOCATION}/include
+#QWT Headers
+#QWT_LOCATION = C:\QwtSource\qwt-6.1.0
+#INCLUDEPATH += $${QWT_LOCATION}/src
 
-# QWT Library
-LIBS = -L$${QWT_LOCATION}/lib -lqwt
+#QWT Library
+#LIBS = -L$${QWT_LOCATION}/lib -lqwt
 
 # The following section is to select static lib base on debug or release build
-if(!debug_and_release|build_pass):CONFIG(debug, debug|release) {
-mac:LIBS = $$member(LIBS, 0) \
-$$member(LIBS, 1)_debug
-win32:LIBS = $$member(LIBS, 0) \
-$$member(LIBS, 1)d
-}
+#if(!debug_and_release|build_pass):CONFIG(debug, debug|release) {
+#mac:LIBS = $$member(LIBS, 0) \
+#$$member(LIBS, 1)_debug
+#win32:LIBS = $$member(LIBS, 0) \
+#$$member(LIBS, 1)d
+#}
 
 # QExtSerialPort Library
 CONFIG += extserialport

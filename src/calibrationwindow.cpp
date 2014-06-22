@@ -3,6 +3,8 @@
 #include <QFormLayout>
 #include <QVBoxLayout>
 #include <QGroupBox>
+#include <QLabel>
+
 
 /*!
     *  \brief Constructor
@@ -14,53 +16,116 @@
 CalibrationWindow::CalibrationWindow(QWidget *parent):
     QWidget(parent)
 {
-    m_accX = new QLabel;
-    m_accY = new QLabel;
-    m_accZ = new QLabel;
-    m_gyrX = new QLabel;
-    m_gyrY = new QLabel;
-    m_gyrZ = new QLabel;
-    m_magX = new QLabel;
-    m_magY = new QLabel;
-    m_magZ = new QLabel;
-    m_pressure = new QLabel;
-    m_temperature = new QLabel;
+    QVBoxLayout *mainLayout = new QVBoxLayout;
 
-    QFormLayout* accLayout = new QFormLayout;
-    QFormLayout* gyrLayout = new QFormLayout;
-    QFormLayout* magLayout = new QFormLayout;
-    QFormLayout* barLayout = new QFormLayout;
+    QFont font;
+    font.setBold(true);
 
-    accLayout->addRow("x_axis", m_accX);
-    accLayout->addRow("y_axis", m_accY);
-    accLayout->addRow("z_axis", m_accZ);
-    gyrLayout->addRow("x_axis", m_gyrX);
-    gyrLayout->addRow("y_axis", m_gyrY);
-    gyrLayout->addRow("z_layout", m_gyrZ);
-    magLayout->addRow("x_axis", m_magX);
-    magLayout->addRow("y_axis", m_magY);
-    magLayout->addRow("z_axis", m_magZ);
-    barLayout->addRow("Pressure", m_pressure);
-    barLayout->addRow("Temperature", m_temperature);
+    QLabel* accLabel = new QLabel("Accelerometers");
+    accLabel->setAlignment(Qt::AlignCenter);
+    accLabel->setFont(font);
 
-    QGroupBox *accBox = new QGroupBox;
-    QGroupBox *gyrBox = new QGroupBox;
-    QGroupBox *magBox = new QGroupBox;
-    QGroupBox *barBox = new QGroupBox;
+    QLabel* gyrLabel = new QLabel("Gyrometers");
+    gyrLabel->setAlignment(Qt::AlignCenter);
+    gyrLabel->setFont(font);
 
-    accBox->setLayout(accLayout);
-    gyrBox->setLayout(gyrLayout);
-    magBox->setLayout(magLayout);
-    barBox->setLayout(barLayout);
+    QLabel* magLabel = new QLabel("Magnetometers");
+    magLabel->setAlignment(Qt::AlignCenter);
+    magLabel->setFont(font);
 
-    QVBoxLayout *global = new QVBoxLayout;
-    global->addWidget(accBox);
-    global->addWidget(gyrBox);
-    global->addWidget(magBox);
-    global->addWidget(barBox);
+    QLabel* barTempLabel = new QLabel("Barometer and Temperature sensors");
+    barTempLabel->setAlignment(Qt::AlignCenter);
+    barTempLabel->setFont(font);
 
-    this->setLayout(global);
-    connect(IMU::getInstance(), SIGNAL(newCalibratedData(std::vector<float>&)), this, SLOT(onNewCalibratedData(std::vector<float>&)));
+    m_accelerometers = new QTableWidget(3, 5);
+    QStringList labelsRows = {"X axis", "Y axis", "Z axis"};
+    QStringList labelsCols = {"Measures", "Sensitivity", "Offset", "Temp. sens.", "Temp. offset"};
+    m_accelerometers->setVerticalHeaderLabels(labelsRows);
+    m_accelerometers->setHorizontalHeaderLabels(labelsCols);
+
+    m_gyrometers = new QTableWidget(3, 5);
+    m_gyrometers->setVerticalHeaderLabels(labelsRows);
+    m_gyrometers->setHorizontalHeaderLabels(labelsCols);
+
+    m_magnetometers = new QTableWidget(3, 4);
+    labelsCols = {"Measures", "Sensitivity", "Offset", "Temp. offset"};
+    m_magnetometers->setVerticalHeaderLabels(labelsRows);
+    m_magnetometers->setHorizontalHeaderLabels(labelsCols);
+
+    m_barTemp = new QTableWidget(1,4);
+    labelsCols = {"Pressure", "Altitude","", "Temperature"};
+    m_barTemp->setHorizontalHeaderLabels(labelsCols);
+
+    QTableWidgetItem*  item;
+    for(int i = 0; i < m_accelerometers->rowCount(); ++i){
+        item = new QTableWidgetItem;
+        item->setFlags(item->flags() & ~Qt::ItemIsEnabled);
+        item->setBackgroundColor(QColor::fromRgb(225,226,255));
+        m_accelerometers->setItem(i,0,item);
+    }
+
+    for(int i = 0; i < m_gyrometers->rowCount(); ++i){
+        item = new QTableWidgetItem;
+        item->setFlags(item->flags() & ~Qt::ItemIsEnabled);
+        item->setBackgroundColor(QColor::fromRgb(225,226,255));
+        m_gyrometers->setItem(i,0,item);
+    }
+
+    for(int i = 0; i < m_magnetometers->rowCount(); ++i){
+        item = new QTableWidgetItem;
+        item->setFlags(item->flags() & ~Qt::ItemIsEnabled);
+        item->setBackgroundColor(QColor::fromRgb(225,226,255));
+        m_magnetometers->setItem(i,0,item);
+    }
+
+    for(int i = 3; i < m_accelerometers->columnCount(); ++i){
+        for(int j = 1; j < m_accelerometers->rowCount(); ++j){
+            item = new QTableWidgetItem;
+            item->setFlags(item->flags() & ~Qt::ItemIsEnabled);
+            item->setBackgroundColor(QColor::fromRgb(255,255,255));
+            m_accelerometers->setItem(j,i,item);
+        }
+    }
+
+    for(int i = 3; i < m_gyrometers->columnCount(); ++i){
+        for(int j = 1; j < m_gyrometers->rowCount(); ++j){
+            item = new QTableWidgetItem;
+            item->setFlags(item->flags() & ~Qt::ItemIsEnabled);
+            item->setBackgroundColor(QColor::fromRgb(255,255,255));
+            m_gyrometers->setItem(j,i,item);
+        }
+    }
+
+    for(int i = 3; i < m_magnetometers->columnCount(); ++i){
+        for(int j = 1; j < m_magnetometers->rowCount(); ++j){
+            item = new QTableWidgetItem;
+            item->setFlags(item->flags() & ~Qt::ItemIsEnabled);
+            item->setBackgroundColor(QColor::fromRgb(255,255,255));
+            m_magnetometers->setItem(j,i,item);
+        }
+    }
+
+    m_barTemp->setItem(0, 0, new QTableWidgetItem());
+    m_barTemp->setItem(0, 2, new QTableWidgetItem());
+    m_barTemp->setItem(0, 3, new QTableWidgetItem());
+    m_barTemp->item(0,0)->setFlags(item->flags() & ~Qt::ItemIsEnabled);
+    m_barTemp->item(0,0)->setBackgroundColor(QColor::fromRgb(225,226,255));
+    m_barTemp->item(0,2)->setFlags(item->flags() & ~Qt::ItemIsEnabled);
+    m_barTemp->item(0,3)->setFlags(item->flags() & ~Qt::ItemIsEnabled);
+    m_barTemp->item(0,3)->setBackgroundColor(QColor::fromRgb(225,226,255));
+
+    mainLayout->addWidget(accLabel);
+    mainLayout->addWidget(m_accelerometers);
+    mainLayout->addWidget(gyrLabel);
+    mainLayout->addWidget(m_gyrometers);
+    mainLayout->addWidget(magLabel);
+    mainLayout->addWidget(m_magnetometers);
+    mainLayout->addWidget(barTempLabel);
+    mainLayout->addWidget(m_barTemp);
+    this->setLayout(mainLayout);
+    this->setFixedWidth(m_accelerometers->columnWidth(0)*6);
+
+
 }
 
 
@@ -73,17 +138,5 @@ CalibrationWindow::CalibrationWindow(QWidget *parent):
     */
 void CalibrationWindow::onNewCalibratedData(std::vector<float>& data)
 {
-    if(data.size() == 11){
-        m_accX->setText(QString::number(data[0]));
-        m_accY->setText(QString::number(data[1]));
-        m_accZ->setText(QString::number(data[2]));
-        m_gyrX->setText(QString::number(data[3]));
-        m_gyrY->setText(QString::number(data[4]));
-        m_gyrZ->setText(QString::number(data[5]));
-        m_magX->setText(QString::number(data[6]));
-        m_magY->setText(QString::number(data[7]));
-        m_magZ->setText(QString::number(data[8]));
-        m_pressure->setText(QString::number(data[9]));
-        m_temperature->setText(QString::number(data[10]));
-    }
+
 }

@@ -9,7 +9,7 @@
  */
 
 #include <QWidget>
-#include <QLabel>
+#include <QTableWidget>
 
 
 /*! \class CalibrationWindow
@@ -27,20 +27,10 @@ public slots:
     void onNewCalibratedData(std::vector<float>&);
 
 private:
-    QLabel *m_accX;
-    QLabel *m_accY;
-    QLabel *m_accZ;
-
-    QLabel *m_gyrX;
-    QLabel *m_gyrY;
-    QLabel *m_gyrZ;
-
-    QLabel *m_magX;
-    QLabel *m_magY;
-    QLabel *m_magZ;
-
-    QLabel *m_pressure;
-    QLabel *m_temperature;
+    QTableWidget* m_accelerometers;
+    QTableWidget* m_gyrometers;
+    QTableWidget* m_magnetometers;
+    QTableWidget* m_barTemp;
 
 
 };

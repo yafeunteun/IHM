@@ -2,6 +2,9 @@
 #include <QFileDialog>
 #include <QToolBar>
 #include <QLabel>
+#include <QDesktopServices>
+#include <QUrl>
+#include <QDir>
 #include "mainwindow.h"
 #include "serialport.h"
 #include "acquisitionsettings.h"
@@ -171,6 +174,7 @@ void MainWindow::createActions(void)
 
     /* Help */
     m_manual = new QAction("&Manual", this);
+    connect(m_manual, SIGNAL(triggered()), this, SLOT(openManual()));
 
     m_about = new QAction("&About", this);
     connect(m_about, SIGNAL(triggered()), this, SLOT(about()));
@@ -271,4 +275,15 @@ void MainWindow::onCalibrate()
     IMU::getInstance()->onStartCalibrate();
     CalibrationWindow *win = new CalibrationWindow();
     win->show();
+}
+
+void MainWindow::openManual()
+{
+    QDir indexFolder;
+    indexFolder.setPath("./site");
+    QString absolutePath = indexFolder.absolutePath();
+    if(!QDesktopServices::openUrl(QUrl::fromLocalFile(absolutePath + "/index.html")))
+    {
+        QMessageBox::warning(this, "Error", "The root of the manual's website must be in the same folder as this program.");
+    }
 }
